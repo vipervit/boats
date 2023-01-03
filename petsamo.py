@@ -3,12 +3,28 @@
 
 import requests
 import time
+import os
+import sys
+
+from pathlib import Path
+
+f_name='petsamo.gpx'
 
 res_gen = requests.get('http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr=59528&key=7B79EE2988A44080A37C06570F4B5EE8')
 res_rank=requests.get('https://sarl.ingenium.net.au/sarl?racenr=38602')
 
-rank=res_rank.text.split('Ketch | Petsamo')[0][-18:].split(' ')[0].replace('>', '')
+platform=sys.platform
 
+if platform == 'darwin':
+    root=os.path.join(str(Path.home()), 'Documents')
+elif sys.platform == 'win':
+    root=os.path.join('C:', 'Users', 'vitol', 'Documents', 'Sail')
+else:
+    sys.exit('Could not determine platform: {}'.format(platform))
+
+f_pos=os.path.join(root, 'Boats', 'Petsamo', f_name)
+
+rank=res_rank.text.split('Ketch | Petsamo')[0][-18:].split(' ')[0].replace('>', '')
 
 for boat in res_gen.json():
     name=boat['boatname']
@@ -31,6 +47,6 @@ s=s.replace('LATITUDE', str(lat))
 s=s.replace('LONGTITUDE', str(lon))
 s=s.replace('TIME', time.strftime("%d-%h %H:%M"))
 
-f=open('C:\\Users\\vitol\\Documents\\Sail\\Boats\\Petsamo\\petsamo.gpx', 'w')
+f=open(f_pos, 'w')
 f.write(s)
 f.close()
