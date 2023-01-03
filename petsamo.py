@@ -17,7 +17,7 @@ platform=sys.platform
 
 if platform == 'darwin':
     root=os.path.join(str(Path.home()), 'Documents')
-elif sys.platform == 'win32ß':
+elif sys.platform == 'win32':
     root=os.path.join('C:', 'Users', 'vitol', 'Documents', 'Sail')
 else:
     sys.exit('Could not determine platform: {}'.format(platform))
