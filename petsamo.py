@@ -15,10 +15,10 @@ res_rank=requests.get('https://sarl.ingenium.net.au/sarl?racenr=38602')
 
 platform=sys.platform
 
-if platform == 'darwin':
+if platform == 'win32' or platform == 'darwin':
     root=os.path.join(str(Path.home()), 'Documents')
-elif sys.platform == 'win32':
-    root=os.path.join('C:', 'Users', 'vitol', 'Documents', 'Sail')
+    if platform == 'win32':
+        root=os.path.join(root, 'Sail')
 else:
     sys.exit('Could not determine platform: {}'.format(platform))
 
