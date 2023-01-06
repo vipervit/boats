@@ -1,4 +1,9 @@
 import requests
+import os
+from pathlib import Path
+
+DIR_HOME=str(Path.home())
+DIR_SAILDATA=os.path.join(DIR_HOME, 'Documents', 'onlinesail', 'data')
 
 API_RACES = {
     'Stardust': 'https://sarl.ingenium.net.au/racelog?racenr=38602'
