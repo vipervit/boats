@@ -16,15 +16,15 @@ class boat:
         self.sailplan=[sail['sail'] for sail in self.data['sails'] if sail['halyard']==1 and sail['furled']==0]
         self.pos=(round(self.data['latitude'],5), round(self.data['longitude'],5))
         self.heel=round(self.data['heeldegrees'],)
-        self.wind={'tws': round(self.data['tws']*2),
+        self.wind={'tws': round(self.data['tws']*2,1),
                    'twa': round(self.data['twa']),
                    'twd': round(self.data['twd']),
                    'aws': round(self.data['aws']*2),
                    'awa': round(self.data['awa'])}
         self.nav={'hdg': round(self.data['hdg']),
-                  'spd': round(self.data['spd']*2),
+                  'spd': round(self.data['spd']*2,1),
                   'cog': round(self.data['cog']),
-                  'sog': round(self.data['sog']*2),
+                  'sog': round(self.data['sog']*2,1),
                   'whlm': round(self.data['weatherhelm'],2)
                  }
         
