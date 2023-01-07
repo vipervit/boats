@@ -56,7 +56,6 @@ class boat:
         print('hdg: {}'.format(self.nav['hdg']))
         print('cog: {}'.format(self.nav['cog']))    
         print('tws: {}'.format(self.wind['tws']))
-        self.show_heel()
 
     def __show_full__(self):
         self.show_pos()
@@ -67,6 +66,7 @@ class boat:
             print('{}: {}'.format(each, self.nav[each]))
         for each in self.wind:
             print('{}: {}'.format(each, self.wind[each]))
+        self.show_heel()
         
     def show(self, full=False):
         print('{}\n----------------'.format(self.name.upper()))
@@ -76,7 +76,12 @@ class boat:
             self.__show_short__()
             
     def sail_config_snapshot(self):
-        return {'tws': self.data['tws'], 'spd': self.data['spd'], 'twd': self.data['twd'], 'twa': self.data['twa'], 'sails': self.sailplan}
+        return {'tws': self.wind['tws'],
+                'spd': self.nav['spd'],
+                'twd': self.wind['twd'],
+                'twa': self.wind['twa'],
+                'heel': self.heel,
+                'sails': self.sailplan}
     
     def __read_sail_data_from_file__(self):
         with open(self.datafile, 'r') as f:
