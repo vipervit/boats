@@ -1,17 +1,24 @@
-import os
-import pandas as pd
 import json
 import time
-from .common import *
+
+import pandas as pd
+
+from lib import common
+from lib.common import get_all_own_boats_json
+
 
 class boat:
     
     def __init__(self, name):
         self.name=name
-        self.datafile=os.path.join(DIR_SAILDATA, name + '_dat.json') 
+        self.datafile=common.os.path.join(common.DIR_SAILDATA, name + '_dat.json')
      
-    def getdata(self):
-        self.data=get_boat_data(self.name)
+    def getdata(self, response_json=False):
+        if not response_json:
+            response_json = get_all_own_boats_json()
+        for data in response_json:
+            if data['boatname'] == self.name:
+                self.data = data
         self.sails=[sail['sail'] for sail in self.data['sails']]
         self.sailplan=[sail['sail'] for sail in self.data['sails'] if sail['halyard']==1 and sail['furled']==0]
         self.pos=(round(self.data['latitude'],5), round(self.data['longitude'],5))
@@ -93,7 +100,7 @@ class boat:
     
     def save_current_sail_data(self):
         data={}
-        if os.path.exists(self.datafile):
+        if common.os.path.exists(self.datafile):
             data=self.__read_sail_data_from_file__()
         data.update({str(time.time()): self.sail_config_snapshot()})
         self.__write_sail_data_to_file__(data)
