@@ -19,10 +19,11 @@ boats = res.json()['result']
 data=[(boats[boat]['ubtname'],
        boats[boat]['lat_dec'],
        boats[boat]['lon_dec'],
-       boats[boat]['rank'])
+       boats[boat]['rank'],
+       boats[boat]['track'])
       for boat in list(boats.keys()) if 'lat_dec' in boats[boat]]
 
-df=pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank'])
+df=pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank', 'Track'])
 df['Rank']=df['Rank'].astype('int64')
 df.sort_values('Rank', ascending=True, inplace=True)
 df.reset_index(inplace=True)
@@ -42,8 +43,9 @@ for idx in df.index:
     else:
         color='lightgray'
     if df.loc[idx, 'Boat']==mine:
-        color='lightblue'
+        color='blue'
     popup=str(lat) + ', ' + str(lon)
     folium.Marker([lat, lon], popup=name + ' ' + str(rank), icon=folium.Icon(color=color, icon='sailboat', prefix='fa')).add_to(mymap)
+    folium.PolyLine(df.loc[idx, 'Track'], color=color, weight=2.5, opacity=1).add_to(mymap)
 mymap.save(html)
 
