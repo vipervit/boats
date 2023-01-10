@@ -2,6 +2,8 @@ import requests
 import os
 from pathlib import Path
 
+MY_USER='Viper Vit'
+
 DIR_HOME=str(Path.home())
 DIR_SAILDATA=os.path.join(DIR_HOME, 'Documents', 'onlinesail', 'data')
 
