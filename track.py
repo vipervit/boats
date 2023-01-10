@@ -4,14 +4,14 @@
 
 import os
 import sys
-import time
-import folium
-import pandas as pd
 from datetime import datetime
 
+import folium
+import pandas as pd
+from folium.plugins import BoatMarker
 
-from lib.common import DIR_SAILDATA, MY_USER, get_boat_race_data
 from lib.boat import boat
+from lib.common import DIR_SAILDATA, MY_USER, get_boat_race_data
 
 boatname=sys.argv[1]
 race=sys.argv[2]
@@ -35,6 +35,11 @@ mymap=folium.Map(location=curr_pos, zoom_start=7)
 popup='{} {}'.format('{}, {}'.format(curr_pos[0], curr_pos[1]), timestamp)
 
 folium.PolyLine(track).add_to(mymap)
-folium.Marker(curr_pos, popup=popup).add_to(mymap)
+BoatMarker(curr_pos, color='blue',
+           heading=oBoat.nav['hdg'],
+           wind_heading=oBoat.wind['twd'],
+           wind_speed=oBoat.wind['tws'],
+           popup=popup).add_to(mymap)
+
 mymap.save(html)
 
