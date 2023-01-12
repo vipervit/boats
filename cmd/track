@@ -1,1 +1,1 @@
-python ../track.py $1 $2
+python3 ~/dev/src/boats/track.py Petsamo Stardust
