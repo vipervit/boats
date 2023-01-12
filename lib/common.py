@@ -1,6 +1,7 @@
 import requests
 import os
 from pathlib import Path
+from datetime import datetime
 
 MY_USER='Viper Vit'
 
@@ -21,3 +22,6 @@ def get_race_data(race):
 
 def get_boat_race_data(race, user, boat):
     return get_race_data(race)[user + '-' + boat]
+
+def timestamp():
+    return datetime.now().strftime('%d/%m %H:%M')

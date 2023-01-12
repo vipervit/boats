@@ -1,15 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 import pandas as pd
 import requests
 from datetime import datetime
-
-
-# In[2]:
 
 
 url='https://sarl.ingenium.net.au/racelog?racenr=38602'
@@ -17,20 +11,7 @@ res=requests.get(url)
 myboat='PETSAMO'
 
 
-# In[3]:
-
-
 boats = res.json()['result']
-
-
-# In[4]:
-
-
-boats
-
-
-# In[5]:
-
 
 ranks=[ (boats[boat]['ubtname'].upper(),
          boats[boat]['usrname'].upper(),
@@ -47,20 +28,6 @@ ranks=[ (boats[boat]['ubtname'].upper(),
       ]
 
 
-# In[6]:
-
-
-ranks
-
-
-# In[8]:
-
-
-#!/usr/bin/env python
-# coding: utf-8
-
-
-
 df=pd.DataFrame(ranks)
 df.columns=['Boat', 'User', 'Rank', 'HDG', 'SPD', 'DTW', 'WPT', 'POS1', 'POS2', 'As of']
 df['Rank']=df['Rank'].astype(int)
@@ -73,22 +40,4 @@ behind=float(df[df.index==1]['DTW'][1]) - float(df[df['Boat'].str.contains(myboa
 print(df)
 print('')
 print('Behind leader by: {} nm'.format(round(behind),2))
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
