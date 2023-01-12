@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Improve track.py with BoatMarker">
-      <change afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/viewpos.py" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add viewpos.py&#10;Correct track.cmd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/track" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/track" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpos.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewpos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673391718804</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add viewpos.py&#10;Correct track.cmd">
+      <created>1673495544495</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1673495544495</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -153,6 +159,7 @@
     <MESSAGE value="Modify and import track.py" />
     <MESSAGE value="Add cmd/track" />
     <MESSAGE value="Improve track.py with BoatMarker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Improve track.py with BoatMarker" />
+    <MESSAGE value="Add viewpos.py&#10;Correct track.cmd" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add viewpos.py&#10;Correct track.cmd" />
   </component>
 </project>
