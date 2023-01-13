@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add zoom in viewpos.py">
-      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petsamo.py" beforeDir="false" afterPath="$PROJECT_DIR$/petsamo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/racemap.py" beforeDir="false" afterPath="$PROJECT_DIR$/racemap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stardust.py" beforeDir="false" afterPath="$PROJECT_DIR$/stardust.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/track.py" beforeDir="false" afterPath="$PROJECT_DIR$/track.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,8 +97,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.viewpos" />
       <item itemvalue="Python.racemap" />
+      <item itemvalue="Python.viewpos" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

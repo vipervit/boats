@@ -5,14 +5,17 @@ from datetime import datetime
 
 MY_USER='Viper Vit'
 
-DIR_HOME=str(Path.home())
-DIR_SAILDATA=os.path.join(DIR_HOME, 'Documents', 'onlinesail', 'data')
+DIR_HOME = str(Path.home())
+DIR_HTML = os.path.join(DIR_HOME, 'Documents')
+DIR_SAILDATA = os.path.join(DIR_HOME, 'Documents', 'onlinesail', 'data')
 
 API_RACES = {
     'Stardust': 'https://sarl.ingenium.net.au/racelog?racenr=38602'
 }
 
 API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr=59528&key=7B79EE2988A44080A37C06570F4B5EE8'
+
+HTML_LAST_UPDATED = '<h3 align="center" style="font-size:16px"><b>Last updated: {}</b></h3>'
 
 def get_all_own_boats_json():
     return requests.get(API_OWN_BOATS).json()

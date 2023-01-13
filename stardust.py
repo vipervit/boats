@@ -6,10 +6,9 @@ import requests
 from datetime import datetime
 
 
-url='https://sarl.ingenium.net.au/racelog?racenr=38602'
-res=requests.get(url)
-myboat='PETSAMO'
-
+url = 'https://sarl.ingenium.net.au/racelog?racenr=38602'
+res = requests.get(url)
+myboat = 'PETSAMO'
 
 boats = res.json()['result']
 

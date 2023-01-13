@@ -11,12 +11,14 @@ import pandas as pd
 from folium.plugins import BoatMarker
 
 from lib.boat import boat
-from lib.common import DIR_SAILDATA, MY_USER, get_boat_race_data
+from lib.common import DIR_SAILDATA, MY_USER, get_boat_race_data, DIR_HTML, HTML_LAST_UPDATED
 
-boatname=sys.argv[1]
-race=sys.argv[2]
-user=MY_USER
-html=os.path.join(DIR_SAILDATA, boatname + '.html')
+from selenium import webdriver
+
+boatname = sys.argv[1]
+race = sys.argv[2]
+user = MY_USER
+html = os.path.join(DIR_HTML, boatname + '.html')
 
 timestamp=datetime.now().strftime('%d-%b %H:%M')
 
@@ -32,9 +34,12 @@ df_track=pd.DataFrame(track)
 df_track.columns=['Lat', 'Lon']
 
 mymap=folium.Map(location=curr_pos, zoom_start=7)
+mymap.get_root().html.add_child(folium.Element(HTML_LAST_UPDATED.format(timestamp)))
+
 popup='{} {}'.format('{}, {}'.format(curr_pos[0], curr_pos[1]), timestamp)
 
 folium.PolyLine(track).add_to(mymap)
+
 BoatMarker(curr_pos, color='blue',
            heading=oBoat.nav['hdg'],
            wind_heading=oBoat.wind['twd'],
@@ -43,3 +48,4 @@ BoatMarker(curr_pos, color='blue',
 
 mymap.save(html)
 
+webdriver.Firefox().get('file:{}'.format(html))

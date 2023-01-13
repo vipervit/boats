@@ -47,7 +47,7 @@ if len(hrs) < 2:
 if len(mins) < 2:
     mins = '0' + mins
 
-title_html = '<h3 align="center" style="font-size:16px"><b>Last updated {} ({} h :{} m ago)</b></h3>'.format(last_updated, hrs, mins)
+title_html = '<h3 align="center" style="font-size:16px"><b>Last updated {} ({}:{} ago)</b></h3>'.format(last_updated, hrs, mins)
 
 mymap=folium.Map(location=center, zoom_start=7)
 mymap.get_root().html.add_child(folium.Element(title_html))
