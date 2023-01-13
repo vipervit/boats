@@ -25,3 +25,10 @@ def get_boat_race_data(race, user, boat):
 
 def timestamp():
     return datetime.now().strftime('%d/%m %H:%M')
+
+def timeago(timestamp):
+    now = datetime.fromtimestamp(datetime.now().timestamp())
+    delta = (now - datetime.fromtimestamp(timestamp)).seconds
+    hrs = int(delta/3600)
+    mins = int(delta/60) - hrs*60
+    return (hrs, mins)
