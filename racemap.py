@@ -9,12 +9,12 @@ import folium
 import pandas as pd
 import requests
 
-from lib.common import API_RACES, timestamp, timeago
+from lib.common import API_RACES, timestamp, timeago, DIR_HTML
 
 from selenium import webdriver
 
 url_race=API_RACES['Stardust']
-html=os.path.join(str(Path.home()), 'Documents', 'boats.html')
+html=os.path.join(DIR_HTML, 'boats.html')
 mine='Petsamo'
 
 res=requests.get(url_race)

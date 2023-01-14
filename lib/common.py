@@ -6,7 +6,8 @@ from datetime import datetime
 MY_USER='Viper Vit'
 
 DIR_HOME=str(Path.home())
-DIR_SAILDATA=os.path.join(DIR_HOME, 'Documents', 'onlinesail', 'data')
+DIR_SAILDATA = os.path.join(DIR_HOME, 'Documents', 'OnSail', 'data')
+DIR_HTML = os.path.join(DIR_HOME, 'Documents')
 
 API_RACES = {
     'Stardust': 'https://sarl.ingenium.net.au/racelog?racenr=38602'

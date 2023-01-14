@@ -5,8 +5,9 @@ import pandas as pd
 import requests
 from datetime import datetime
 
+from lib.common import API_RACES
 
-url='https://sarl.ingenium.net.au/racelog?racenr=38602'
+url = API_RACES['Stardust']
 res=requests.get(url)
 myboat='PETSAMO'
 
