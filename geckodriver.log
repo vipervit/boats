@@ -2253,3 +2253,57 @@ JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch res
 1673674655770	Marionette	INFO	Stopped listening on port 53335
 [Parent 13644, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:746
 console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1673674840792	geckodriver	INFO	Listening on 127.0.0.1:54581
+1673674843862	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54582" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofile694qRY"
+1673674844755	Marionette	INFO	Marionette enabled
+1673674844764	Marionette	INFO	Listening on port 54591
+WebDriver BiDi listening on ws://127.0.0.1:54582
+Read port: 54591
+1673674845139	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofile694qRY\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54582/devtools/browser/d5942bc3-24ce-43f9-96b9-4d5ae58ad908
+1673675425798	Marionette	INFO	Stopped listening on port 54591
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+remote-debugging-port" "54736" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofile0syxkB"
+1673675390099	Marionette	INFO	Marionette enabled
+1673675390107	Marionette	INFO	Listening on port 54746
+Read port: 54746
+WebDriver BiDi listening on ws://127.0.0.1:54736
+1673675390333	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofile0syxkB\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54736/devtools/browser/b373b9e6-c8b9-41b9-b4fe-b92c6ba7fcf2
+1673675925413	Marionette	INFO	Stopped listening on port 54746
+3675750883	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54892" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofileW4dFeR"
+1673675751478	Marionette	INFO	Marionette enabled
+1673675751488	Marionette	INFO	Listening on port 54901
+Read port: 54901
+WebDriver BiDi listening on ws://127.0.0.1:54892
+1673675751670	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofileW4dFeR\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54892/devtools/browser/3c080b0f-5c83-4de4-aab9-747c2bf80bc0
+1673675925001	Marionette	INFO	Stopped listening on port 54901
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1673675925243	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:221
+1673675943041	geckodriver	INFO	Listening on 127.0.0.1:54997
+1673675946076	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54998" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofileLt5Mk6"
+1673675946885	Marionette	INFO	Marionette enabled
+1673675946894	Marionette	INFO	Listening on port 55007
+Read port: 55007
+WebDriver BiDi listening on ws://127.0.0.1:54998
+1673675947079	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\vitol\\AppData\\Local\\Temp\\rust_mozprofileLt5Mk6\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:54998/devtools/browser/b3ca3bdc-78b9-4e54-b9ce-1236c09ef394
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+JavaScript error: resource:///modules/sessionstore/SessionStore.jsm, line 2211: TypeError: subject.QueryInterface is not a function
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+1673676245230	Marionette	INFO	Stopped listening on port 55007
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.

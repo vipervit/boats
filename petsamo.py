@@ -3,9 +3,9 @@ import sys
 from lib.boat import boat
 
 if sys.argv[1]=='--full':
-    full=True
+    full = True
 else:
-    full=False
+    full = False
     
 boat=boat('Petsamo')
 boat.getdata()

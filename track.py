@@ -4,18 +4,18 @@
 
 import os
 import sys
+import webbrowser
 from datetime import datetime
 
 import folium
 import pandas as pd
 from folium.plugins import BoatMarker
-from selenium import webdriver
 
 from lib.boat import boat
 from lib.common import DIR_SAILDATA, MY_USER, get_boat_race_data, DIR_HTML
 
-boatname=sys.argv[1]
-race=sys.argv[2]
+boatname = sys.argv[1]
+race = sys.argv[2]
 launch_browser = sys.argv[3]
 
 user=MY_USER
@@ -23,11 +23,11 @@ html=os.path.join(DIR_HTML, boatname + '.html')
 
 timestamp=datetime.now().strftime('%d-%b %H:%M')
 
-oBoat=boat(boatname)
+oBoat = boat(boatname)
 oBoat.getdata()
 curr_pos = [round(oBoat.pos[0],3), round(oBoat.pos[1],3)]
 sog = oBoat.nav['sog']
-hdg=oBoat.nav['hdg']
+hdg = oBoat.nav['hdg']
 
 race_data = get_boat_race_data(race, user, boatname)
 rank = race_data['rank']
@@ -55,4 +55,4 @@ BoatMarker(curr_pos, color='blue',
 mymap.save(html)
 
 if launch_browser == '1':
-    webdriver.Firefox().get('file:{}'.format(html))
+    webbrowser.open('file:{}'.format(html))

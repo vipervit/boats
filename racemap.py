@@ -2,20 +2,22 @@
 # coding: utf-8
 
 import os
+import sys
+import webbrowser
 from datetime import datetime
-from pathlib import Path
 
 import folium
 import pandas as pd
 import requests
-
-from lib.common import API_RACES, timestamp, timeago, DIR_HTML
-
 from selenium import webdriver
 
-url_race=API_RACES['Stardust']
-html=os.path.join(DIR_HTML, 'boats.html')
-mine='Petsamo'
+from lib.common import API_RACES, timeago, DIR_HTML
+
+boat = sys.argv[1]
+race = sys.argv[2]
+launch_browser = sys.argv[3]
+url_race = API_RACES[race]
+html = os.path.join(DIR_HTML, '{}.html'.format(race))
 
 res=requests.get(url_race)
 boats = res.json()['result']
@@ -37,7 +39,7 @@ colors=['red', 'green', 'darkblue', 'orange', 'pink', 'darkgreen',
 
 center=(df.loc[0, 'Lat'], df.loc[0, 'Lon'])
 
-timestamp = df.loc[df.Boat == mine, 'Timestamp'].values[0]
+timestamp = df.loc[df.Boat == boat, 'Timestamp'].values[0]
 last_updated = datetime.fromtimestamp(timestamp).strftime('%d-%h %H:%M')
 updated_ago = timeago(timestamp)
 hrs = str(updated_ago[0])
@@ -47,7 +49,7 @@ if len(hrs) < 2:
 if len(mins) < 2:
     mins = '0' + mins
 
-title_html = '<h3 align="center" style="font-size:16px"><b>Last updated {} ({} h :{} m ago)</b></h3>'.format(last_updated, hrs, mins)
+title_html = '<h3 align="center" style="font-size:16px"><b>Last updated {} ({}:{} ago)</b></h3>'.format(last_updated, hrs, mins)
 
 mymap=folium.Map(location=center, zoom_start=7)
 mymap.get_root().html.add_child(folium.Element(title_html))
@@ -61,11 +63,12 @@ for idx in df.index:
         color=colors[idx]
     else:
         color='lightgray'
-    if df.loc[idx, 'Boat']==mine:
+    if df.loc[idx, 'Boat']==boat:
         color='blue'
     popup=str(lat) + ', ' + str(lon)
     folium.Marker([lat, lon], popup=name + ' ' + str(rank), icon=folium.Icon(color=color, icon='sailboat', prefix='fa')).add_to(mymap)
     folium.PolyLine(df.loc[idx, 'Track'], color=color, weight=2.5, opacity=1).add_to(mymap)
 mymap.save(html)
 
-webdriver.Firefox().get('file:{}'.format(html))
+if launch_browser == '1':
+    webbrowser.open('file:{}'.format(html))
