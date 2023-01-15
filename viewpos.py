@@ -1,25 +1,25 @@
 import sys
 import time
-
-from selenium import webdriver
+import webbrowser
 
 from lib.boat import boat
+from lib.common import URL_IBOATING_CHART
 
-drv = webdriver.Firefox()
 
+boatname = sys.argv[1]
 sleeptime = int(sys.argv[2])
 zoom = str(sys.argv[3])
 
 while True:
-    url = 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts-navigation.html#ZOOM/LAT/LON'
-    oBoat = boat(sys.argv[1])
+    url = '{}#ZOOM/LAT/LON'.format(URL_IBOATING_CHART)
+    oBoat = boat(boatname)
     oBoat.getdata()
     pos = oBoat.pos
     del oBoat
     url = url.replace('LAT', str(round(pos[0],4)))
     url = url.replace('LON', str(round(pos[1],4)))
     url = url.replace('ZOOM', zoom)
-    drv.get(url)
+    webbrowser.open(url)
     if sleeptime == 0:
         break
     time.sleep(sleeptime)

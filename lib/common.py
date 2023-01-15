@@ -11,10 +11,13 @@ DIR_SAILDATA = os.path.join(DIR_ONSAIL, 'data')
 DIR_HTML = DIR_ONSAIL
 
 API_RACES = {
-    'Stardust': 'https://sarl.ingenium.net.au/racelog?racenr=38602'
+    'Stardust': 'https://sarl.ingenium.net.au/racelog?racenr=38602',
+    'THE OCEAN RACE 2023 - 1 ère Etape': ''
 }
 
 API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr=59528&key=7B79EE2988A44080A37C06570F4B5EE8'
+
+URL_IBOATING_CHART = 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts-navigation.html'
 
 def get_all_own_boats_json():
     return requests.get(API_OWN_BOATS).json()

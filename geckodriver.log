@@ -2307,3 +2307,4 @@ A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
 [GFX1-]: Receive IPC close with reason=AbnormalShutdown
 Exiting due to channel error.
 Exiting due to channel error.
+1673718543982	geckodriver	INFO	Listening on 127.0.0.1:59960
