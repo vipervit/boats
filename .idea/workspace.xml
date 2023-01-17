@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Modify paths, add save_current_sail_data() to viewpos.py">
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove petsamo.py, improve output of viewpos.py and racemap.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/racemap.py" beforeDir="false" afterPath="$PROJECT_DIR$/racemap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpos.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewpos.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673987889323</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Remove petsamo.py, improve output of viewpos.py and racemap.py">
+      <created>1673992730921</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673992730921</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -236,7 +243,8 @@
     <MESSAGE value="Modify dispay in track.py" />
     <MESSAGE value="Remove stardust.py, combine outputs in racemap.py" />
     <MESSAGE value="Modify paths, add save_current_sail_data() to viewpos.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modify paths, add save_current_sail_data() to viewpos.py" />
+    <MESSAGE value="Remove petsamo.py, improve output of viewpos.py and racemap.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove petsamo.py, improve output of viewpos.py and racemap.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

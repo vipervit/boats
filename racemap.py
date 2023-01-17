@@ -26,7 +26,7 @@ data = [(boats[boat]['ubtname'].upper(),
          boats[boat]['rank'],
          boats[boat]['track'],
          int(boats[boat]['timestamp'] / 1000),
-         datetime.fromtimestamp(int(boats[boat]['timestamp'] / 1000)).strftime('%d-%h %H:%M'),
+         datetime.fromtimestamp(int(boats[boat]['timestamp'] / 1000)).strftime('%d-%h-%H:%M'),
          boats[boat]['heading'],
          boats[boat]['lastreport_speed'],
          boats[boat]['wind'].split(',')[0].strip('°'),
@@ -62,7 +62,8 @@ if len(ago_mins) < 2:
     ago_mins = '0' + ago_mins
 
 title_html = '<h3 align="center" style="font-size:16px"><b>Last updated {} ({}:{} ago)</b></h3>'.format(last_updated,
-                                                                                                        ago_hrs, ago_mins)
+                                                                                                        ago_hrs,
+                                                                                                        ago_mins)
 
 mymap = folium.Map(location=center, zoom_start=zoom_start)
 mymap.get_root().html.add_child(folium.Element(title_html))
