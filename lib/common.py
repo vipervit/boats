@@ -5,10 +5,10 @@ from datetime import datetime
 
 MY_USER = 'Viper Vit'
 
-DIR_HOME = str(Path.home())
-DIR_ONSAIL = os.path.join(DIR_HOME, 'Documents', 'OnSail')
-DIR_SAILDATA = os.path.join(DIR_ONSAIL, 'data')
-DIR_HTML = DIR_ONSAIL
+DIR_HOME = os.path.join(str(Path.home()), 'Documents', 'OnSail')
+DIR_BOATS = os.path.join(DIR_HOME, 'boats')
+DIR_SAILDATA = os.path.join(DIR_BOATS, 'data')
+DIR_HTML = os.path.join(DIR_BOATS, 'html')
 
 URL_RACES = 'https://sarl.ingenium.net.au/racelog?racenr='
 
