@@ -26,6 +26,7 @@ data = [(boats[boat]['ubtname'].upper(),
          boats[boat]['rank'],
          boats[boat]['track'],
          int(boats[boat]['timestamp'] / 1000),
+         datetime.fromtimestamp(int(boats[boat]['timestamp'] / 1000)).strftime('%d-%h %H:%M'),
          boats[boat]['heading'],
          boats[boat]['lastreport_speed'],
          boats[boat]['wind'].split(',')[0].strip('°'),
@@ -33,16 +34,16 @@ data = [(boats[boat]['ubtname'].upper(),
          boats[boat]['resultdescr'].split(',')[3].split('nm')[0].split('.')[0].strip())
         for boat in list(boats.keys()) if 'lat_dec' in boats[boat]]
 
-df = pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank', 'Track', 'Timestamp', 'HDG', 'SPD', 'TWD', 'TWS', 'DTW'])
+df = pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank', 'Track', 'Timestamp', 'As of', 'HDG', 'SPD', 'TWD', 'TWS', 'DTW'])
 df['Rank'] = df['Rank'].astype(int)
 df=df.set_index('Rank')
 df.sort_values('Rank', ascending=True, inplace=True)
 timestamp = df.loc[df.Boat == myboat, 'Timestamp'].values[0] # must be before the next line
 df.at[df[df['Boat'] == myboat].index[0], 'Boat'] = '<======= ' + myboat + ' =======>'
 
-behind = abs(float(df[df.index==1]['DTW'][1]) - float(df[df['Boat'].str.contains(myboat)]['DTW'].values[0]))
+behind = abs(float(df[df.index == 1]['DTW'][1]) - float(df[df['Boat'].str.contains(myboat)]['DTW'].values[0]))
 
-print(df[['Boat', 'SPD', 'TWS', 'DTW']])
+print(df[['Boat', 'SPD', 'TWS', 'DTW', 'As of']])
 print('')
 print('Behind leader by: {} nm'.format(round(behind),2))
 
@@ -51,17 +52,17 @@ colors = ['red', 'green', 'darkblue', 'orange', 'pink', 'darkgreen',
 
 center = (df.loc[df.index == 1, 'Lat'], df.loc[df.index == 1, 'Lon'])
 
-last_updated = datetime.fromtimestamp(timestamp).strftime('%d-%h %H:%M')
+last_updated = datetime.fromtimestamp(timestamp).strftime('%d-%h-%H:%M')
 updated_ago = timeago(timestamp)
-hrs = str(updated_ago[0])
-mins = str(updated_ago[1])
-if len(hrs) < 2:
-    hrs = '0' + hrs
-if len(mins) < 2:
-    mins = '0' + mins
+ago_hrs = str(updated_ago[0])
+ago_mins = str(updated_ago[1])
+if len(ago_hrs) < 2:
+    ago_hrs = '0' + ago_hrs
+if len(ago_mins) < 2:
+    ago_mins = '0' + ago_mins
 
 title_html = '<h3 align="center" style="font-size:16px"><b>Last updated {} ({}:{} ago)</b></h3>'.format(last_updated,
-                                                                                                        hrs, mins)
+                                                                                                        ago_hrs, ago_mins)
 
 mymap = folium.Map(location=center, zoom_start=zoom_start)
 mymap.get_root().html.add_child(folium.Element(title_html))

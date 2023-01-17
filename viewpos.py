@@ -9,11 +9,13 @@ from lib.common import URL_IBOATING_CHART
 boatname = sys.argv[1]
 sleep_time = int(sys.argv[2])
 zoom = str(sys.argv[3])
+full = True
 
 while True:
     url = '{}#ZOOM/LAT/LON'.format(URL_IBOATING_CHART)
     oBoat = boat(boatname)
     oBoat.getdata()
+    oBoat.show(full)
     oBoat.save_current_sail_data()
     pos = oBoat.pos
     del oBoat
