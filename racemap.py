@@ -85,7 +85,7 @@ for idx in df.index:
     if myboat in df.loc[idx, 'Boat']:
         name = myboat
         color = 'blue'
-    popup = '{} rank: {} {} kn'.format(name, str(rank), spd)
+    popup = '{}: {} {} kn'.format(str(rank), name, spd)
 
     BoatMarker([lat, lon], color=color,
                heading=hdg,
