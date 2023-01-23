@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove looping from viewpos.py, modify time output in racemap.py">
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add upcoming.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/racemap.py" beforeDir="false" afterPath="$PROJECT_DIR$/racemap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sail analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/sail analysis.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673997009655</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add upcoming.py">
+      <created>1674336842346</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1674336842346</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,7 +258,8 @@
     <MESSAGE value="Modify paths, add save_current_sail_data() to viewpos.py" />
     <MESSAGE value="Remove petsamo.py, improve output of viewpos.py and racemap.py" />
     <MESSAGE value="Remove looping from viewpos.py, modify time output in racemap.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove looping from viewpos.py, modify time output in racemap.py" />
+    <MESSAGE value="Add upcoming.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add upcoming.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
