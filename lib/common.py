@@ -5,6 +5,9 @@ from datetime import datetime
 
 MY_USER = 'Viper Vit'
 
+API_KEY = '7B79EE2988A44080A37C06570F4B5EE8'
+API_USER = '59528'
+
 DIR_HOME = os.path.join(str(Path.home()), 'Documents', 'OnSail')
 DIR_BOATS = os.path.join(DIR_HOME, 'boats')
 DIR_SAILDATA = os.path.join(DIR_BOATS, 'data')
@@ -17,8 +20,9 @@ RACE_IDS = {
     'The Ocean Race': 39147
 }
 
-API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr=59528&key' \
-                '=7B79EE2988A44080A37C06570F4B5EE8'
+API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr={}&key={}'.format(API_USER, API_KEY)
+API_RACE_MARKS = 'https://backend.sailaway.world/cgi-bin/sailaway/GetMissionCourse.pl?usrnr={}&key={}&misnr=RACEID'. \
+                 format(API_USER, API_KEY)
 
 URL_IBOATING_CHART = 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
                      '-navigation.html'
