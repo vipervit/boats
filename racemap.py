@@ -10,9 +10,9 @@ import folium
 import pandas as pd
 from folium.plugins import BoatMarker
 
-from lib.common import timeago, DIR_HTML, get_race_data
+from boats.lib.common import timeago, DIR_HTML, get_race_data
 
-myboat = sys.argv[1].upper()
+my_boat = sys.argv[1].upper()
 race = sys.argv[2]
 launch_browser = sys.argv[3]
 html = os.path.join(DIR_HTML, '{}.html'.format(race))
@@ -34,18 +34,19 @@ data = [(boats[boat]['ubtname'].upper(),
          boats[boat]['resultdescr'].split(',')[3].split('nm')[0].split('.')[0].strip())
         for boat in list(boats.keys()) if 'lat_dec' in boats[boat]]
 
-df = pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank', 'Track', 'Timestamp', 'As of', 'HDG', 'SPD', 'TWD', 'TWS', 'DTW'])
+df = pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank', 'Track', 'Timestamp', 'As of', 'HDG',
+                                 'SPD', 'TWD', 'TWS', 'DTW'])
 df['Rank'] = df['Rank'].astype(int)
-df=df.set_index('Rank')
+df = df.set_index('Rank')
 df.sort_values('Rank', ascending=True, inplace=True)
-timestamp = df.loc[df.Boat == myboat, 'Timestamp'].values[0] # must be before the next line
-df.at[df[df['Boat'] == myboat].index[0], 'Boat'] = '<======= ' + myboat + ' =======>'
+timestamp = df.loc[df.Boat == my_boat, 'Timestamp'].values[0]  # must be before the next line
+df.at[df[df['Boat'] == my_boat].index[0], 'Boat'] = '<======= ' + my_boat + ' =======>'
 
-behind = abs(float(df[df.index == 1]['DTW'][1]) - float(df[df['Boat'].str.contains(myboat)]['DTW'].values[0]))
+behind = abs(float(df[df.index == 1]['DTW'][1]) - float(df[df['Boat'].str.contains(my_boat)]['DTW'].values[0]))
 
 print(df[['Boat', 'SPD', 'TWS', 'DTW', 'As of']])
 print('')
-print('Behind leader by: {} nm'.format(round(behind),2))
+print('Behind leader by: {} nm'.format(round(behind), 2))
 
 colors = ['red', 'green', 'darkblue', 'orange', 'pink', 'darkgreen',
           'beige', 'darkred', 'purple', 'darkpurple']
@@ -82,8 +83,8 @@ for idx in df.index:
         color = colors[idx - 1]
     else:
         color = 'lightgray'
-    if myboat in df.loc[idx, 'Boat']:
-        name = myboat
+    if my_boat in df.loc[idx, 'Boat']:
+        name = my_boat
         color = 'blue'
     popup = '{}: {} {} kn'.format(str(rank), name, spd)
 

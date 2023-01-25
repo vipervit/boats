@@ -1,8 +1,8 @@
 import sys
 import webbrowser
 
-from boats.lib.boat import Boat
-from boats.lib.common import URL_IBOATING_CHART, timestamp
+from lib.boat import boat
+from lib.common import URL_IBOATING_CHART, timestamp
 
 boat_name = sys.argv[1]
 zoom = str(sys.argv[2])
@@ -10,7 +10,7 @@ openbrowser = str(sys.argv[3])
 full = True
 
 url = '{}#ZOOM/LAT/LON'.format(URL_IBOATING_CHART)
-oBoat = Boat(boat_name)
+oBoat = boat(boat_name)
 oBoat.getdata()
 oBoat.save_current_sail_data()
 pos = oBoat.pos

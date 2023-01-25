@@ -11,8 +11,8 @@ import folium
 import pandas as pd
 from folium.plugins import BoatMarker
 
-from lib.boat import boat
-from lib.common import DIR_SAILDATA, MY_USER, get_boat_race_data, DIR_HTML
+from viewownfleet.lib.boat import Boat
+from lib.common import MY_USER, get_boat_race_data, DIR_HTML
 
 boat_name = sys.argv[1]
 race = sys.argv[2]
@@ -21,9 +21,9 @@ launch_browser = sys.argv[3]
 user = MY_USER
 html = os.path.join(DIR_HTML, boat_name + '.html')
 
-timestamp=datetime.now().strftime('%d-%b %H:%M')
+timestamp = datetime.now().strftime('%d-%b %H:%M')
 
-oBoat = boat(boat_name)
+oBoat = Boat(boat_name)
 oBoat.getdata()
 curr_pos = [round(oBoat.pos[0], 3), round(oBoat.pos[1], 3)]
 sog = oBoat.nav['sog']
@@ -35,10 +35,10 @@ track = race_data['track']
 track.reverse()
 track.append(curr_pos)
 
-df_track=pd.DataFrame(track)
-df_track.columns=['Lat', 'Lon']
+df_track = pd.DataFrame(track)
+df_track.columns = ['Lat', 'Lon']
 
-title_html = '<h3 align="center" style="font-size:16px">{}                  {},{}     {}°    {} kn<b></b></h3>'.\
+title_html = '<h3 align="center" style="font-size:16px">{}                  {},{}     {}°    {} kn<b></b></h3>'. \
     format(timestamp, curr_pos[0], curr_pos[1], hdg, sog)
 
 mymap = folium.Map(location=curr_pos, zoom_start=7)
