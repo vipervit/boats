@@ -11,8 +11,8 @@ import folium
 import pandas as pd
 from folium.plugins import BoatMarker
 
-from viewownfleet.lib.boat import Boat
-from lib.common import MY_USER, get_boat_race_data, DIR_HTML
+from boats.lib.boat import Boat
+from boats.lib.common import MY_USER, get_boat_race_data, DIR_HTML
 
 boat_name = sys.argv[1]
 race = sys.argv[2]
