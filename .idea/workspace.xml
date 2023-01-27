@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add racemarks.py, analyze.py">
-      <change beforePath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/upres.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/upres.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../datascience/titanic/titanic.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../datascience/titanic/titanic.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ds/seshat/populations.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../ds/seshat/populations.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ds/seshat/populations.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/../ds/seshat/populations.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python/misc/puzzles.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/misc/puzzles.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/route_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,28 +48,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/Vitaly/DEV/python/dev/boats/lib&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "last_opened_file_path": "/Users/Vitaly/DEV/python/dev/boats/lib",
+    "settings.editor.selected.configurable": "Csv.Editor.Settings"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;Python&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "Python"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/.." />
     </key>
   </component>
-  <component name="RunManager" selected="Python.track">
+  <component name="RunManager" selected="Python.route_file">
     <configuration name="racemap" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -88,6 +84,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/racemap.py" />
       <option name="PARAMETERS" value="Petsamo Stardust 1" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="route_file" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/python" />
+      <option name="SDK_NAME" value="$USER_HOME$/opt/anaconda3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/route_file.py" />
+      <option name="PARAMETERS" value="Petsamo &quot;MARK 3&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -129,7 +147,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/viewpos.py" />
-      <option name="PARAMETERS" value="Petsamo 600" />
+      <option name="PARAMETERS" value="Petsamo 8 0" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -141,6 +159,7 @@
       <item itemvalue="Python.racemap" />
       <item itemvalue="Python.track" />
       <item itemvalue="Python.viewpos" />
+      <item itemvalue="Python.route_file" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
