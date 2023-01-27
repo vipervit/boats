@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add upcoming.py">
-      <change beforePath="$PROJECT_DIR$/track.py" beforeDir="false" afterPath="$PROJECT_DIR$/track.py" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add racemarks.py, analyze.py">
+      <change beforePath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/upres.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../archive/_src_/Selenium/C#/Monster.ca/update_resume/upres/upres.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../datascience/titanic/titanic.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../datascience/titanic/titanic.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ds/seshat/populations.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../ds/seshat/populations.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ds/seshat/populations.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/../ds/seshat/populations.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python/misc/puzzles.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python/misc/puzzles.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +44,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2K0O8Y03FRlTKARAi1VLoOtYco1" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
