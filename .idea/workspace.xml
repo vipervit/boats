@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add racemarks.py, analyze.py">
-      <change afterPath="$PROJECT_DIR$/route_file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/route_pos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/route-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/route-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/route.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/route.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +58,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "TODO_SCOPE": "All Places",
     "last_opened_file_path": "/Users/Vitaly/DEV/python/dev/boats/lib",
-    "settings.editor.selected.configurable": "Csv.Editor.Settings"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -69,7 +72,7 @@
       <recent name="$PROJECT_DIR$/.." />
     </key>
   </component>
-  <component name="RunManager" selected="Python.route_file">
+  <component name="RunManager" selected="Python.route_pos">
     <configuration name="racemap" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -98,14 +101,36 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="$USER_HOME$/opt/anaconda3" />
+      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/route_file.py" />
       <option name="PARAMETERS" value="Petsamo &quot;MARK 3&quot;" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="route_pos" type="PythonConfigurationType" factoryName="Python">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/route_pos.py" />
+      <option name="PARAMETERS" value="Petsamo &quot;MARK 3&quot; 8" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -160,6 +185,7 @@
       <item itemvalue="Python.track" />
       <item itemvalue="Python.viewpos" />
       <item itemvalue="Python.route_file" />
+      <item itemvalue="Python.route_pos" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
