@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
+import argparse
 import os
 import sys
 import webbrowser
@@ -10,24 +11,26 @@ import pandas as pd
 from folium.plugins import BoatMarker
 
 from boats import DIR_HTML
-from boats.lib.common import timeago, get_race_data
+from boats.lib.common import timeago, get_race_data, DEFAULT_ZOOM
 
 
-def main(*args):
-    args = args[0]
-    zoom_start = 7
-    launch_browser = True
-    my_boat = args[0].upper()
-    race_name = args[1]
-    if len(args) > 2:
-        if args[2] == 'noview':
-            launch_browser = False
-        else:
-            zoom_start = args[2]
+def main(args):
 
-    html = os.path.join(DIR_HTML, '{}.html'.format(race_name))
+    zoom_start = str(DEFAULT_ZOOM)
 
-    boats = get_race_data(race_name)
+    parser = argparse.ArgumentParser(description='Shows the race status, with or without the map.')
+    parser.add_argument('boat_name')
+    parser.add_argument('race_name')
+    parser.add_argument('--zoom_start', type=int)
+    parser.add_argument('--noview', action='store_true')
+    args = parser.parse_args(args)
+    if args.zoom_start is not None:
+        zoom_start = str(args.zoom_start)
+    boat_name = args.boat_name.upper()
+
+    f_html = os.path.join(DIR_HTML, '{}.html'.format(args.race_name))
+
+    boats = get_race_data(args.race_name)
 
     data = [(boats[boat]['ubtname'].upper(),
              boats[boat]['lat_dec'],
@@ -48,10 +51,10 @@ def main(*args):
     df['Rank'] = df['Rank'].astype(int)
     df = df.set_index('Rank')
     df.sort_values('Rank', ascending=True, inplace=True)
-    timestamp = df.loc[df.Boat == my_boat, 'Timestamp'].values[0]  # must be before the next line
-    df.at[df[df['Boat'] == my_boat].index[0], 'Boat'] = '<======= ' + my_boat + ' =======>'
+    timestamp = df.loc[df.Boat == boat_name, 'Timestamp'].values[0]  # must be before the next line
+    df.at[df[df['Boat'] == boat_name].index[0], 'Boat'] = '<======= ' + boat_name + ' =======>'
 
-    behind = abs(float(df[df.index == 1]['DTW'][1]) - float(df[df['Boat'].str.contains(my_boat)]['DTW'].values[0]))
+    behind = abs(float(df[df.index == 1]['DTW'][1]) - float(df[df['Boat'].str.contains(boat_name)]['DTW'].values[0]))
 
     print(df[['Boat', 'SPD', 'TWS', 'DTW', 'As of']])
     print('')
@@ -93,8 +96,8 @@ def main(*args):
             color = colors[idx - 1]
         else:
             color = 'lightgray'
-        if my_boat in df.loc[idx, 'Boat']:
-            name = my_boat
+        if boat_name in df.loc[idx, 'Boat']:
+            name = boat_name
             color = 'blue'
         popup = '{}: {} {} kn'.format(str(rank), name, spd)
 
@@ -105,10 +108,10 @@ def main(*args):
                    popup=popup).add_to(mymap)
         folium.PolyLine(track, color=color, weight=2.5, opacity=1).add_to(mymap)
 
-    mymap.save(html)
+    mymap.save(f_html)
 
-    if launch_browser:
-        webbrowser.open('file:{}'.format(html))
+    if not args.noview:
+        webbrowser.open('file:{}'.format(f_html))
 
 
 if __name__ == '__main__':
