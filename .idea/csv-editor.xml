@@ -10,14 +10,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\route\in\Temp.csv">
+        <entry key="\route\in\MARK 3.csv">
           <value>
             <Attribute>
-              <option name="separator" value=";" />
+              <option name="separator" value=":" />
             </Attribute>
           </value>
         </entry>
-        <entry key="\route\tmp\Temp_fixed.csv">
+        <entry key="\route\tmp\MARK 3_fixed.csv">
           <value>
             <Attribute>
               <option name="separator" value=":" />
