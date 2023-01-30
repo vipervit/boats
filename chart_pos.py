@@ -2,7 +2,8 @@ import sys
 import webbrowser
 import argparse
 
-from boats.lib.common import Boat, DEFAULT_ZOOM, URL_IBOATING_CHART, timestamp
+from boats.lib.boat import Boat
+from boats.lib.common import DEFAULT_ZOOM, URL_IBOATING_CHART, timestamp
 
 
 def main(args):

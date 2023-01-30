@@ -10,7 +10,8 @@ import pandas as pd
 from folium.plugins import BoatMarker
 
 from boats import DIR_HTML, DIR_ROUTE_IN
-from boats.lib.common import Boat, DEFAULT_ZOOM
+from boats.lib.boat import Boat
+from boats.lib.common import DEFAULT_ZOOM
 
 
 def main(args):
