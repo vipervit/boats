@@ -1,3 +1,4 @@
+import argparse
 import os
 import sys
 
@@ -6,28 +7,38 @@ import sys
 
 import pandas as pd
 
-from boats.lib.common import DIR_HOME, timestamp
+from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT, DIR_ROUTE_TMP
+from boats.lib.common import timestamp
 
-f_timestamp = timestamp().replace(':', '_').replace('/', ' ').replace(' ', '_')
 
-zoom_start = 8
+def main(args):
 
-boat_name = sys.argv[1]
-f_name = sys.argv[2]
+    parser = argparse.ArgumentParser(description='Prepares route file.')
+    parser.add_argument('boat_name')
+    parser.add_argument('file_name')
+    args = parser.parse_args(args)
 
-f_csv_exported = os.path.join(DIR_HOME, 'routes', 'exported', '{}.csv'.format(f_name))
-f_csv_fixed = os.path.join(DIR_HOME, 'routes', 'exported', '{}_fixed.csv'.format(f_name))
-f_json = os.path.join(DIR_HOME, 'routes', 'exported', '{}.json'.format(f_name))
-f_route = os.path.join(DIR_HOME, 'routes', 'import', '{}_{}.txt'.format(boat_name, f_timestamp))
+    boat_name = args.boat_name
+    f_name = args.file_name
 
-with open(f_csv_exported, 'r') as f:
-    contents = f.read()
-with open(f_csv_fixed, 'w') as f:
-    f.write(contents.replace(';', ';,'))
+    f_timestamp = timestamp().replace(':', '_').replace('/', ' ').replace(' ', '_')
 
-df = pd.read_csv(f_csv_fixed)
-df.drop(0, axis=0, inplace=True)
-text = '\n'.join(list(df['position;']))
+    f_csv_exported = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(f_name))
+    f_csv_fixed = os.path.join(DIR_ROUTE_TMP, '{}_fixed.csv'.format(f_name))
+    f_route = os.path.join(DIR_ROUTE_OUT, '{}_{}.txt'.format(boat_name, f_timestamp))
 
-with open(f_route, 'w') as f:
-    f.write(text)
+    with open(f_csv_exported, 'r') as f:
+        contents = f.read()
+    with open(f_csv_fixed, 'w') as f:
+        f.write(contents.replace(';', ';,'))
+
+    df = pd.read_csv(f_csv_fixed)
+    df.drop(0, axis=0, inplace=True)
+    text = '\n'.join(list(df['position;']))
+
+    with open(f_route, 'w') as f:
+        f.write(text)
+
+
+if __name__ == '__main__':
+    main(sys.argv[1:])
