@@ -8,7 +8,7 @@ import sys
 import pandas as pd
 
 from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT, DIR_ROUTE_TMP
-from boats.lib.common import timestamp
+from boats.lib.common import timestamp, ddm_to_dd
 
 
 def main(args):
@@ -23,21 +23,21 @@ def main(args):
 
     f_timestamp = timestamp().replace(':', '_').replace('/', ' ').replace(' ', '_')
 
-    f_csv_exported = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(f_name))
-    f_csv_fixed = os.path.join(DIR_ROUTE_TMP, '{}_fixed.csv'.format(f_name))
+    f_csv = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(f_name))
     f_route = os.path.join(DIR_ROUTE_OUT, '{}_{}.txt'.format(boat_name, f_timestamp))
 
-    with open(f_csv_exported, 'r') as f:
-        contents = f.read()
-    with open(f_csv_fixed, 'w') as f:
-        f.write(contents.replace(';', ';,'))
-
-    df = pd.read_csv(f_csv_fixed)
+    df = pd.read_csv(f_csv)
     df.drop(0, axis=0, inplace=True)
-    text = '\n'.join(list(df['position;']))
+    df['Full'] = [x.split(';')[0] for x in df['position;heure']]
+    df.drop('position;heure', axis=1, inplace=True)
+    df['LAT'] = [x.split('  ')[0] for x in df['Full']]
+    df['LON'] = [x.split('  ')[1] for x in df['Full']]
+    df = df.assign(Lat=lambda x: x['LAT'].apply(ddm_to_dd))
+    df = df.assign(Lon=lambda x: x['LON'].apply(ddm_to_dd))
+    df['Full'] = [x + ';' for x in df['Full']]
 
     with open(f_route, 'w') as f:
-        f.write(text)
+        f.write('\n'.join(list(df['Full'])))
 
 
 if __name__ == '__main__':
