@@ -56,3 +56,10 @@ def get_arg(args, arg):
     for each in args:
         if arg in each:
             return each.split('=')[1]
+
+
+def ddm_to_dd(coor):
+    semi = {'N': 1, 'S': -1, 'E': 1, 'W': -1}
+    tmp1 = coor.split(' ')
+    tmp2 = tmp1[0].split('°')
+    return round((int(tmp2[0]) + float(tmp2[1]) / 60) * semi[tmp1[1]], 6)
