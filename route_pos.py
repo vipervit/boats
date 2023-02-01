@@ -2,11 +2,9 @@ import argparse
 import os
 import sys
 import webbrowser
-from datetime import datetime
 
 import folium
 import geopy.distance
-import pandas as pd
 from folium.plugins import BoatMarker
 
 from boats import DIR_HTML, DIR_ROUTE_IN
@@ -67,7 +65,11 @@ def main(args):
         lat = markers[i][1]
         lon = markers[i][2]
         dist = round(geopy.distance.geodesic((lat, lon), curr_pos).nm)
-        popup = '{} {},{} {} nm {} hrs'.format(name, round(lat, 3), round(lon, 3), dist, round(dist / sog))
+        if sog != 0:
+            point_eta = round(dist/sog)
+        else:
+            point_eta = ''
+        popup = '{} {},{} {} nm {} hrs'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
         folium.Marker([lat, lon], popup=popup).add_to(mymap)
 
     mymap.save(f_map)

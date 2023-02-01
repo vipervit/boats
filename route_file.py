@@ -2,14 +2,13 @@ import argparse
 import os
 import sys
 
+from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT
+from boats.lib.common import timestamp
+from lib.df_route import get_route_from_file_as_df
+
+
 # TODO sysopt
 # TODO error handling and messaging
-
-import pandas as pd
-
-from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT, DIR_ROUTE_TMP
-from boats.lib.common import timestamp, ddm_to_dd
-from lib.df_route import get_route_from_file_as_df
 
 
 def main(args):
