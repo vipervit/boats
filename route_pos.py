@@ -12,6 +12,7 @@ from folium.plugins import BoatMarker
 from boats import DIR_HTML, DIR_ROUTE_IN
 from boats.lib.boat import Boat
 from boats.lib.common import DEFAULT_ZOOM
+from lib.df_route import get_route_from_file_as_df
 
 
 def main(args):
@@ -28,22 +29,11 @@ def main(args):
     if args.zoom_start is not None:
         zoom_start = str(args.zoom_start)
 
+    f_route = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(args.route_file))
     fn_map = '{}.html'.format(args.boat_name)
-
     f_map = os.path.join(DIR_HTML, fn_map)
-    f_json = os.path.join(DIR_ROUTE_IN, '{}.json'.format(args.route_file))
 
-    df = pd.read_json(f_json)
-    df.columns = ['Name', 'Points']
-    df.drop('Name', axis=1, inplace=True)
-    df.drop(0, axis=0, inplace=True)
-    df['epoch'] = [df['Points'][idx][0] for idx in df.index]
-    df['Lon'] = [float(df['Points'][idx][1]) / 1000 for idx in df.index]
-    df['Lat'] = [float(df['Points'][idx][2]) / 1000 for idx in df.index]
-    df.drop('Points', axis=1, inplace=True)
-    df['epoch'] = df['epoch'].astype(int)
-    df['ETA'] = [datetime.fromtimestamp(x).strftime("%d-%h %H:%M") for x in df['epoch']]
-    df.drop('epoch', axis=1, inplace=True)
+    df = get_route_from_file_as_df(f_route)
 
     mymap = folium.Map(location=[df.iloc[1]['Lat'], df.iloc[1]['Lon']], zoom_start=zoom_start)
 
