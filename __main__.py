@@ -6,7 +6,6 @@ import boats.makeroutefile as makeroutefile
 import boats.racemap as racemap
 import boats.racemarks as racemarks
 import boats.routepos as routepos
-from boats.lib.common import DEFAULT_ZOOM
 
 
 def usage():
