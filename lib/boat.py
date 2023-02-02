@@ -105,6 +105,8 @@ class Boat:
                 'twd': self.wind['twd'],
                 'twa': self.wind['twa'],
                 'heel': self.heel,
+                'lat': self.pos[0],
+                'lon': self.pos[1],
                 'sails': self.sailplan}
 
     def __read_sail_data_from_file__(self):
@@ -122,5 +124,11 @@ class Boat:
         data.update({str(time.time()): self.sail_config_snapshot()})
         self.__write_sail_data_to_file__(data)
 
-    def get_sail_data(self):
+    def get_logged_data(self):
         return pd.read_json(json.dumps(self.__read_sail_data_from_file__()), orient='index')
+
+    def get_track_from_log(self):
+        df = self.get_logged_data()
+        df.sort_index(ascending=False, inplace=True)
+        df_track = df[['lat', 'lon']].dropna()
+        return [[df_track.loc[i, 'lat'], df_track.loc[i, 'lon']] for i in df_track.index]

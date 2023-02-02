@@ -1,6 +1,6 @@
 import pandas as pd
 
-from lib.common import ddm_to_dd
+from boats.lib.common import ddm_to_dd
 
 
 def get_route_from_file_as_df(f_csv):

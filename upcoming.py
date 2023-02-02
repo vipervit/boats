@@ -26,7 +26,7 @@ def get_race_time(o_race):
         pytz.timezone('EST')).strftime('%A %d-%h %I:%M %p')
 
 
-short_mileage = 50
+short_mileage = 5
 
 r = requests.get('https://sarl.ingenium.net.au/index')
 

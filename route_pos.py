@@ -10,7 +10,7 @@ from folium.plugins import BoatMarker
 from boats import DIR_HTML, DIR_ROUTE_IN
 from boats.lib.boat import Boat
 from boats.lib.common import DEFAULT_ZOOM
-from lib.df_route import get_route_from_file_as_df
+from boats.lib.df_route import get_route_from_file_as_df
 
 
 def main(args):
@@ -36,14 +36,15 @@ def main(args):
     mymap = folium.Map(location=[df.iloc[1]['Lat'], df.iloc[1]['Lon']], zoom_start=zoom_start)
 
     # boat
-    o_boat = Boat(args.boat_name)
-    o_boat.getdata()
-    pos = o_boat.pos
-    wind = o_boat.wind
-    curr_pos = [round(pos[0], 3), round(pos[1], 3)]
-    sog = o_boat.nav['sog']
-    hdg = o_boat.nav['hdg']
-    popup = '{},{} {}° {} kn'.format(curr_pos[0], curr_pos[1], hdg, sog)
+    with Boat(args.boat_name) as o_boat:
+        o_boat.getdata()
+        pos = o_boat.pos
+        wind = o_boat.wind
+        curr_pos = [round(pos[0], 3), round(pos[1], 3)]
+        sog = o_boat.nav['sog']
+        hdg = o_boat.nav['hdg']
+        popup = '{},{} {}° {} kn'.format(curr_pos[0], curr_pos[1], hdg, sog)
+        track = o_boat.get_track_from_log()
 
     # TODO Add header as in track.py
 
@@ -56,6 +57,7 @@ def main(args):
     # route line
     points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
     folium.PolyLine(points, color='red').add_to(mymap)
+    folium.PolyLine(track, color='green').add_to(mymap)
 
     # route points
     markers = [(i + 1, df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
