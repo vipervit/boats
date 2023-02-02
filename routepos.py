@@ -1,7 +1,10 @@
 import argparse
+import datetime
 import os
 import sys
 import webbrowser
+import os.path
+from os import path
 
 import folium
 import geopy.distance
@@ -24,16 +27,13 @@ def main(args):
     parser.add_argument('--route_file', type=str)
     parser.add_argument('--noview', action='store_true')
     args = parser.parse_args(args)
+
     if args.zoom_start is not None:
         zoom_start = str(args.zoom_start)
 
     f_route = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(args.route_file))
     fn_map = '{}.html'.format(args.boat_name)
     f_map = os.path.join(DIR_HTML, fn_map)
-
-    df = get_route_from_file_as_df(f_route)
-
-    mymap = folium.Map(location=[df.iloc[1]['Lat'], df.iloc[1]['Lon']], zoom_start=zoom_start)
 
     # boat
     with Boat(args.boat_name) as o_boat:
@@ -46,6 +46,8 @@ def main(args):
         popup = '{},{} {}° {} kn'.format(curr_pos[0], curr_pos[1], hdg, sog)
         track = o_boat.get_track_from_log()
 
+    mymap = folium.Map(location=[curr_pos[0], curr_pos[1]], zoom_start=zoom_start)
+
     # TODO Add header as in track.py
 
     BoatMarker(curr_pos, color='blue',
@@ -54,26 +56,35 @@ def main(args):
                wind_speed=wind['tws'],
                popup=popup).add_to(mymap)
 
-    # route line
-    points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
-    folium.PolyLine(points, color='red').add_to(mymap)
-    folium.PolyLine(track, color='green').add_to(mymap)
+    if path.exists(f_route):
 
-    # route points
-    markers = [(i + 1, df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
+        df = get_route_from_file_as_df(f_route)
 
-    for i in range(len(markers)):
-        name = markers[i][0]
-        lat = markers[i][1]
-        lon = markers[i][2]
-        dist = round(geopy.distance.geodesic((lat, lon), curr_pos).nm)
-        if sog != 0:
-            point_eta = round(dist/sog)
-        else:
-            point_eta = ''
-        popup = '{} {},{} {} nm {} hrs'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
-        folium.Marker([lat, lon], popup=popup).add_to(mymap)
+        # route line
+        points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
+        folium.PolyLine(points, color='red').add_to(mymap)
+        folium.PolyLine(track, color='green').add_to(mymap)
 
+        # route points
+        markers = [(i + 1, df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
+
+        for i in range(len(markers)):
+            name = markers[i][0]
+            lat = markers[i][1]
+            lon = markers[i][2]
+            dist = round(geopy.distance.geodesic((lat, lon), curr_pos).nm)
+            if sog != 0:
+                point_eta = round(dist/sog)
+            else:
+                point_eta = ''
+            popup = '{} {},{} {} nm {} hrs'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
+            folium.Marker([lat, lon], popup=popup).add_to(mymap)
+    else:
+        print('No route {} found.'.format(args.route_file))
+
+    timestamp = datetime.datetime.now().strftime('%d %b %H:%M')
+    title_html = '<h3 align="center" style="font-size:16px">{} {}° {} kn<b></b></h3>'.format(timestamp, hdg, sog)
+    mymap.get_root().html.add_child(folium.Element(title_html))
     mymap.save(f_map)
 
     if not args.noview:

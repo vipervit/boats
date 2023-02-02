@@ -3,10 +3,10 @@ import getopt
 import sys
 
 import boats.racemap as racemap
-import boats.route_pos as route_pos
+import boats.routepos as routepos
 import boats.racemarks as racemarks
-import boats.chart_pos as chart_pos
-import boats.route_file as route_file
+import boats.chartpos as chartpos
+import boats.makeroutefile as makeroutefile
 from boats.lib.common import DEFAULT_ZOOM
 
 
@@ -22,28 +22,34 @@ def usage():
 
 
 def main(args):
-
     zoom_start = str(DEFAULT_ZOOM)
 
     parser = argparse.ArgumentParser()
     parser.add_argument('boat_name')
+    parser.add_argument('race_name')
+    parser.add_argument('--routepos', action='store_true')
+    parser.add_argument('--chartpos', action='store_true')
+    parser.add_argument('--makeroutefile', action='store_true')
     parser.add_argument('--racemap', action='store_true')
-    parser.add_argument('--chart', action='store_true')
+    parser.add_argument('--racemarks', action='store_true')
+
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--full_info', action='store_true')
     parser.add_argument('--route_file', type=str)
     parser.add_argument('--noview', action='store_true')
-    args = parser.parse_args(args)
-    if args.zoom_start is not None:
-        zoom_start = str(args.zoom_start)
 
-    #route_pos.main(args)
+    args = parser.parse_args(args)
+
+    if args.routepos:
+        routepos.main(sys.argv[2:])
+    if args.chartpos:
+        chartpos.main(sys.argv[2:])
+    if args.makeroutefile:
+        makeroutefile.main(sys.argv[2:])
     if args.racemap:
-        racemap.main(args)
-    #racemarks.main(args[0])
-    if args.chart:
-        chart_pos.main(args)
-    #route_file.main(args)
+        racemap.main(sys.argv[2:])
+    if args.racemarks:
+        racemarks.main(sys.argv[2:])
 
 
 if __name__ == "__main__":
