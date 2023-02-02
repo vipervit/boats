@@ -20,7 +20,7 @@ def main(args):
 
     parser = argparse.ArgumentParser(description='Shows the race status, with or without the map.')
     parser.add_argument('boat_name')
-    parser.add_argument('race_name')
+    parser.add_argument('--race_name', type=str)
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--noview', action='store_true')
     args = parser.parse_args(args)

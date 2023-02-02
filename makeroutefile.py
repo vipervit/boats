@@ -4,7 +4,7 @@ import sys
 
 from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT
 from boats.lib.common import timestamp
-from lib.df_route import get_route_from_file_as_df
+from boats.lib.df_route import get_route_from_file_as_df
 
 
 # TODO sysopt

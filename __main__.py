@@ -23,7 +23,7 @@ def main(args):
 
     parser = argparse.ArgumentParser()
     parser.add_argument('boat_name')
-    parser.add_argument('race_name')
+    parser.add_argument('--race_name', type=str)
     parser.add_argument('--routepos', action='store_true')
     parser.add_argument('--chartpos', action='store_true')
     parser.add_argument('--makeroutefile', action='store_true')
