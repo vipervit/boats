@@ -1,12 +1,11 @@
 import argparse
-import getopt
 import sys
 
-import boats.racemap as racemap
-import boats.routepos as routepos
-import boats.racemarks as racemarks
 import boats.chartpos as chartpos
 import boats.makeroutefile as makeroutefile
+import boats.racemap as racemap
+import boats.racemarks as racemarks
+import boats.routepos as routepos
 from boats.lib.common import DEFAULT_ZOOM
 
 
@@ -22,7 +21,6 @@ def usage():
 
 
 def main(args):
-    zoom_start = str(DEFAULT_ZOOM)
 
     parser = argparse.ArgumentParser()
     parser.add_argument('boat_name')
