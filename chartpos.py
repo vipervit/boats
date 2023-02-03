@@ -11,7 +11,7 @@ def main(args):
     zoom_start = str(DEFAULT_ZOOM)
 
     parser = argparse.ArgumentParser(description='Displays the current boat position on I-Nav map.')
-    parser.add_argument('boat_name')
+    parser.add_argument('--boat_name')
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--noview', action='store_true')
     parser.add_argument('--full_info', action='store_true')

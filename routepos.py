@@ -22,7 +22,7 @@ def main(args):
 
     parser = argparse.ArgumentParser(description='Displays the current boat position and the route on Folium map, '
                                                  'or saves the map as HTML.')
-    parser.add_argument('boat_name')
+    parser.add_argument('--boat_name')
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--route_file', type=str)
     parser.add_argument('--noview', action='store_true')
