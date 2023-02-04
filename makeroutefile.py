@@ -14,8 +14,8 @@ from boats.lib.df_route import get_route_from_file_as_df
 def main(args):
 
     parser = argparse.ArgumentParser(description='Prepares route file.')
-    parser.add_argument('boat_name')
-    parser.add_argument('file_name')
+    parser.add_argument('--boat_name')
+    parser.add_argument('--file_name')
     args = parser.parse_args(args)
 
     boat_name = args.boat_name
