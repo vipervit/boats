@@ -59,8 +59,36 @@ def get_arg(args, arg):
             return each.split('=')[1]
 
 
-def ddm_to_dd(coor):
+def ddm_to_dd(coors):
     semi = {'N': 1, 'S': -1, 'E': 1, 'W': -1}
-    tmp1 = coor.split(' ')
+    tmp1 = coors.split(' ')
     tmp2 = tmp1[0].split('°')
     return round((int(tmp2[0]) + float(tmp2[1]) / 60) * semi[tmp1[1]], 6)
+
+
+def dd_to_ddm(coors):
+    def add_zero(n):
+        if n < 0:
+            fill = 3
+        else:
+            fill = 2
+        return str(n).zfill(fill)
+
+    def dd_to_dddm_single(coor, which):
+        dd = int(coor)
+        dm = abs(coor - dd) * 60
+        mm = int(dm)
+        dec = str(round(abs(dm - mm), 3)).split('.')[1]
+        if coor >= 0:
+            if which == 0:
+                letter = 'N'
+            elif which == 1:
+                letter = 'E'
+        else:
+            if which == 0:
+                letter = 'S'
+            elif which == 1:
+                letter = 'W'
+        return '{}°{}.{} {}'.format(add_zero(dd), add_zero(mm), dec, letter)
+
+    return '{}  {};'.format(dd_to_dddm_single(coors[0], 0), dd_to_dddm_single(coors[1], 1))

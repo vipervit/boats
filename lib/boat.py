@@ -5,7 +5,7 @@ import pandas as pd
 
 
 from boats import DIR_SAILDATA
-from boats.lib.common import get_all_own_boats_json
+from boats.lib.common import get_all_own_boats_json, ddm_to_dd, dd_to_ddm
 
 
 class Boat:
@@ -53,8 +53,8 @@ class Boat:
         return self.data
 
     def show_pos(self):
-        print('lat: {}'.format(self.pos[0]))
-        print('lon: {}'.format(self.pos[1]))
+        print('{}, {}'.format(self.pos[0], self.pos[1]))
+        print(dd_to_ddm((self.pos[0], self.pos[1])))
 
     def show_sailplan(self):
         for sail in self.sails:
