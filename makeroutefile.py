@@ -27,6 +27,7 @@ def main(args):
     f_route = os.path.join(DIR_ROUTE_OUT, '{}_{}.txt'.format(boat_name, f_timestamp))
 
     df = get_route_from_file_as_df(f_csv)
+    print(df)
 
     with open(f_route, 'w') as f:
         f.write('\n'.join(list(df['Full'])))
