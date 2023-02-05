@@ -48,8 +48,6 @@ def main(args):
 
     mymap = folium.Map(location=[curr_pos[0], curr_pos[1]], zoom_start=zoom_start)
 
-    # TODO Add header as in track.py
-
     BoatMarker(curr_pos, color='blue',
                heading=hdg,
                wind_heading=wind['twd'],
@@ -66,7 +64,7 @@ def main(args):
         folium.PolyLine(track, color='green').add_to(mymap)
 
         # route points
-        markers = [(i + 1, df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
+        markers = [(df.iloc[i]['Name'], df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
 
         for i in range(len(markers)):
             name = markers[i][0]
@@ -74,10 +72,16 @@ def main(args):
             lon = markers[i][2]
             dist = round(geopy.distance.geodesic((lat, lon), curr_pos).nm)
             if sog != 0:
-                point_eta = round(dist/sog)
+                t = dist / sog
+                if t < 24:
+                    days = 0
+                else:
+                    days = round(round(t) / 24)
+                hours = round(dist / sog) - days * 24
+                point_eta = '{}d {}h'.format(days, hours)
             else:
                 point_eta = ''
-            popup = '{} {},{} {} nm {} hrs'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
+            popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
             folium.Marker([lat, lon], popup=popup).add_to(mymap)
     else:
         print('No route {} found.'.format(args.route_file))
