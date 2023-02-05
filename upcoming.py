@@ -29,6 +29,22 @@ def get_race_time(o_race):
                              is_dst=None).astimezone(timezone('America/Toronto')).strftime('%A %d-%h %I:%M %p')
 
 
+def get_race_boat_type(o_race):
+    boat_types = {
+        '0': 'All  Boats',
+        '10': 'Imoca 60',
+        '2': 'Mini Transat',
+        '5': 'Performance 50',
+        '8': '32 Offshore Racer',
+        '1': 'Cruiser 38',
+        '3': 'Caribbean Rose',
+        '9': '45 Ketch',
+        '4': '52 Cat',
+        '6': 'Nordic'
+    }
+    return boat_types[repr(o_race.parent.find('img')).split('/')[2].split('.')[0]]
+
+
 def main():
     short_mileage = 5
 
@@ -37,9 +53,10 @@ def main():
     soup = BeautifulSoup(r.text, 'html.parser')
     upcoming = soup.find('table')
 
-    data = [(get_race_name(race), get_mileage(race), get_race_time(race)) for race in get_races(upcoming)]
+    data = [(get_race_name(race), get_mileage(race), get_race_boat_type(race), get_race_time(race))
+            for race in get_races(upcoming)]
 
-    df = pd.DataFrame(data, columns=['Race', 'Mileage', 'Time'])
+    df = pd.DataFrame(data, columns=['Race', 'Mileage', 'Boat Type', 'Time'])
     df_short_on_weekends = df[
         (df['Mileage'] < short_mileage) & (df['Time'].str.contains('Saturday') | df['Time'].str.contains('Sunday'))]
 
