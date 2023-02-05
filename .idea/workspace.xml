@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="configs" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="configs">
+      <change afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/map/Stardust.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/trial-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/trial.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/route/in/MARK_3.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/route/out/Petsamo_05_02_10_44.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/route/in/MARK 3.gpx" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +64,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
-    "last_opened_file_path": "C:/Users/Vitolg/PycharmProjects/boats/viewboat.py",
+    "last_opened_file_path": "C:/Users/Vitolg/PycharmProjects/boats/upcoming.py",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   },
   "keyToStringList": {
@@ -74,29 +84,7 @@
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.routepos">
-    <configuration name="Unnamed" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.upcoming">
     <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -141,6 +129,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="makeroutefile" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/makeroutefile.py" />
+      <option name="PARAMETERS" value="--boat_name Petsamo --file_name MARK_3" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="racemarks" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,28 +173,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="route_file" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/route_file.py" />
-      <option name="PARAMETERS" value="Petsamo &quot;MARK 3&quot;" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="routepos" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -199,7 +187,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routepos.py" />
-      <option name="PARAMETERS" value="--boat_name Petsamo --route_file &quot;MARK 3&quot; --noview" />
+      <option name="PARAMETERS" value="--boat_name Petsamo --route_file &quot;MARK_3&quot; --noview" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="upcoming" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_NAME" value="Python 3.11" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/upcoming.py" />
+      <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -234,9 +244,9 @@
       <item itemvalue="Python.chartpos" />
       <item itemvalue="Python.racemap" />
       <item itemvalue="Python.racemarks" />
-      <item itemvalue="Python.route_file" />
+      <item itemvalue="Python.upcoming" />
+      <item itemvalue="Python.makeroutefile" />
       <item itemvalue="Python.routepos" />
-      <item itemvalue="Python.Unnamed" />
       <item itemvalue="Python.viewboat" />
     </list>
   </component>
@@ -382,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675611426311</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="configs">
+      <created>1675611527267</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1675611527267</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
