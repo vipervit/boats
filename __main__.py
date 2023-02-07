@@ -7,6 +7,7 @@ import boats.racemap as racemap
 import boats.racemarks as racemarks
 import boats.routepos as routepos
 import boats.upcoming as upcoming
+import boats.viewboat as viewboat
 
 
 def main(args):
@@ -18,6 +19,7 @@ def main(args):
     parser.add_argument('-racemap', action='store_true')
     parser.add_argument('-racemarks', action='store_true')
     parser.add_argument('-upcoming', action='store_true')
+    parser.add_argument('-viewboat', action='store_true')
 
     parser.add_argument('--boat_name', type=str)
     parser.add_argument('--race_name', type=str)
@@ -40,6 +42,8 @@ def main(args):
         racemarks.main(args.race_name)
     if args.upcoming:
         upcoming.main()
+    if args.viewboat:
+        viewboat.main(sys.argv[2:])
 
 
 if __name__ == "__main__":

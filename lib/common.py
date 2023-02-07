@@ -92,3 +92,7 @@ def dd_to_ddm(coors):
         return '{}°{}.{} {}'.format(add_zero(dd), add_zero(mm), dec, letter)
 
     return '{}  {};'.format(dd_to_dddm_single(coors[0], 0), dd_to_dddm_single(coors[1], 1))
+
+
+def make_windy_url(lat, lon, zoom):
+    return 'https://www.windy.com/distance{},{}?{},{},{}'.format(lat, lon, lat, lon, zoom)
