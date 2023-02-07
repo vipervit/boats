@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="configs">
-      <change afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="viewboat.py and configs">
       <change afterPath="$PROJECT_DIR$/map/Stardust.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/route/in/MARK_3.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/route/out/Petsamo_04_02_15_07.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/racemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/racemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Changes2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makeroutefile.py" beforeDir="false" afterPath="$PROJECT_DIR$/makeroutefile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/route/in/MARK 3.gpx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewboat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -402,7 +393,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675611527267</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="viewboat.py and configs">
+      <created>1675786838184</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1675786838184</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -440,7 +438,8 @@
     <MESSAGE value="Config files committed" />
     <MESSAGE value="Modify __main__.py" />
     <MESSAGE value="configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="configs" />
+    <MESSAGE value="viewboat.py and configs" />
+    <option name="LAST_COMMIT_MESSAGE" value="viewboat.py and configs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

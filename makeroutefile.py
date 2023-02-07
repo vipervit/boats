@@ -15,11 +15,11 @@ def main(args):
 
     parser = argparse.ArgumentParser(description='Prepares route file.')
     parser.add_argument('--boat_name')
-    parser.add_argument('--file_name')
+    parser.add_argument('--route_file')
     args = parser.parse_args(args)
 
     boat_name = args.boat_name
-    f_name = args.file_name
+    f_name = args.route_file
 
     f_timestamp = timestamp().replace(':', '_').replace('/', ' ').replace(' ', '_')
 
