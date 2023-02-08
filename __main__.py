@@ -1,7 +1,6 @@
 import argparse
 import sys
 
-import boats.chartpos as chartpos
 import boats.makeroutefile as makeroutefile
 import boats.racemap as racemap
 import boats.racemarks as racemarks
