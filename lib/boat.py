@@ -1,11 +1,11 @@
 import json
 import os
 import time
+
 import pandas as pd
 
-
 from boats import DIR_SAILDATA
-from boats.lib.common import get_all_own_boats_json, ddm_to_dd, dd_to_ddm
+from boats.lib.common import get_all_own_boats_json, dd_to_ddm
 
 
 class Boat:

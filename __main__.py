@@ -26,6 +26,7 @@ def main(args):
     parser.add_argument('--full_info', action='store_true')
     parser.add_argument('--route_file', type=str)
     parser.add_argument('--noview', action='store_true')
+    parser.add_argument('--step', type=int)
 
     args = parser.parse_args(args)
 

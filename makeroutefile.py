@@ -16,6 +16,7 @@ def main(args):
     parser = argparse.ArgumentParser(description='Prepares route file.')
     parser.add_argument('--boat_name')
     parser.add_argument('--route_file')
+    parser.add_argument('--step', type=int)
     args = parser.parse_args(args)
 
     boat_name = args.boat_name
@@ -26,7 +27,7 @@ def main(args):
     f_csv = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(f_name))
     f_route = os.path.join(DIR_ROUTE_OUT, '{}_{}.txt'.format(boat_name, f_timestamp))
 
-    df = get_route_from_file_as_df(f_csv)
+    df = get_route_from_file_as_df(f_csv, step=args.step)
     print(df)
 
     with open(f_route, 'w') as f:
