@@ -28,10 +28,9 @@ def main(args):
     if args.zoom_start is not None:
         zoom_start = str(args.zoom_start)
 
-    match args.map:
-        case 'Windy':
+    if args.map == 'Windy':
             url = make_windy_url(lat, lon, zoom_start)
-        case 'I-Boating':
+    if args.map == 'I-Boating':
             url = '{}#{}/{}/{}'.format(URL_IBOATING_CHART, zoom_start, lat, lon)
 
     if not args.noview:
