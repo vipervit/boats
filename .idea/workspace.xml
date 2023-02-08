@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="viewboat.py and configs">
       <change afterPath="$PROJECT_DIR$/map/Stardust.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/trial-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebook/trial.ipynb" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/route/in/MARK_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/route/out/Petsamo_04_02_15_07.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/makeroutefile.py" beforeDir="false" afterPath="$PROJECT_DIR$/makeroutefile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/route/out/Petsamo_05_02_10_44.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/route/in/MARK 3.gpx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewboat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +176,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="$USER_HOME$/opt/anaconda3" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -219,7 +218,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="$USER_HOME$/opt/anaconda3" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />

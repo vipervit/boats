@@ -14,7 +14,6 @@ def main(args):
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-routepos', action='store_true')
-    parser.add_argument('-chartpos', action='store_true')
     parser.add_argument('-makeroutefile', action='store_true')
     parser.add_argument('-racemap', action='store_true')
     parser.add_argument('-racemarks', action='store_true')
@@ -22,6 +21,7 @@ def main(args):
     parser.add_argument('-viewboat', action='store_true')
 
     parser.add_argument('--boat_name', type=str)
+    parser.add_argument('--map', type=str)
     parser.add_argument('--race_name', type=str)
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--full_info', action='store_true')
@@ -32,8 +32,6 @@ def main(args):
 
     if args.routepos:
         routepos.main(sys.argv[2:])
-    if args.chartpos:
-        chartpos.main(sys.argv[2:])
     if args.makeroutefile:
         makeroutefile.main(sys.argv[2:])
     if args.racemap:
