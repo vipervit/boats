@@ -7,7 +7,6 @@ from boats.lib.common import DEFAULT_ZOOM, make_windy_url, URL_IBOATING_CHART
 
 
 def main(args):
-
     zoom_start = str(DEFAULT_ZOOM)
 
     parser = argparse.ArgumentParser(description='Displays the current boat position, sails, nav, and other data.')
@@ -29,9 +28,11 @@ def main(args):
         zoom_start = str(args.zoom_start)
 
     if args.map == 'Windy':
-            url = make_windy_url(lat, lon, zoom_start)
-    if args.map == 'I-Boating':
-            url = '{}#{}/{}/{}'.format(URL_IBOATING_CHART, zoom_start, lat, lon)
+        url = make_windy_url(lat, lon, zoom_start)
+    elif args.map == 'I-Boating':
+        url = '{}#{}/{}/{}'.format(URL_IBOATING_CHART, zoom_start, lat, lon)
+    else:
+        sys.exit('Could not open map due to name invalid: {}'.format(args.map))
 
     if not args.noview:
         webbrowser.open(url)
