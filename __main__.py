@@ -24,7 +24,7 @@ def main(args):
     parser.add_argument('--race_name', type=str)
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--full_info', action='store_true')
-    parser.add_argument('--route_file', type=str)
+    parser.add_argument('--route_name', type=str)
     parser.add_argument('--noview', action='store_true')
     parser.add_argument('--step', type=int)
 

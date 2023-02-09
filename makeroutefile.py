@@ -2,9 +2,9 @@ import argparse
 import os
 import sys
 
-from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT
-from boats.lib.common import timestamp
-from boats.lib.df_route import get_route_from_file_as_df
+from boats import DIR_ROUTE_IN
+from boats.lib.df_route import get_route_from_csv_as_df, save_route_df_to_pickle, \
+    save_route_for_upload
 
 
 # TODO sysopt
@@ -15,23 +15,22 @@ def main(args):
 
     parser = argparse.ArgumentParser(description='Prepares route file.')
     parser.add_argument('--boat_name')
-    parser.add_argument('--route_file')
+    parser.add_argument('--route_name')
     parser.add_argument('--step', type=int)
     args = parser.parse_args(args)
 
-    boat_name = args.boat_name
-    f_name = args.route_file
+    fname_in = args.route_name
 
-    f_timestamp = timestamp().replace(':', '_').replace('/', ' ').replace(' ', '_')
+    if args.boat_name is not None:
+        fname_out = args.boat_name
+    else:
+        fname_out = 'Route'
 
-    f_csv = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(f_name))
-    f_route = os.path.join(DIR_ROUTE_OUT, '{}_{}.txt'.format(boat_name, f_timestamp))
-
-    df = get_route_from_file_as_df(f_csv, step=args.step)
+    df = get_route_from_csv_as_df(os.path.join(DIR_ROUTE_IN, '{}.csv'.format(fname_in)), step=args.step)
+    save_route_df_to_pickle(df, args.route_name)
     print(df)
 
-    with open(f_route, 'w') as f:
-        f.write('\n'.join(list(df['Full'])))
+    save_route_for_upload(df, fname_out)
 
 
 if __name__ == '__main__':

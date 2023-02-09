@@ -1,39 +1,34 @@
 import argparse
 import datetime
 import os
+import os.path
 import sys
 import webbrowser
-import os.path
 from os import path
 
 import folium
 import geopy.distance
 from folium.plugins import BoatMarker
 
-from boats import DIR_HTML, DIR_ROUTE_IN
+from boats import DIR_HTML, DIR_PKL
 from boats.lib.boat import Boat
 from boats.lib.common import DEFAULT_ZOOM
-from boats.lib.df_route import get_route_from_file_as_df
+from boats.lib.df_route import get_route_df_from_pickle
 
 
 def main(args):
-
     zoom_start = str(DEFAULT_ZOOM)
 
     parser = argparse.ArgumentParser(description='Displays the current boat position and the route on Folium map, '
                                                  'or saves the map as HTML.')
     parser.add_argument('--boat_name')
     parser.add_argument('--zoom_start', type=int)
-    parser.add_argument('--route_file', type=str)
+    parser.add_argument('--route_name', type=str)
     parser.add_argument('--noview', action='store_true')
     args = parser.parse_args(args)
 
     if args.zoom_start is not None:
         zoom_start = str(args.zoom_start)
-
-    f_route = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(args.route_file))
-    fn_map = '{}.html'.format(args.boat_name)
-    f_map = os.path.join(DIR_HTML, fn_map)
 
     # boat
     with Boat(args.boat_name) as o_boat:
@@ -54,9 +49,9 @@ def main(args):
                wind_speed=wind['tws'],
                popup=popup).add_to(mymap)
 
-    if path.exists(f_route):
+    if path.exists(os.path.join(DIR_PKL, '{}.pkl'.format(args.route_name))):
 
-        df = get_route_from_file_as_df(f_route)
+        df = get_route_df_from_pickle(args.route_name)
 
         # route line
         points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
@@ -84,13 +79,14 @@ def main(args):
             popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
             folium.Marker([lat, lon], popup=popup).add_to(mymap)
     else:
-        print('No route {} found.'.format(args.route_file))
+        print('No route {} found.'.format(args.route_name))
 
     timestamp = datetime.datetime.now().strftime('%d %b %H:%M')
     title_html = '<h3 align="center" style="font-size:16px">{} {}° {} kn<b></b></h3>'.format(timestamp, hdg, sog)
     mymap.get_root().html.add_child(folium.Element(title_html))
-    mymap.save(f_map)
 
+    f_map = os.path.join(DIR_HTML, '{}.html'.format(args.boat_name))
+    mymap.save(f_map)
     if not args.noview:
         webbrowser.open(f_map)
 
