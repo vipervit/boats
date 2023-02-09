@@ -10,10 +10,10 @@ import folium
 import geopy.distance
 from folium.plugins import BoatMarker
 
-from boats import DIR_HTML, DIR_PKL
+from boats import DIR_HTML, DIR_PKL, DIR_ROUTE_OUT
 from boats.lib.boat import Boat
 from boats.lib.common import DEFAULT_ZOOM
-from boats.lib.df_route import get_route_df_from_pickle
+from boats.lib.df_route import get_route_df_from_pickle, get_route_from_txt_as_df
 
 
 def main(args):
@@ -49,9 +49,9 @@ def main(args):
                wind_speed=wind['tws'],
                popup=popup).add_to(mymap)
 
-    if path.exists(os.path.join(DIR_PKL, '{}.pkl'.format(args.route_name))):
+    if path.exists(os.path.join(DIR_ROUTE_OUT, '{}.txt'.format(args.route_name))):
 
-        df = get_route_df_from_pickle(args.route_name)
+        df = get_route_from_txt_as_df(args.route_name)
 
         # route line
         points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]

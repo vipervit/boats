@@ -6,6 +6,16 @@ from boats import DIR_PKL, DIR_ROUTE_IN, DIR_ROUTE_OUT
 from boats.lib.common import ddm_to_dd
 
 
+def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
+    with open(os.path.join(f_dir, '{}.txt'.format(routename)), 'r') as f:
+        text = f.read()
+    text = text.replace(';', '')
+    df = pd.DataFrame([{ddm_to_dd(x.split('  ')[0]), ddm_to_dd(x.split('  ')[1])} for x in text.split('\n')],
+                      columns=['Lon', 'Lat'])
+    df['Name'] = ['P{}'.format(i) for i in range(len(df))]
+    return df
+
+
 def get_route_from_csv_as_df(f_csv, step=None):
     df = pd.read_csv(f_csv)
     df.drop(0, axis=0, inplace=True)
