@@ -25,6 +25,7 @@ def main(args):
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--route_name', type=str)
     parser.add_argument('--noview', action='store_true')
+
     args = parser.parse_args(args)
 
     if args.zoom_start is not None:
@@ -86,10 +87,11 @@ def main(args):
     mymap.get_root().html.add_child(folium.Element(title_html))
 
     f_map = os.path.join(DIR_HTML, '{}.html'.format(args.boat_name))
+
     mymap.save(f_map)
+
     if not args.noview:
         webbrowser.open(f_map)
-
 
 if __name__ == '__main__':
     main(sys.argv[1:])

@@ -27,6 +27,7 @@ def main(args):
     parser.add_argument('--route_name', type=str)
     parser.add_argument('--noview', action='store_true')
     parser.add_argument('--step', type=int)
+    parser.add_argument('--route_type', type=str)
 
     args = parser.parse_args(args)
 

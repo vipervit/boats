@@ -10,6 +10,7 @@ def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
     with open(os.path.join(f_dir, '{}.txt'.format(routename)), 'r') as f:
         text = f.read()
     text = text.replace(';', '')
+    text = text.replace('\'', ' ')
     df = pd.DataFrame([{ddm_to_dd(x.split('  ')[0]), ddm_to_dd(x.split('  ')[1])} for x in text.split('\n')],
                       columns=['Lon', 'Lat'])
     df['Name'] = ['P{}'.format(i) for i in range(len(df))]
@@ -38,6 +39,18 @@ def get_route_from_route_file_as_df(f_csv, step=None):
     df['Name'] = ['P{}'.format(i) for i in range(len(df))]
     return df
 
+def get_route_from_pathway_file_as_df(f_csv):
+    df = pd.read_csv(f_csv)
+    df.rename(columns={'From': 'Name', 'Lat': 'LAT', 'Lon': 'LON'}, inplace=True)
+    df=df[['Name', 'LAT', 'LON']]
+    df = df.assign(Lat=lambda x: x['LAT'].str.replace('\'', ' ').apply(ddm_to_dd))
+    df = df.assign(Lon=lambda x: x['LON'].str.replace('\'', ' ').apply(ddm_to_dd))
+    df['Full'] = ['{}  {};'.format(df.iloc[i]['LAT'], df.iloc[i]['LON']) for i in range(len(df)) ]
+    dtws = [round(geopy.distance.geodesic((df.iloc[i - 1]['Lat'], df.loc[i]['Lon']),
+                                          (df.iloc[i]['Lat'], df.iloc[i - 1]['Lon'])).nm) for i in range(1, len(df))]
+    dtws.insert(0, 0)
+    df['DTW'] = dtws
+    return df
 
 def get_route_df_from_pickle(route_name):
     return pd.read_pickle(os.path.join(DIR_PKL, '{}.pkl'.format(route_name)))
