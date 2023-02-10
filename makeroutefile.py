@@ -3,7 +3,7 @@ import os
 import sys
 
 from boats import DIR_ROUTE_IN
-from boats.lib.df_route import get_route_from_csv_as_df, save_route_df_to_pickle, \
+from boats.lib.df_route import get_route_from_route_file_as_df, save_route_df_to_pickle, \
     save_route_for_upload
 
 
@@ -26,7 +26,7 @@ def main(args):
     else:
         fname_out = 'Route'
 
-    df = get_route_from_csv_as_df(os.path.join(DIR_ROUTE_IN, '{}.csv'.format(fname_in)), step=args.step)
+    df = get_route_from_route_file_as_df(os.path.join(DIR_ROUTE_IN, '{}.csv'.format(fname_in)), step=args.step)
     save_route_df_to_pickle(df, args.route_name)
     print(df)
 

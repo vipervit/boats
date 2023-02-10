@@ -16,7 +16,7 @@ def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
     return df
 
 
-def get_route_from_csv_as_df(f_csv, step=None):
+def get_route_from_route_file_as_df(f_csv, step=None):
     df = pd.read_csv(f_csv)
     df.drop(0, axis=0, inplace=True)
     df['Full'] = [x.split(';')[0] for x in df['position;heure']]
