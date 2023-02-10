@@ -90,8 +90,9 @@ def main(args):
 
     mymap.save(f_map)
 
+
     if not args.noview:
-        webbrowser.open(f_map)
+        webbrowser.open('file://{}'.format(f_map))
 
 if __name__ == '__main__':
     main(sys.argv[1:])
