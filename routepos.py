@@ -10,10 +10,10 @@ import folium
 import geopy.distance
 from folium.plugins import BoatMarker
 
-from boats import DIR_HTML, DIR_PKL, DIR_ROUTE_OUT
+from boats import DIR_HTML, DIR_ROUTE_OUT
 from boats.lib.boat import Boat
 from boats.lib.common import DEFAULT_ZOOM
-from boats.lib.df_route import get_route_df_from_pickle, get_route_from_txt_as_df
+from boats.lib.df_route import get_route_from_txt_as_df
 
 
 def main(args):
