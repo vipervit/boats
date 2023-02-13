@@ -12,7 +12,7 @@ from folium.plugins import BoatMarker
 
 from boats import DIR_HTML, DIR_ROUTE_OUT
 from boats.lib.boat import Boat
-from boats.lib.common import DEFAULT_ZOOM
+from boats.lib.common import DEFAULT_ZOOM, calculate_eta
 from boats.lib.df_route import get_route_from_txt_as_df
 
 
@@ -67,17 +67,7 @@ def main(args):
             lat = markers[i][1]
             lon = markers[i][2]
             dist = round(geopy.distance.geodesic((lat, lon), curr_pos).nm)
-            if sog != 0:
-                t = dist / sog
-                if t < 24:
-                    days = 0
-                else:
-                    days = round(round(t) / 24)
-                hours = round(dist / sog) - days * 24
-                point_eta = '{}d {}h'.format(days, hours)
-            else:
-                point_eta = ''
-            popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, point_eta)
+            popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, calculate_eta(sog, dist))
             folium.Marker([lat, lon], popup=popup).add_to(mymap)
     else:
         print('No route {} found.'.format(args.route_name))

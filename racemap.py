@@ -12,7 +12,7 @@ import pandas as pd
 from folium.plugins import BoatMarker
 
 from boats import DIR_HTML
-from boats.lib.common import timeago, get_race_data, DEFAULT_ZOOM
+from boats.lib.common import timeago, get_race_data, DEFAULT_ZOOM, calculate_eta
 
 
 def make_dataframe(data):
@@ -27,11 +27,14 @@ def make_dataframe(data):
              data[boat]['lastreport_speed'],
              data[boat]['wind'].split(',')[0].strip('°'),
              data[boat]['wind'].split(',')[1].strip().strip('kn.'),
-             data[boat]['resultdescr'].split(',')[3].split('nm')[0].split('.')[0].strip())
+             data[boat]['resultdescr'].split(',')[3].split('nm')[0].split('.')[0].strip(),
+             data[boat]['resultdescr'].split('to mark ')[1]
+             )
             for boat in list(data.keys()) if 'lat_dec' in data[boat]]
     df = pd.DataFrame(data, columns=['Boat', 'Lat', 'Lon', 'Rank', 'Track', 'Timestamp', 'Last', 'HDG',
-                                     'SPD', 'TWD', 'TWS', 'DTW'])
+                                     'SPD', 'TWD', 'TWS', 'DTW', 'Next'])
     df['Rank'] = df['Rank'].astype(int)
+    df['ETA'] = [calculate_eta(df.iloc[i]['SPD'], df.iloc[i]['DTW']) for i in range(len(df))]
     df = df.set_index('Rank')
     df.sort_values('Rank', ascending=True, inplace=True)
     return df.copy()
@@ -62,8 +65,10 @@ def main(args):
 
     behind = df.iloc[0]['Dist']
 
-    print('{}\n'.format(df[['Boat', 'SPD', 'TWS', 'DTW', 'Dist', 'Last']]))
+    print('{}\n'.format(df[['Boat', 'SPD', 'TWS', 'DTW', 'Next', 'Dist', 'ETA']]))
     print('Behind leader by: {} nm'.format(round(behind), 2))
+    ago = timeago(df.iloc[0]['Timestamp'])
+    print('Last updated: {}:{} ago.'.format(ago[0], ago[1]))
 
     colors = ['red', 'green', 'darkblue', 'orange', 'pink', 'darkgreen',
               'beige', 'darkred', 'purple', 'darkpurple']
