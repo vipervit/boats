@@ -32,15 +32,16 @@ def get_race_time(o_race):
 def get_race_boat_type(o_race):
     boat_types = {
         '0': 'All  Boats',
-        '10': 'Imoca 60',
-        '2': 'Mini Transat',
-        '5': 'Performance 50',
-        '8': '32 Offshore Racer',
         '1': 'Cruiser 38',
+        '2': 'Mini Transat',
         '3': 'Caribbean Rose',
-        '9': '45 Ketch',
         '4': '52 Cat',
-        '6': 'Nordic'
+        '5': 'Performance 50',
+        '6': 'Nordic',
+        '7': 'Nordic',  # not an error, 2 values for Nordic in HTML
+        '8': '32 Offshore Racer',
+        '9': '45 Ketch',
+        '10': 'Imoca 60'
     }
     return boat_types[repr(o_race.parent.find('img')).split('/')[2].split('.')[0]]
 
