@@ -12,8 +12,8 @@ def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
         text = f.read()
     text = text.replace(';', '')
     text = text.replace('\'', ' ')
-    df = pd.DataFrame([{ddm_to_dd(x.split('  ')[0]), ddm_to_dd(x.split('  ')[1])} for x in text.split('\n')],
-                      columns=['Lon', 'Lat'])
+    df = pd.DataFrame([(ddm_to_dd(x.split('  ')[0]), ddm_to_dd(x.split('  ')[1])) for x in text.split('\n')],
+                      columns=['Lat', 'Lon'])
     df['Name'] = ['P{}'.format(i) for i in range(len(df))]
     return df
 
