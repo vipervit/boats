@@ -96,3 +96,15 @@ def dd_to_ddm(coors):
 
 def make_windy_url(lat, lon, zoom):
     return 'https://www.windy.com/distance{},{}?{},{},{}'.format(lat, lon, lat, lon, zoom)
+
+
+def calculate_eta(speed, distance):
+    speed = float(speed)
+    distance = float(distance)
+    if speed != 0:
+        total_hours = int(distance/speed)
+        days = int(total_hours/24)
+        hours = total_hours - days * 24
+        return '{}d {}h'.format(days, hours)
+    else:
+        return None
