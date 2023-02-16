@@ -34,7 +34,7 @@ def main(args):
         o_boat.map.mtype = map_type
         o_boat.show(args.full_info)
         if args.zoom_start is not None:
-            o_boat.zoom = str(args.zoom_start)
+            o_boat.map.zoom = str(args.zoom_start)
         if not args.noview:
             if map_type == Maps.Folium:
                 hdg = o_boat.nav['hdg']

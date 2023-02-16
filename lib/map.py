@@ -26,9 +26,9 @@ class Map:
             self._track = data['track']
         if 'route' in data.keys():
             self._route = data['route']
-        self._folium = folium.Map(location=self._loc)
-        self._mfile = os.path.join(DIR_MAPS, '{}.html'.format(self._boat_name))
         self._zoom = DEFAULT_ZOOM
+        self._folium = None
+        self._mfile = os.path.join(DIR_MAPS, '{}.html'.format(self._boat_name))
         self._url = None
         self._mtype = DEFAULT_MAP
 
@@ -97,6 +97,8 @@ class Map:
         webbrowser.open(self.__get_url__())
 
     def __prepare_folium__(self):
+
+        self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
 
         popup = '{},{} {} dg {} kn'.format(self._loc[0], self._loc[1], self.boat_marker['hdg'], self.boat_marker['sog'])
         track = self.track
