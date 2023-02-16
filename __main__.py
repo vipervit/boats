@@ -4,7 +4,6 @@ import sys
 import boats.makeroutefile as makeroutefile
 import boats.racemap as racemap
 import boats.racemarks as racemarks
-import boats.routepos as routepos
 import boats.upcoming as upcoming
 import boats.viewboat as viewboat
 
@@ -31,8 +30,6 @@ def main(args):
 
     args = parser.parse_args(args)
 
-    if args.routepos:
-        routepos.main(sys.argv[2:])
     if args.makeroutefile:
         makeroutefile.main(sys.argv[2:])
     if args.racemap:

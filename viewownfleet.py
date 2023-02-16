@@ -8,6 +8,6 @@ response=get_all_own_boats_json()
 boats = [Boat(each['boatname']) for each in response]
 
 for boat in boats:
-    boat.getdata(response)
+    boat.get_data(response)
     print('')
     boat.show()

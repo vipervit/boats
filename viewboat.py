@@ -1,41 +1,51 @@
 import argparse
+import os
 import sys
-import webbrowser
 
 from boats.lib.boat import Boat
-from boats.lib.common import DEFAULT_ZOOM, make_windy_url, URL_IBOATING_CHART
+from boats import DIR_ROUTE_OUT
+from lib.common import Maps
 
 
 def main(args):
-    zoom_start = str(DEFAULT_ZOOM)
+
+    map_type = None
 
     parser = argparse.ArgumentParser(description='Displays the current boat position, sails, nav, and other data.')
     parser.add_argument('--boat_name')
     parser.add_argument('--map', type=str)
+    parser.add_argument('--route_name', type=str)
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--noview', action='store_true')
     parser.add_argument('--full_info', action='store_true')
 
     args = parser.parse_args(args)
 
+    if args.map is not None:
+        map_type = Maps[args.map]
+    elif args.route_name is not None:
+        map_type = Maps.Folium
+
+    if map_type != Maps.Folium and args.route_name is not None:
+        raise ValueError('Can only show route on a Folium map.')
+
     with Boat(args.boat_name) as o_boat:
-        o_boat.getdata()
+        o_boat.get_data()
+        o_boat.map.mtype = map_type
         o_boat.show(args.full_info)
-        lat = o_boat.pos[0]
-        lon = o_boat.pos[1]
-
-    if args.zoom_start is not None:
-        zoom_start = str(args.zoom_start)
-
-    if args.map == 'Windy':
-        url = make_windy_url(lat, lon, zoom_start)
-    elif args.map == 'I-Boating':
-        url = '{}#{}/{}/{}'.format(URL_IBOATING_CHART, zoom_start, lat, lon)
-    else:
-        sys.exit('Could not open map due to name invalid: {}'.format(args.map))
-
-    if not args.noview:
-        webbrowser.open(url)
+        if args.zoom_start is not None:
+            o_boat.zoom = str(args.zoom_start)
+        if not args.noview:
+            if map_type == Maps.Folium:
+                hdg = o_boat.nav['hdg']
+                sog = o_boat.nav['sog']
+                tws = o_boat.wind['tws']
+                twd = o_boat.wind['twd']
+                if args.route_name is not None:
+                    o_boat.map.route_name = args.route_name
+                o_boat.map.track = o_boat.get_track()
+                o_boat.map.boat_marker = {'hdg': hdg, 'sog': sog, 'twd': twd, 'tws': tws}
+            o_boat.map.show()
 
 
 if __name__ == '__main__':

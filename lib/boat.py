@@ -6,11 +6,13 @@ import pandas as pd
 
 from boats import DIR_SAILDATA
 from boats.lib.common import get_all_own_boats_json, dd_to_ddm
+from lib.map import Map
 
 
 class Boat:
 
     def __init__(self, name):
+        self._map = None
         self.nav = None
         self.wind = None
         self.heel = None
@@ -20,6 +22,7 @@ class Boat:
         self.name = name
         self.data = None
         self.datafile = os.path.join(DIR_SAILDATA, name + '_dat.json')
+        self._track = None
 
     def __enter__(self):
         return self
@@ -27,7 +30,7 @@ class Boat:
     def __exit__(self, exc_type, exc_value, exc_traceback):
         return 0
 
-    def getdata(self, response_json=False, save=True):
+    def get_data(self, response_json=False, save=True):
         if not response_json:
             response_json = get_all_own_boats_json()
         for data in response_json:
@@ -50,6 +53,8 @@ class Boat:
                     }
         if save:
             self.save_current_sail_data()
+        self.__get_track_from_log__()
+        self._map = Map(boat_name=self.name, location=self.pos)
         return self.data
 
     def show_pos(self):
@@ -75,23 +80,6 @@ class Boat:
         print('hdg: {}'.format(self.nav['hdg']))
         print('cog: {}'.format(self.nav['cog']))
 
-    def __show_short__(self):
-        self.show_pos()
-        print('hdg: {}'.format(self.nav['hdg']))
-        print('cog: {}'.format(self.nav['cog']))
-        print('tws: {}'.format(self.wind['tws']))
-
-    def __show_full__(self):
-        self.show_pos()
-        print('\n')
-        self.show_sailplan()
-        print('\n')
-        for each in self.nav:
-            print('{}: {}'.format(each, self.nav[each]))
-        for each in self.wind:
-            print('{}: {}'.format(each, self.wind[each]))
-        self.show_heel()
-
     def show(self, full=False):
         print('{}\n----------------'.format(self.name.upper()))
         if full:
@@ -109,6 +97,47 @@ class Boat:
                 'lon': self.pos[1],
                 'sails': self.sailplan}
 
+    def save_current_sail_data(self):
+        data = {}
+        if os.path.exists(self.datafile):
+            data = self.__read_sail_data_from_file__()
+        data.update({str(time.time()): self.sail_config_snapshot()})
+        self.__write_sail_data_to_file__(data)
+
+    def get_track(self):
+        return self._track
+
+    def get_logged_data(self):
+        return pd.read_json(json.dumps(self.__read_sail_data_from_file__()), orient='index')
+
+    def __get_track_from_log__(self):
+        df = self.get_logged_data()
+        df.sort_index(ascending=False, inplace=True)
+        df_track = df[['lat', 'lon']].dropna()
+        self._track = [[df_track.loc[i, 'lat'], df_track.loc[i, 'lon']] for i in df_track.index]
+
+    # ------------
+    @property
+    def map(self):
+        return self._map
+
+    def __show_short__(self):
+        self.show_pos()
+        print('hdg: {}'.format(self.nav['hdg']))
+        print('cog: {}'.format(self.nav['cog']))
+        print('tws: {}'.format(self.wind['tws']))
+
+    def __show_full__(self):
+        self.show_pos()
+        print('\n')
+        self.show_sailplan()
+        print('\n')
+        for each in self.nav:
+            print('{}: {}'.format(each, self.nav[each]))
+        for each in self.wind:
+            print('{}: {}'.format(each, self.wind[each]))
+        self.show_heel()
+
     def __read_sail_data_from_file__(self):
         with open(self.datafile, 'r') as f:
             return json.load(f)
@@ -117,18 +146,6 @@ class Boat:
         with open(self.datafile, 'w') as f:
             json.dump(dic, f)
 
-    def save_current_sail_data(self):
-        data = {}
-        if os.path.exists(self.datafile):
-            data = self.__read_sail_data_from_file__()
-        data.update({str(time.time()): self.sail_config_snapshot()})
-        self.__write_sail_data_to_file__(data)
-
-    def get_logged_data(self):
-        return pd.read_json(json.dumps(self.__read_sail_data_from_file__()), orient='index')
-
-    def get_track_from_log(self):
-        df = self.get_logged_data()
-        df.sort_index(ascending=False, inplace=True)
-        df_track = df[['lat', 'lon']].dropna()
-        return [[df_track.loc[i, 'lat'], df_track.loc[i, 'lon']] for i in df_track.index]
+    @map.setter
+    def map(self, value):
+        self._map = value

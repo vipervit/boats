@@ -8,8 +8,12 @@ from boats.lib.common import ddm_to_dd
 
 
 def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
-    with open(os.path.join(f_dir, '{}.txt'.format(routename)), 'r') as f:
-        text = f.read()
+    f_path = os.path.join(f_dir, '{}.txt'.format(routename))
+    try:
+        with open(f_path, 'r') as f:
+            text = f.read()
+    except FileNotFoundError:
+        raise FileNotFoundError
     text = text.replace(';', '')
     text = text.replace('\'', ' ')
     df = pd.DataFrame([(ddm_to_dd(x.split('  ')[0]), ddm_to_dd(x.split('  ')[1])) for x in text.split('\n')],

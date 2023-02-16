@@ -11,7 +11,7 @@ import geopy.distance
 import pandas as pd
 from folium.plugins import BoatMarker
 
-from boats import DIR_HTML
+from boats import DIR_MAPS
 from boats.lib.common import timeago, get_race_data, DEFAULT_ZOOM, calculate_eta
 
 
@@ -53,7 +53,7 @@ def main(args):
     else:
         zoom_start = str(DEFAULT_ZOOM)
 
-    f_html = os.path.join(DIR_HTML, '{}.html'.format(args.race_name))
+    f_html = os.path.join(DIR_MAPS, '{}.html'.format(args.race_name))
 
     df = make_dataframe(get_race_data(args.race_name))
 

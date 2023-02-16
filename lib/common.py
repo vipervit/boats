@@ -1,4 +1,5 @@
 from datetime import datetime
+from enum import Enum
 
 import requests
 
@@ -19,10 +20,16 @@ API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr
 API_RACE_MARKS = 'https://backend.sailaway.world/cgi-bin/sailaway/GetMissionCourse.pl?usrnr={}&key={}&misnr=RACEID'. \
     format(API_USER, API_KEY)
 
-URL_IBOATING_CHART = 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
-                     '-navigation.html'
-
 DEFAULT_ZOOM = 7
+
+
+class Maps(Enum):
+    Windy = 1
+    I_Boating = 2
+    Folium = 3
+
+
+DEFAULT_MAP = Maps.I_Boating
 
 
 def get_all_own_boats_json():
@@ -94,16 +101,12 @@ def dd_to_ddm(coors):
     return '{}  {};'.format(dd_to_dddm_single(coors[0], 0), dd_to_dddm_single(coors[1], 1))
 
 
-def make_windy_url(lat, lon, zoom):
-    return 'https://www.windy.com/distance{},{}?{},{},{}'.format(lat, lon, lat, lon, zoom)
-
-
 def calculate_eta(speed, distance):
     speed = float(speed)
     distance = float(distance)
     if speed != 0:
-        total_hours = int(distance/speed)
-        days = int(total_hours/24)
+        total_hours = int(distance / speed)
+        days = int(total_hours / 24)
         hours = total_hours - days * 24
         return '{}d {}h'.format(days, hours)
     else:
