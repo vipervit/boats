@@ -4,15 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="viewboat.py and configs">
-      <change afterPath="$PROJECT_DIR$/map/Stardust.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/trial-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notebook/trial.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/route/in/MARK_3.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/route/out/Petsamo_05_02_10_44.txt" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Fix zoom in map.py">
+      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-02-04_10_37_p_m__[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-02-04_10_37_p_m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/viewpos-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/viewpos-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Stardust.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Stardust.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/route/in/MARK 3.gpx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewboat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +66,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Vitolg/PycharmProjects/boats/upcoming.py&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
@@ -176,12 +178,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/python" />
+      <option name="SDK_NAME" value="$USER_HOME$/opt/anaconda3" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/routepos.py" />
-      <option name="PARAMETERS" value="--boat_name Petsamo --route_file &quot;MARK_3&quot; --noview" />
+      <option name="PARAMETERS" value="--boat_name Petsamo --route_name Petsamo" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -218,12 +221,13 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="$USER_HOME$/opt/anaconda3/bin/python" />
+      <option name="SDK_NAME" value="$USER_HOME$/opt/anaconda3" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/viewboat.py" />
-      <option name="PARAMETERS" value="--boat_name Petsamo --noview --full_info" />
+      <option name="PARAMETERS" value="--boat_name Petsamo --map Folium --zoom_start 15" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -234,12 +238,12 @@
     <list>
       <item itemvalue="Python.__main__" />
       <item itemvalue="Python.chartpos" />
-      <item itemvalue="Python.racemap" />
-      <item itemvalue="Python.racemarks" />
-      <item itemvalue="Python.upcoming" />
       <item itemvalue="Python.makeroutefile" />
+      <item itemvalue="Python.racemarks" />
       <item itemvalue="Python.routepos" />
+      <item itemvalue="Python.upcoming" />
       <item itemvalue="Python.viewboat" />
+      <item itemvalue="Python.racemap" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -398,7 +402,91 @@
       <option name="project" value="LOCAL" />
       <updated>1675786838184</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="makeroutefile.py">
+      <created>1675868821699</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1675868821699</updated>
+    </task>
+    <task id="LOCAL-00023" summary="makeroutefile.py">
+      <created>1675898681641</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1675898681641</updated>
+    </task>
+    <task id="LOCAL-00024" summary="viewboat.py">
+      <created>1675960981503</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1675960981503</updated>
+    </task>
+    <task id="LOCAL-00025" summary="routepos.py, df_route.py">
+      <created>1675986163949</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1675986163949</updated>
+    </task>
+    <task id="LOCAL-00026" summary="df_route.py, makeroutefile.py">
+      <created>1676039960578</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1676039960578</updated>
+    </task>
+    <task id="LOCAL-00027" summary="multiple">
+      <created>1676051471468</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1676051471468</updated>
+    </task>
+    <task id="LOCAL-00028" summary="routepos.py">
+      <created>1676054671677</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1676054671677</updated>
+    </task>
+    <task id="LOCAL-00029" summary="df_route.py">
+      <created>1676060728556</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1676060728556</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Fix get_route_from_txt_as_df in df_route.py">
+      <created>1676386902514</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1676386902514</updated>
+    </task>
+    <task id="LOCAL-00031" summary="upcoming.py">
+      <created>1676390664032</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1676390664032</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add class Map and refactor accordingly">
+      <created>1676509486132</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1676509486132</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fix zoom in map.py">
+      <created>1676558336529</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1676558336529</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -420,9 +508,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modify and import track.py" />
-    <MESSAGE value="Add cmd/track" />
-    <MESSAGE value="Improve track.py with BoatMarker" />
     <MESSAGE value="Add viewpos.py&#10;Correct track.cmd" />
     <MESSAGE value="Add zoom in viewpos.py" />
     <MESSAGE value="Add timeago() and modify racemap.py" />
@@ -437,7 +522,18 @@
     <MESSAGE value="Modify __main__.py" />
     <MESSAGE value="configs" />
     <MESSAGE value="viewboat.py and configs" />
-    <option name="LAST_COMMIT_MESSAGE" value="viewboat.py and configs" />
+    <MESSAGE value="makeroutefile.py" />
+    <MESSAGE value="viewboat.py" />
+    <MESSAGE value="routepos.py, df_route.py" />
+    <MESSAGE value="df_route.py, makeroutefile.py" />
+    <MESSAGE value="multiple" />
+    <MESSAGE value="routepos.py" />
+    <MESSAGE value="df_route.py" />
+    <MESSAGE value="Fix get_route_from_txt_as_df in df_route.py" />
+    <MESSAGE value="upcoming.py" />
+    <MESSAGE value="Add class Map and refactor accordingly" />
+    <MESSAGE value="Fix zoom in map.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix zoom in map.py" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -453,6 +549,12 @@
       <configuration name="PythonConfigurationType">
         <watch expression="sys.argv[1]" language="Python" />
         <watch expression="args.noview is None" />
+        <watch expression="f_map" />
+        <watch expression="(lat, lon)" />
+        <watch expression="os.path.join(DIR_MAP, '{}.html'.format(self._boat_name))" />
+        <watch expression="Maps.Folium" />
+        <watch expression="self._zoom" />
+        <watch expression="data['zoom_start']" />
       </configuration>
     </watches-manager>
   </component>

@@ -5,8 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../trial" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../dev" />
+      <excludeFolder url="file://$MODULE_DIR$/../venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="$USER_HOME$/opt/anaconda3" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
