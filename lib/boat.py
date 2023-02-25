@@ -92,6 +92,7 @@ class Boat:
                 'spd': self.nav['spd'],
                 'twd': self.wind['twd'],
                 'twa': self.wind['twa'],
+                'awa': self.wind['awa'],
                 'heel': self.heel,
                 'lat': self.pos[0],
                 'lon': self.pos[1],
