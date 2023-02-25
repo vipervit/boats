@@ -49,7 +49,7 @@ class Boat:
                     'spd': round(self.data['spd'] * 2, 1),
                     'cog': round(self.data['cog']),
                     'sog': round(self.data['sog'] * 2, 1),
-                    'whlm': round(self.data['weatherhelm'], 2)
+                    'whl': round(self.data['weatherhelm'], 2)
                     }
         if save:
             self.save_current_sail_data()
@@ -69,23 +69,26 @@ class Boat:
             print(sail.lower() + ':' + ' ' * (16 - len(sail)) + mark)
 
     def show_heel(self):
-        print('heel: {}'.format(self.heel))
+        print('heel: {}'.format(abs(self.heel)))
 
     def show_speed(self):
-        print('tws: {}'.format(self.wind['tws']))
-        print('spd: {}'.format(self.nav['spd']))
-        print('sog: {}'.format(self.nav['sog']))
+        print('tws : {}'.format(self.wind['tws']))
+        print('spd : {}'.format(self.nav['spd']))
+        print('sog : {}'.format(self.nav['sog']))
 
     def show_course(self):
-        print('hdg: {}'.format(self.nav['hdg']))
-        print('cog: {}'.format(self.nav['cog']))
+        print('hdg : {}'.format(self.nav['hdg']))
+        print('cog : {}'.format(self.nav['cog']))
 
     def show(self, full=False):
-        print('{}\n----------------'.format(self.name.upper()))
+        print('\n{}\n'.format(self.name.upper()))
         if full:
             self.__show_full__()
         else:
             self.__show_short__()
+
+    def show_efficiency(self):
+        print('Efficiency: {}%'.format(round(self.nav['spd']/self.wind['tws'],2)*100))
 
     def sail_config_snapshot(self):
         return {'tws': self.wind['tws'],
@@ -134,10 +137,14 @@ class Boat:
         self.show_sailplan()
         print('\n')
         for each in self.nav:
-            print('{}: {}'.format(each, self.nav[each]))
+            print('{}: {}'.format(each, abs(self.nav[each])))
         for each in self.wind:
-            print('{}: {}'.format(each, self.wind[each]))
+            print('{}: {}'.format(each, abs(self.wind[each])))
+        print('\n')
         self.show_heel()
+        print('\n')
+        self.show_efficiency()
+        print('\n')
 
     def __read_sail_data_from_file__(self):
         with open(self.datafile, 'r') as f:
