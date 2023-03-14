@@ -5,12 +5,14 @@ import requests
 
 MY_USER = 'Viper Vit'
 
+# TODO Must not sit in the open
 API_KEY = '7B79EE2988A44080A37C06570F4B5EE8'
 API_USER = '59528'
 
 URL_RACES = 'https://sarl.ingenium.net.au/racelog?racenr='
 URL_RACES_SCHEDULE = 'https://sarl.ingenium.net.au/index'
 
+# TODO move to a file
 RACE_IDS = {
     'Stardust': 38602,
     'The Ocean Race': 39147
