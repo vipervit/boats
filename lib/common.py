@@ -2,7 +2,7 @@ from datetime import datetime
 from enum import Enum
 
 import requests
-
+# TODO Must not sit in the open
 MY_USER = 'Viper Vit'
 
 # TODO Must not sit in the open
@@ -14,8 +14,6 @@ URL_RACES_SCHEDULE = 'https://sarl.ingenium.net.au/index'
 
 # TODO move to a file
 RACE_IDS = {
-    'Stardust': 38602,
-    'The Ocean Race': 39147
 }
 
 API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr={}&key={}'.format(API_USER, API_KEY)
@@ -29,6 +27,7 @@ class Maps(Enum):
     Windy = 1
     I_Boating = 2
     Folium = 3
+    Open_Sea = 4
 
 
 DEFAULT_MAP = Maps.I_Boating

@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Mar 14">
-      <change afterPath="$PROJECT_DIR$/data/perf/Kfar Saba_dat.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/map/Kfar Saba.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/route/out/Petsamo.gpx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-02-04_10_37_p_m__[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-02-04_10_37_p_m___Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/Stardust.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Stardust.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/sail analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebook/sail analysis.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/route/in/MARK 3.gpx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Kfar Saba.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Stardust.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/viewboat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +29,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -228,7 +231,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/viewboat.py" />
-      <option name="PARAMETERS" value="--boat_name Petsamo --map Folium --zoom_start 15" />
+      <option name="PARAMETERS" value="--boat_name Petsamo --map Open_Sea --zoom_start 11" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />

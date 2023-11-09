@@ -19,6 +19,8 @@ class Map:
         self._loc = data['location']
         self._track = None
         self._route = self._boat_name
+        self._boat_heel = data['heel']
+        self._boat_cog = data['cog']
         self._markerdata = None
         if 'marker_data' in data.keys():
             self._markerdata = data['marker_data']
@@ -100,49 +102,54 @@ class Map:
 
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
 
-        popup = '{},{} {} dg {} kn'.format(self._loc[0], self._loc[1], self.boat_marker['hdg'], self.boat_marker['sog'])
-        track = self.track
+        popup = '{},{} {}° (hdg) {} kn'.format(self._loc[0], self._loc[1], self.boat_marker['hdg'], self.boat_marker['sog'])
         BoatMarker(self._loc, color='blue',
-                   heading=self._markerdata['hdg'],
+                   heading=self._boat_cog,
                    wind_heading=self._markerdata['twd'],
                    wind_speed=self._markerdata['tws'],
                    popup=popup).add_to(self._folium)
 
-        df = get_route_from_txt_as_df(self._route)
+        # df = get_route_from_txt_as_df(self._route)
 
-        # route
-        points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
-        folium.PolyLine(points, color='red').add_to(self._folium)
-        markers = [(df.iloc[i]['Name'], df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
+        # # route
+        # points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
+        # folium.PolyLine(points, color='red').add_to(self._folium)
+        # markers = [(df.iloc[i]['Name'], df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
 
         # track
-        folium.PolyLine(track, color='green').add_to(self._folium)
+        # folium.PolyLine(self.track, color='green').add_to(self._folium)
 
-        for i in range(len(markers)):
-            name = markers[i][0]
-            lat = markers[i][1]
-            lon = markers[i][2]
-            dist = round(geopy.distance.geodesic((lat, lon), self._loc).nm)
-            popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, calculate_eta(
-                self.boat_marker['sog'], dist))
-            folium.Marker([lat, lon], popup=popup).add_to(self._folium)
+        # for i in range(len(markers)):
+        #     name = markers[i][0]
+        #     lat = markers[i][1]
+        #     lon = markers[i][2]
+        #     dist = round(geopy.distance.geodesic((lat, lon), self._loc).nm)
+        #     popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, calculate_eta(
+        #         self.boat_marker['sog'], dist))
+        #     folium.Marker([lat, lon], popup=popup).add_to(self._folium)
 
-        timestamp = datetime.datetime.now().strftime('%d %b %H:%M')
-        title_html = '<h3 align="center" style="font-size:16px">{} {} dg {} kn<b></b></h3>'.format(
-            timestamp, self.boat_marker['hdg'], self.boat_marker['sog'])
+        timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
+        title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {}<b></b></h3>'.format(
+            timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel)
         self._folium.get_root().html.add_child(folium.Element(title_html))
         self._folium.save(self.mfile)
 
     def __get_url__(self):
+        lat = self._loc[0]
+        lon = self._loc[1]
+        zoom = self._zoom
+        name = self._boat_name
         if self.mtype is None:
             raise ValueError('Map type is not set.')
         if self.mtype == Maps.Windy:
-            return 'https://www.windy.com/distance{},{}?{},{},{}'.format(self._loc[0], self._loc[1], self._loc[0],
-                                                                         self._loc[1], self._zoom)
+            return 'https://www.windy.com/distance{},{}?{},{},{}'.format(lat, lon, lat, lon, zoom)
         elif self.mtype == Maps.I_Boating:
             return 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
-                   '-navigation.html#{}/{}/{}'.format(self._zoom, self._loc[0], self._loc[1])
+                   '-navigation.html#{}/{}/{}'.format(zoom, lat, lon)
         elif self.mtype == Maps.Folium:
             return 'file://{}'.format(self.mfile)
+        elif self.mtype == Maps.Open_Sea:
+            return 'https://map.openseamap.org/?zoom={}&lon={}&lat={}&layers=TFTFFFTFFTFFFFFFTFFFTF&mlat={}' \
+                   '&mlon={}&mtext={}'.format(zoom, lon, lat, lat, lon, name)
         else:
             raise ValueError('Invalid map mtype: {}'.format(self.mtype))

@@ -54,7 +54,7 @@ class Boat:
         if save:
             self.save_current_sail_data()
         self.__get_track_from_log__()
-        self._map = Map(boat_name=self.name, location=self.pos)
+        self._map = Map(boat_name=self.name, location=self.pos, heel=self.heel, cog=self.nav['cog'])
         return self.data
 
     def show_pos(self):
@@ -88,7 +88,7 @@ class Boat:
             self.__show_short__()
 
     def show_efficiency(self):
-        print('Efficiency: {}%'.format(round(self.nav['spd']/self.wind['tws'],2)*100))
+        print('Efficiency: {}%'.format(round(self.nav['spd'] / self.wind['tws'], 2) * 100))
 
     def sail_config_snapshot(self):
         return {'tws': self.wind['tws'],
