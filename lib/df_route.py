@@ -52,12 +52,14 @@ def get_route_from_pathway_file_as_df(f_csv):
     df = df[['Name', 'LAT', 'LON']]
     df = df.assign(Lat=lambda x: x['LAT'].str.replace('\'', ' ').apply(ddm_to_dd))
     df = df.assign(Lon=lambda x: x['LON'].str.replace('\'', ' ').apply(ddm_to_dd))
-    df['Full'] = ['{}  {};'.format(df.iloc[i]['LAT'].replace('\'', ' '), df.iloc[i]['LON'].replace('\'', ' ')) for i in range(len(df))]
+    df['Full'] = ['{}  {};'.format(df.iloc[i]['LAT'].replace('\'', ' '), df.iloc[i]['LON'].replace('\'', ' '))
+                  for i in range(len(df))]
     dtws = [round(geopy.distance.geodesic((df.iloc[i - 1]['Lat'], df.loc[i]['Lon']),
                                           (df.iloc[i]['Lat'], df.iloc[i - 1]['Lon'])).nm) for i in range(1, len(df))]
     dtws.insert(0, 0)
     df['DTW'] = dtws
     return df
+
 
 def get_route_df_from_pickle(route_name):
     return pd.read_pickle(os.path.join(DIR_PKL, '{}.pkl'.format(route_name)))

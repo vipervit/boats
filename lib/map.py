@@ -3,12 +3,10 @@ import os
 import webbrowser
 
 import folium
-import geopy.distance
 from folium.plugins import BoatMarker
 
 from boats import DIR_MAPS
-from lib.common import DEFAULT_ZOOM, DEFAULT_MAP, calculate_eta, Maps
-from lib.df_route import get_route_from_txt_as_df
+from lib.common import DEFAULT_ZOOM, DEFAULT_MAP, Maps
 
 
 class Map:

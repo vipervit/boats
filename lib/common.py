@@ -1,13 +1,10 @@
 from datetime import datetime
 from enum import Enum
-
 import requests
-# TODO Must not sit in the open
-MY_USER = 'Viper Vit'
+import keyring
 
-# TODO Must not sit in the open
-API_KEY = '7B79EE2988A44080A37C06570F4B5EE8'
-API_USER = '59528'
+API_KEY = keyring.get_password('sailaway', 'api_key')
+API_USER = keyring.get_password('sailaway', 'api_user')
 
 URL_RACES = 'https://sarl.ingenium.net.au/racelog?racenr='
 URL_RACES_SCHEDULE = 'https://sarl.ingenium.net.au/index'

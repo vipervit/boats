@@ -1,9 +1,7 @@
 import argparse
-import os
 import sys
 
 from boats.lib.boat import Boat
-from boats import DIR_ROUTE_OUT
 from lib.common import Maps
 
 
