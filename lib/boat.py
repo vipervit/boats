@@ -4,9 +4,9 @@ import time
 
 import pandas as pd
 
-from boats import DIR_SAILDATA
+from boats import DIR_SAILDATA, POINTS_OF_SAIL
 from boats.lib.common import get_all_own_boats_json, dd_to_ddm
-from lib.map import Map
+from boats.lib.map import Map
 
 
 class Boat:
@@ -60,6 +60,7 @@ class Boat:
     def show_pos(self):
         print('{}, {}'.format(self.pos[0], self.pos[1]))
         print(dd_to_ddm((self.pos[0], self.pos[1])))
+        print('\n')
 
     def show_sailplan(self):
         for sail in self.sails:
@@ -68,17 +69,23 @@ class Boat:
                 mark = 'X'
             print(sail.lower() + ':' + ' ' * (16 - len(sail)) + mark)
 
+    def show_point_of_sail(self):
+        print(f'on {self.__get_point_of_sail__()}\n')
+
     def show_heel(self):
         print('heel: {}'.format(abs(self.heel)))
+        print('\n')
 
     def show_speed(self):
         print('tws : {}'.format(self.wind['tws']))
         print('spd : {}'.format(self.nav['spd']))
         print('sog : {}'.format(self.nav['sog']))
+        print('\n')
 
     def show_course(self):
         print('hdg : {}'.format(self.nav['hdg']))
         print('cog : {}'.format(self.nav['cog']))
+        print('\n')
 
     def show(self, full=False):
         print('\n{}\n'.format(self.name.upper()))
@@ -127,24 +134,24 @@ class Boat:
 
     def __show_short__(self):
         self.show_pos()
-        print('hdg: {}'.format(self.nav['hdg']))
-        print('cog: {}'.format(self.nav['cog']))
         print('tws: {}'.format(self.wind['tws']))
+        print('sog: {}'.format(self.nav['sog']))
+        print('twd: {}'.format(self.wind['twd']))
+        print('hdg: {}'.format(self.nav['hdg']))
+        print('\n')
+        self.show_point_of_sail()
 
     def __show_full__(self):
         self.show_pos()
-        print('\n')
         self.show_sailplan()
-        print('\n')
+        self.show_point_of_sail()
         for each in self.nav:
             print('{}: {}'.format(each, abs(self.nav[each])))
         for each in self.wind:
             print('{}: {}'.format(each, abs(self.wind[each])))
         print('\n')
         self.show_heel()
-        print('\n')
         self.show_efficiency()
-        print('\n')
 
     def __read_sail_data_from_file__(self):
         with open(self.datafile, 'r') as f:
@@ -153,6 +160,11 @@ class Boat:
     def __write_sail_data_to_file__(self, dic):
         with open(self.datafile, 'w') as f:
             json.dump(dic, f)
+
+    def __get_point_of_sail__(self):
+        for p_of_sail in POINTS_OF_SAIL:
+            if abs(self.wind['twa']) in POINTS_OF_SAIL[p_of_sail]:
+                return p_of_sail
 
     @map.setter
     def map(self, value):

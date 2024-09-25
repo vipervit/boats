@@ -2,7 +2,7 @@ import argparse
 import sys
 
 from boats.lib.boat import Boat
-from lib.common import Maps
+from boats.lib.common import Maps
 
 
 def main(args):
@@ -27,6 +27,7 @@ def main(args):
     if map_type != Maps.Folium and args.route_name is not None:
         raise ValueError('Can only show route on a Folium map.')
 
+# TODO: add point of sail
     with Boat(args.boat_name) as o_boat:
         o_boat.get_data()
         o_boat.map.mtype = map_type

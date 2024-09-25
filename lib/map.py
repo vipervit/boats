@@ -3,10 +3,12 @@ import os
 import webbrowser
 
 import folium
+from geopy import distance
 from folium.plugins import BoatMarker
 
 from boats import DIR_MAPS
-from lib.common import DEFAULT_ZOOM, DEFAULT_MAP, Maps
+from boats.lib.common import DEFAULT_ZOOM, DEFAULT_MAP, Maps, calculate_eta
+from boats.lib.df_route import get_route_from_txt_as_df
 
 
 class Map:
@@ -100,31 +102,34 @@ class Map:
 
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
 
-        popup = '{},{} {}° (hdg) {} kn'.format(self._loc[0], self._loc[1], self.boat_marker['hdg'], self.boat_marker['sog'])
+        popup = '{},{} {}° (hdg) {} kn'.format(self._loc[0], self._loc[1], self.boat_marker['hdg'],
+                                               self.boat_marker['sog'])
         BoatMarker(self._loc, color='blue',
                    heading=self._boat_cog,
                    wind_heading=self._markerdata['twd'],
                    wind_speed=self._markerdata['tws'],
                    popup=popup).add_to(self._folium)
 
-        # df = get_route_from_txt_as_df(self._route)
+    def __show_route__(self):
 
-        # # route
-        # points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
-        # folium.PolyLine(points, color='red').add_to(self._folium)
-        # markers = [(df.iloc[i]['Name'], df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
+        df = get_route_from_txt_as_df(self._route)
+
+        # route
+        points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
+        folium.PolyLine(points, color='red').add_to(self._folium)
+        markers = [(df.iloc[i]['Name'], df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
 
         # track
-        # folium.PolyLine(self.track, color='green').add_to(self._folium)
+        folium.PolyLine(self.track, color='green').add_to(self._folium)
 
-        # for i in range(len(markers)):
-        #     name = markers[i][0]
-        #     lat = markers[i][1]
-        #     lon = markers[i][2]
-        #     dist = round(geopy.distance.geodesic((lat, lon), self._loc).nm)
-        #     popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, calculate_eta(
-        #         self.boat_marker['sog'], dist))
-        #     folium.Marker([lat, lon], popup=popup).add_to(self._folium)
+        for i in range(len(markers)):
+            name = markers[i][0]
+            lat = markers[i][1]
+            lon = markers[i][2]
+            dist = round(distance.geodesic((lat, lon), self._loc).nm)
+            popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, calculate_eta(
+                self.boat_marker['sog'], dist))
+            folium.Marker([lat, lon], popup=popup).add_to(self._folium)
 
         timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
         title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {}<b></b></h3>'.format(

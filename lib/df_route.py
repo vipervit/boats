@@ -3,9 +3,22 @@ import os
 import geopy.distance
 import pandas as pd
 
-from boats import DIR_PKL, DIR_ROUTE_OUT
-from boats.lib.common import ddm_to_dd
+from boats import DIR_PKL, DIR_ROUTE_OUT, DIR_ROUTE_IN
+from boats.lib.common import ddm_to_dd, dd_to_dddm_single
 
+
+# noinspection PyTypeChecker
+def make_route_upload_file(boat_name):
+    f_in = f'{DIR_ROUTE_IN}/{boat_name}.csv'
+    f_out = f'{DIR_ROUTE_OUT}/{boat_name}.txt'
+    df = pd.read_csv(f_in)
+    df['LAT'] = df['LAT'].apply(lambda x: dd_to_dddm_single(x, coortype=0))
+    df['LON'] = df['LON'].apply(lambda x: dd_to_dddm_single(x, coortype=1)) + ';'
+    df.to_csv(f_out, index=False, header=None)
+    with open(f_out, 'r') as f:
+        text = f.read().replace(',', '  ')
+    with open(f_out, 'w') as f:
+        f.write(text)
 
 def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
     f_path = os.path.join(f_dir, '{}.txt'.format(routename))
@@ -23,6 +36,7 @@ def get_route_from_txt_as_df(routename, f_dir=DIR_ROUTE_OUT):
 
 
 def get_route_from_route_file_as_df(f_csv, step=None):
+    """for QTVlm"""
     df = pd.read_csv(f_csv)
     df.drop(0, axis=0, inplace=True)
     df['Full'] = [x.split(';')[0] for x in df['position;heure']]
@@ -64,6 +78,11 @@ def get_route_from_pathway_file_as_df(f_csv):
 def get_route_df_from_pickle(route_name):
     return pd.read_pickle(os.path.join(DIR_PKL, '{}.pkl'.format(route_name)))
 
+def get_route_from_datafile(f_json):
+    #TODO Pass boat name, let the function pick up the right file
+    with open(f_json, 'r') as f:
+        df = pd.read_json(f.read())[6:8]
+        return list(zip(df.iloc[0].values, df.iloc[1].values))
 
 def save_route_df_to_pickle(df, route_name):
     df.to_pickle(os.path.join(DIR_PKL, '{}.pkl'.format(route_name)))

@@ -11,3 +11,22 @@ DIR_ROUTE_IN = os.path.join(DIR_ROUTE, 'in')
 DIR_ROUTE_OUT = os.path.join(DIR_ROUTE, 'out')
 DIR_ROUTE_TMP = os.path.join(DIR_ROUTE, 'tmp')
 DIR_PKL = os.path.join(DIR_DATA, 'pkl')
+
+SAILS = [
+    'Nr.1',
+    'Nr.2',
+    'Nr.3',
+    'Stormjib',
+    'Mainsail',
+    'Genaker',
+    'Mizzen',
+    'Mizzen staysail'
+]
+
+POINTS_OF_SAIL = {
+    'close haul': list(range(0, 37)),
+    'close reach': list(range(36, 73)),
+    'beam': list(range(72, 109)),
+    'broad reach': list(range(108, 145)),
+    'run': list(range(144, 181))
+}
