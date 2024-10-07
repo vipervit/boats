@@ -3,12 +3,11 @@ import os
 import webbrowser
 
 import folium
-from geopy import distance
+import pandas as pd
 from folium.plugins import BoatMarker
 
-from boats import DIR_MAPS
-from boats.lib.common import DEFAULT_ZOOM, DEFAULT_MAP, Maps, calculate_eta
-from boats.lib.df_route import get_route_from_txt_as_df
+from boats import DIR_MAPS, DIR_SAILDATA
+from boats.lib.common import DEFAULT_ZOOM, DEFAULT_MAP, Maps
 
 
 class Map:
@@ -100,41 +99,31 @@ class Map:
 
     def __prepare_folium__(self):
 
+        df = pd.read_json(f'{DIR_SAILDATA}/{self._boat_name}_dat.json', orient='index')
+        df.index = df.index.strftime('%d-%h %H:%M')
+
+        df_track = df[['lat', 'lon']]
+        df_track.reset_index(drop=True, inplace=True)
+
+        track = [list(df_track.iloc[i].values) for i in df_track.index]
+
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
 
-        popup = '{},{} {}° (hdg) {} kn'.format(self._loc[0], self._loc[1], self.boat_marker['hdg'],
-                                               self.boat_marker['sog'])
+        folium.PolyLine(track, color='red', weight=2.5, opacity=1).add_to(self._folium)
+
+        popup = '{} {}'.format(self._loc[0], self._loc[1])
+
         BoatMarker(self._loc, color='blue',
                    heading=self._boat_cog,
                    wind_heading=self._markerdata['twd'],
                    wind_speed=self._markerdata['tws'],
                    popup=popup).add_to(self._folium)
 
-    def __show_route__(self):
-
-        df = get_route_from_txt_as_df(self._route)
-
-        # route
-        points = [(df.iloc[i]['Lat'], df.iloc[i]['Lon']) for i in range(len(df.index))]
-        folium.PolyLine(points, color='red').add_to(self._folium)
-        markers = [(df.iloc[i]['Name'], df.iloc[i]['Lat'], df.iloc[i]['Lon'],) for i in range(len(df.index))]
-
-        # track
-        folium.PolyLine(self.track, color='green').add_to(self._folium)
-
-        for i in range(len(markers)):
-            name = markers[i][0]
-            lat = markers[i][1]
-            lon = markers[i][2]
-            dist = round(distance.geodesic((lat, lon), self._loc).nm)
-            popup = '{}  {},{} {} nm {}'.format(name, round(lat, 3), round(lon, 3), dist, calculate_eta(
-                self.boat_marker['sog'], dist))
-            folium.Marker([lat, lon], popup=popup).add_to(self._folium)
-
         timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
         title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {}<b></b></h3>'.format(
             timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel)
         self._folium.get_root().html.add_child(folium.Element(title_html))
+
         self._folium.save(self.mfile)
 
     def __get_url__(self):

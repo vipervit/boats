@@ -54,7 +54,19 @@ class Boat:
         if save:
             self.save_current_sail_data()
         self.__get_track_from_log__()
-        self._map = Map(boat_name=self.name, location=self.pos, heel=self.heel, cog=self.nav['cog'])
+        self._map = Map(
+            boat_name=self.name,
+            location=self.pos,
+            heel=self.heel,
+            cog=self.nav['cog'],
+            marker_data = {
+                'heel': self.heel,
+                'sog': self.nav['sog'],
+                'hdg': self.nav['hdg'],
+                'twd': self.wind['twd'],
+                'tws': self.wind['tws']}
+        )
+        self._map.__prepare_folium__()
         return self.data
 
     def show_pos(self):
@@ -138,6 +150,7 @@ class Boat:
         print('sog: {}'.format(self.nav['sog']))
         print('twd: {}'.format(self.wind['twd']))
         print('hdg: {}'.format(self.nav['hdg']))
+        print('heel {}'.format(self.heel))
         print('\n')
         self.show_point_of_sail()
 

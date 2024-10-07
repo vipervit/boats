@@ -1,39 +1,29 @@
 import argparse
-import os
 import sys
+import pandas as pd
+from argparse import ArgumentParser
 
-from boats import DIR_ROUTE_IN
-from boats.lib.df_route import get_route_from_pathway_file_as_df, get_route_from_route_file_as_df, \
-    save_route_for_upload, make_route_upload_file
+from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT
+from lib.common import dd_to_dddm_single
 
 
 def main(args):
-
-    parser = argparse.ArgumentParser(description='Prepares route file.')
-    parser.add_argument('--route_name', type=str)
-    parser.add_argument('--route_type', type=str)
-    parser.add_argument('--step', type=int)
+    parser: ArgumentParser = argparse.ArgumentParser(description='Prepares route file.')
+    parser.add_argument('--boat_name', type=str)
     args = parser.parse_args(args)
 
-    fname_in = args.route_name
-    fname_out = 'Route'
+    f_in = f'{DIR_ROUTE_IN}/{args.boat_name}.csv'
+    f_out = f'{DIR_ROUTE_OUT}/{args.boat_name}.txt'
 
-    if args.route_name is not None:
-        fname_out = args.route_name
+    df = pd.read_csv(f_in)
+    df['LAT'] = df['LAT'].apply(lambda x: dd_to_dddm_single(x, coortype=0))
+    df['LON'] = df['LON'].apply(lambda x: dd_to_dddm_single(x, coortype=1)) + ';'
+    df.to_csv(f_out, index=False, header=None)
 
-    # f = os.path.join(DIR_ROUTE_IN, '{}.csv'.format(fname_in))
-
-    if args.route_type == 'route':
-        make_route_upload_file(args.route_name)
-        # df = get_route_from_route_file_as_df(f, step=args.step)
-    elif args.route_type == 'pathway':
-        df = get_route_from_pathway_file_as_df(f)
-    else:
-        sys.exit('Invalid route type: {}'.format(args.route_type))
-
-    # print(df)
-    #
-    # save_route_for_upload(df, fname_out)
+    with open(f_out, 'r') as f:
+        text = f.read().replace(',', '  ')
+    with open(f_out, 'w') as f:
+        f.write(text)
 
 
 if __name__ == '__main__':

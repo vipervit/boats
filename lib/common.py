@@ -17,8 +17,7 @@ API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr
 API_RACE_MARKS = 'https://backend.sailaway.world/cgi-bin/sailaway/GetMissionCourse.pl?usrnr={}&key={}&misnr=RACEID'. \
     format(API_USER, API_KEY)
 
-DEFAULT_ZOOM = 7
-
+DEFAULT_ZOOM = 11
 
 class Maps(Enum):
     Windy = 1

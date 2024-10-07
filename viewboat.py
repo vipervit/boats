@@ -12,7 +12,6 @@ def main(args):
     parser = argparse.ArgumentParser(description='Displays the current boat position, sails, nav, and other data.')
     parser.add_argument('--boat_name')
     parser.add_argument('--map', type=str)
-    parser.add_argument('--route_name', type=str)
     parser.add_argument('--zoom_start', type=int)
     parser.add_argument('--noview', action='store_true')
     parser.add_argument('--full_info', action='store_true')
@@ -40,9 +39,7 @@ def main(args):
                 sog = o_boat.nav['sog']
                 tws = o_boat.wind['tws']
                 twd = o_boat.wind['twd']
-                if args.route_name is not None:
-                    o_boat.map.route_name = args.route_name
-                # o_boat.map.track = o_boat.get_track()
+                o_boat.map.track = o_boat.get_track()
                 o_boat.map.boat_marker = {'hdg': hdg, 'sog': sog, 'twd': twd, 'tws': tws}
             o_boat.map.show()
 
