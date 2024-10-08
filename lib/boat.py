@@ -66,7 +66,7 @@ class Boat:
                 'twd': self.wind['twd'],
                 'tws': self.wind['tws']}
         )
-        self._map.__prepare_folium__()
+        self._map.track = self._track
         return self.data
 
     def show_pos(self):

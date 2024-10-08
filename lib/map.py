@@ -99,17 +99,8 @@ class Map:
 
     def __prepare_folium__(self):
 
-        df = pd.read_json(f'{DIR_SAILDATA}/{self._boat_name}_dat.json', orient='index')
-        df.index = df.index.strftime('%d-%h %H:%M')
-
-        df_track = df[['lat', 'lon']]
-        df_track.reset_index(drop=True, inplace=True)
-
-        track = [list(df_track.iloc[i].values) for i in df_track.index]
-
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
-
-        folium.PolyLine(track, color='red', weight=2.5, opacity=1).add_to(self._folium)
+        folium.PolyLine(self.track, color='red', weight=2.5, opacity=1).add_to(self._folium)
 
         popup = '{} {}'.format(self._loc[0], self._loc[1])
 
