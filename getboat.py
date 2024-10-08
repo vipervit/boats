@@ -15,4 +15,6 @@ else:
 while True:
     with Boat(boat_name) as boat:
         boat.get_data()
+        boat.map.mtype = 'Folium'
+        boat.map.__prepare_folium__()
     time.sleep(int(interval))

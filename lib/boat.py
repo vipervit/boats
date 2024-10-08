@@ -59,7 +59,7 @@ class Boat:
             location=self.pos,
             heel=self.heel,
             cog=self.nav['cog'],
-            marker_data = {
+            marker_data={
                 'heel': self.heel,
                 'sog': self.nav['sog'],
                 'hdg': self.nav['hdg'],
