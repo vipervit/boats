@@ -6,18 +6,9 @@ import keyring
 API_KEY = keyring.get_password('sailaway', 'api_key')
 API_USER = keyring.get_password('sailaway', 'api_user')
 
-URL_RACES = 'https://sarl.ingenium.net.au/racelog?racenr='
-URL_RACES_SCHEDULE = 'https://sarl.ingenium.net.au/index'
-
-# TODO move to a file
-RACE_IDS = {
-}
-
 API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr={}&key={}'.format(API_USER, API_KEY)
-API_RACE_MARKS = 'https://backend.sailaway.world/cgi-bin/sailaway/GetMissionCourse.pl?usrnr={}&key={}&misnr=RACEID'. \
-    format(API_USER, API_KEY)
 
-DEFAULT_ZOOM = 11
+DEFAULT_ZOOM = 7
 
 class Maps(Enum):
     Windy = 1
@@ -32,22 +23,8 @@ DEFAULT_MAP = Maps.I_Boating
 def get_all_own_boats_json():
     return requests.get(API_OWN_BOATS).json()
 
-
-def get_race_data(race_name):
-    return requests.get(get_race_api_url(race_name)).json()['result']
-
-
-def get_boat_race_data(race, user, boat):
-    return get_race_data(race)[user + '-' + boat]
-
-
-def get_race_api_url(race_name):
-    return '{}{}'.format(URL_RACES, str(RACE_IDS[race_name]))
-
-
 def timestamp():
     return datetime.now().strftime('%d/%m %H:%M')
-
 
 def timeago(time_stamp):
     now = datetime.fromtimestamp(datetime.now().timestamp())
