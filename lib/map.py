@@ -27,6 +27,8 @@ class Map:
             self._track = data['track']
         if 'route' in data.keys():
             self._route = data['route']
+        if 'sailplan' in data.keys():
+            self._boat_sailplan=data['sailplan']
         self._zoom = DEFAULT_ZOOM
         self._folium = None
         self._mfile = os.path.join(DIR_MAPS, '{}.html'.format(self._boat_name))
@@ -102,7 +104,7 @@ class Map:
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
         folium.PolyLine(self.track, color='red', weight=2.5, opacity=1).add_to(self._folium)
 
-        popup = '{} {}'.format(self._loc[0], self._loc[1])
+        popup = self.__get_url_i_boating__()
 
         BoatMarker(self._loc, color='blue',
                    heading=self._boat_cog,
@@ -111,11 +113,15 @@ class Map:
                    popup=popup).add_to(self._folium)
 
         timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
-        title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {}<b></b></h3>'.format(
-            timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel)
+        title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {} sails: {}<b></b></h3>'.format(
+            timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel, self._boat_sailplan)
         self._folium.get_root().html.add_child(folium.Element(title_html))
 
         self._folium.save(self.mfile)
+
+    def __get_url_i_boating__(self):
+        return 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
+               '-navigation.html#{}/{}/{}'.format(self._zoom, self._loc[0], self._loc[1])
 
     def __get_url__(self):
         lat = self._loc[0]
@@ -127,8 +133,7 @@ class Map:
         if self.mtype == Maps.Windy:
             return 'https://www.windy.com/distance{},{}?{},{},{}'.format(lat, lon, lat, lon, zoom)
         elif self.mtype == Maps.I_Boating:
-            return 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
-                   '-navigation.html#{}/{}/{}'.format(zoom, lat, lon)
+            return self.__get_url_i_boating__()
         elif self.mtype == Maps.Folium:
             return 'file://{}'.format(self.mfile)
         elif self.mtype == Maps.Open_Sea:

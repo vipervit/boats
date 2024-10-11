@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Simplify boat.py and map.py">
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove all racing-related code.">
       <change afterPath="$PROJECT_DIR$/data/perf/Fiolent_dat.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/racemap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/racemarks.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seeboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/seeboat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewownfleet.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -538,7 +533,14 @@
       <option name="project" value="LOCAL" />
       <updated>1728347711838</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Remove all racing-related code.">
+      <created>1728572791435</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728572791435</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -601,7 +603,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modify paths, add save_current_sail_data() to viewpos.py" />
     <MESSAGE value="Remove petsamo.py, improve output of viewpos.py and racemap.py" />
     <MESSAGE value="Remove looping from viewpos.py, modify time output in racemap.py" />
     <MESSAGE value="Add upcoming.py" />
@@ -626,7 +627,8 @@
     <MESSAGE value="Mar 14" />
     <MESSAGE value="Correct viewboat.py, add data files" />
     <MESSAGE value="Simplify boat.py and map.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplify boat.py and map.py" />
+    <MESSAGE value="Remove all racing-related code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove all racing-related code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

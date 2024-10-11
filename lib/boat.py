@@ -39,7 +39,7 @@ class Boat:
         self.sails = [sail['sail'] for sail in self.data['sails']]
         self.sailplan = [sail['sail'] for sail in self.data['sails'] if sail['halyard'] == 1 and sail['furled'] == 0]
         self.pos = (round(self.data['latitude'], 5), round(self.data['longitude'], 5))
-        self.heel = round(self.data['heeldegrees'], )
+        self.heel = abs(round(self.data['heeldegrees'], ))
         self.wind = {'tws': round(self.data['tws'] * 2, 1),
                      'twa': round(self.data['twa']),
                      'twd': round(self.data['twd']),
@@ -53,12 +53,13 @@ class Boat:
                     }
         if save:
             self.save_current_sail_data()
-        self.__get_track_from_log__()
         self._map = Map(
             boat_name=self.name,
             location=self.pos,
             heel=self.heel,
             cog=self.nav['cog'],
+            track=self.__get_track_from_log__(),
+            sailplan=self.sailplan,
             marker_data={
                 'heel': self.heel,
                 'sog': self.nav['sog'],
