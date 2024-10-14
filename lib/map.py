@@ -131,7 +131,7 @@ class Map:
         if self.mtype is None:
             raise ValueError('Map type is not set.')
         if self.mtype == Maps.Windy:
-            return 'https://www.windy.com/distance{},{}?{},{},{}'.format(lat, lon, lat, lon, zoom)
+            return 'https://www.windy.com/?{},{},{},m:eT5aeSC'.format(lat, lon, zoom)
         elif self.mtype == Maps.I_Boating:
             return self.__get_url_i_boating__()
         elif self.mtype == Maps.Folium:
