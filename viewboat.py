@@ -18,24 +18,22 @@ def main(args):
 
     args = parser.parse_args(args)
 
-    if args.map is not None:
-        map_type = Maps[args.map]
-
 # TODO: add point of sail
     with Boat(args.boat_name) as o_boat:
         o_boat.get_data()
-        o_boat.map.mtype = map_type
         o_boat.show(args.full_info)
         if args.zoom_start is not None:
             o_boat.map.zoom = str(args.zoom_start)
         if not args.noview:
-            if map_type == Maps.Folium:
-                hdg = o_boat.nav['hdg']
-                sog = o_boat.nav['sog']
-                tws = o_boat.wind['tws']
-                twd = o_boat.wind['twd']
-                o_boat.map.track = o_boat.get_track()
-                o_boat.map.boat_marker = {'hdg': hdg, 'sog': sog, 'twd': twd, 'tws': tws}
+            for maptype in args.map.split(','):
+                o_boat.map.mtype = Maps[maptype]
+                if map_type == Maps.Folium:
+                    hdg = o_boat.nav['hdg']
+                    sog = o_boat.nav['sog']
+                    tws = o_boat.wind['tws']
+                    twd = o_boat.wind['twd']
+                    o_boat.map.track = o_boat.get_track()
+                    o_boat.map.boat_marker = {'hdg': hdg, 'sog': sog, 'twd': twd, 'tws': tws}
             o_boat.map.show()
 
 
