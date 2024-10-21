@@ -10,6 +10,7 @@ API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr
 
 DEFAULT_ZOOM = 7
 
+
 class Maps(Enum):
     Windy = 1
     I_Boating = 2
@@ -17,14 +18,16 @@ class Maps(Enum):
     Open_Sea = 4
 
 
-DEFAULT_MAP = Maps.I_Boating
+DEFAULT_MAP = Maps.Folium
 
 
 def get_all_own_boats_json():
     return requests.get(API_OWN_BOATS).json()
 
+
 def timestamp():
     return datetime.now().strftime('%d/%m %H:%M')
+
 
 def timeago(time_stamp):
     now = datetime.fromtimestamp(datetime.now().timestamp())
@@ -87,3 +90,7 @@ def calculate_eta(speed, distance):
         return '{}d {}h'.format(days, hours)
     else:
         return None
+
+
+def miles_to_nautical(miles):
+    return miles / 1.150779448

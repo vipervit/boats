@@ -15,11 +15,15 @@ class Map:
     def __init__(self, **data):
 
         self._boat_name = data['boat_name']
-        self._loc = data['location']
+        self._loc = []
+        if 'location' in data.keys():
+            self._loc = data['location']
         self._track = None
         self._route = self._boat_name
-        self._boat_heel = data['heel']
-        self._boat_cog = data['cog']
+        if 'heel' in data.keys():
+            self._boat_heel = data['heel']
+        if 'cog' in data.keys():
+            self._boat_cog = data['cog']
         self._markerdata = None
         if 'marker_data' in data.keys():
             self._markerdata = data['marker_data']
@@ -94,12 +98,12 @@ class Map:
         if self.mtype == Maps.Folium:
             self.__prepare_folium__()
 
-    def show(self):
+    def show(self, timestamp=None):
         if self.mtype == Maps.Folium:
-            self.__prepare_folium__()
+            self.__prepare_folium__(timestamp)
         webbrowser.open(self.__get_url__())
 
-    def __prepare_folium__(self):
+    def __prepare_folium__(self, timestamp):
 
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
         folium.PolyLine(self.track, color='red', weight=2.5, opacity=1).add_to(self._folium)
@@ -112,7 +116,8 @@ class Map:
                    wind_speed=self._markerdata['tws'],
                    popup=popup).add_to(self._folium)
 
-        timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
+        if timestamp is None:
+            timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
         title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {} sails: {}<b></b></h3>'.format(
             timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel, self._boat_sailplan)
         self._folium.get_root().html.add_child(folium.Element(title_html))

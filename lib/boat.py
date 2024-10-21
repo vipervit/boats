@@ -12,7 +12,7 @@ from boats.lib.map import Map
 class Boat:
 
     def __init__(self, name):
-        self._map = None
+        self._map = Map(boat_name=name)
         self.nav = None
         self.wind = None
         self.heel = None
@@ -132,6 +132,7 @@ class Boat:
         return self._track
 
     def get_logged_data(self):
+        # TODO Get rid of FutureWarning
         return pd.read_json(json.dumps(self.__read_sail_data_from_file__()), orient='index')
 
     def __get_track_from_log__(self):

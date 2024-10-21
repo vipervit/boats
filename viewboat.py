@@ -34,7 +34,7 @@ def main(args):
                     twd = o_boat.wind['twd']
                     o_boat.map.track = o_boat.get_track()
                     o_boat.map.boat_marker = {'hdg': hdg, 'sog': sog, 'twd': twd, 'tws': tws}
-            o_boat.map.show()
+                o_boat.map.show()
 
 
 if __name__ == '__main__':
