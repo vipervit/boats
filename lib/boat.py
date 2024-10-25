@@ -3,11 +3,14 @@ import os
 import time
 
 import pandas as pd
+import warnings
+from io import StringIO
 
 from boats import DIR_SAILDATA, POINTS_OF_SAIL
 from boats.lib.common import get_all_own_boats_json, dd_to_ddm
 from boats.lib.map import Map
 
+warnings.simplefilter(action='ignore', category=FutureWarning)
 
 class Boat:
 
@@ -132,8 +135,7 @@ class Boat:
         return self._track
 
     def get_logged_data(self):
-        # TODO Get rid of FutureWarning
-        return pd.read_json(json.dumps(self.__read_sail_data_from_file__()), orient='index')
+        return pd.read_json(StringIO(json.dumps(self.__read_sail_data_from_file__())), orient='index')
 
     def __get_track_from_log__(self):
         df = self.get_logged_data()

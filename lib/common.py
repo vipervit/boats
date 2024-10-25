@@ -1,3 +1,4 @@
+import time
 from datetime import datetime
 from enum import Enum
 import requests
@@ -94,3 +95,7 @@ def calculate_eta(speed, distance):
 
 def miles_to_nautical(miles):
     return miles / 1.150779448
+
+
+def seconds_to_formatted_output(secs):
+    return time.strftime('%H:%M:%S', time.gmtime(secs))

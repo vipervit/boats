@@ -1,46 +1,99 @@
 import argparse
 import sys
+import time
 from datetime import datetime, timedelta
 
 import wx
 from geopy import distance
 
 from boats.lib.boat import Boat
-from boats.lib.common import miles_to_nautical
+from boats.lib.common import miles_to_nautical, seconds_to_formatted_output
 
 
 class BoatPopup(wx.Frame):
+    polling_interval: int
 
     def __init__(self, boat_name):
         super(BoatPopup, self).__init__(parent=None, title=boat_name.upper())
 
         self.boat = Boat(boat_name)
-        self.boat.map._loc = []
+        self.counter = 0
+
+        self.polling_interval = 600000  # every 10 min
+        self.__reset_counter__()
+
+        self.poll_timer = wx.Timer(self)
+        self.__timer_start__()
+
+        self.heartbeat_timer = wx.Timer(self)
+        self.heartbeat_timer.Start(1000)
 
         self.vbox = wx.BoxSizer(wx.VERTICAL)
 
         self.txt_info = wx.StaticText(self)
-        self.txt_timestamp = wx.StaticText(self)
+        self.txt_poll = wx.StaticText(self, label='Polling interval:')
+        self.txt_zoom = wx.StaticText(self, label='Zoom level: ')
+        self.edctl_zoom = wx.TextCtrl(self, value=str(self.boat.map.zoom))
+        self.edctl_poll = wx.TextCtrl(self, value=str(int(self.polling_interval/1000)))
+        self.txt_next_upd = wx.StaticText(self)
+        self.txt_time = wx.StaticText(self)
+        self.txt_footer = wx.StaticText(self)
         self.btn_exit = wx.Button(self, 0, 'Exit')
         self.btn_open_map = wx.Button(self, 0, 'Open map')
         self.btn_update = wx.Button(self, 0, 'Update')
 
         self.vbox.Add(self.txt_info, 0, wx.ALIGN_LEFT)
+        self.vbox.Add(self.txt_poll, 0, wx.ALIGN_RIGHT)
+        self.vbox.Add(self.edctl_poll, 0, wx.ALIGN_RIGHT)
+        self.vbox.Add(self.txt_zoom, 0, wx.ALIGN_RIGHT)
+        self.vbox.Add(self.edctl_zoom, 0, wx.ALIGN_RIGHT)
+        self.vbox.Add(self.txt_time, 0, wx.ALIGN_LEFT)
+        self.vbox.Add(self.txt_next_upd, 0, wx.ALIGN_LEFT)
         self.vbox.Add(self.btn_open_map, -2, wx.ALIGN_CENTER)
         self.vbox.Add(self.btn_update, -2, wx.ALIGN_CENTER)
         self.vbox.Add(self.btn_exit, -1, wx.ALIGN_CENTER)
-        self.vbox.Add(self.txt_timestamp, 0, wx.ALIGN_LEFT)
+        self.vbox.Add(self.txt_footer, 0, wx.ALIGN_LEFT)
 
+        self.Bind(wx.EVT_TIMER, self.__update__, self.poll_timer)
+        self.edctl_zoom.Bind(wx.EVT_TEXT, self.__set_zoom__)
+        self.edctl_poll.Bind(wx.EVT_TEXT, self.__set_polling_interval__)
         self.btn_exit.Bind(wx.EVT_BUTTON, self.__close__)
-        self.btn_update.Bind(wx.EVT_BUTTON, self.__get_update_from_webserver__)
+        self.btn_update.Bind(wx.EVT_BUTTON, self.__update__)
         self.btn_open_map.Bind(wx.EVT_BUTTON, self.__open_map__)
+        self.Bind(wx.EVT_TIMER, self.__update_display__, self.heartbeat_timer)
 
-        self.__get_update_from_log__()
+        self.__update__(self)
 
         self.SetSizer(self.vbox)
 
         self.Centre()
         self.Show()
+
+    def __reset_counter__(self):
+        self.counter = int(self.polling_interval/1000)
+
+    def __update_counter__(self):
+        self.counter -= 1
+        if self.counter == 0:
+            self.__reset_counter__()
+
+    def __update_display__(self, event):
+        self.__update_counter__()
+        curr_time = time.strftime('%H:%M')
+        next_update_time = (datetime.now() + timedelta(seconds=self.counter)).strftime('%H:%M')
+        self.txt_time.SetLabel(f'Current time:  {curr_time}')
+        self.txt_next_upd.SetLabel(f'Next update:   {next_update_time} (in {seconds_to_formatted_output(self.counter)})')
+
+    def __set_polling_interval__(self, event):
+        self.polling_interval = int(event.GetString())*1000
+        self.__reset_counter__()
+        self.__timer_start__()
+
+    def __set_zoom__(self, event):
+        self.boat.map.zoom = event.GetString()
+
+    def __timer_start__(self):
+        self.poll_timer.Start(self.polling_interval)
 
     @staticmethod
     def __close__(event):
@@ -55,30 +108,32 @@ class BoatPopup(wx.Frame):
         else:
             self.__update_txt_info__('Get boat data update first!')
 
-    def __update_txt_timestamp__(self):
-        self.txt_timestamp.SetLabel(f'Last update {self.__get_last_update_timestamp__()}')
+    def __update_txt_footer__(self, s_timestamp):
+        self.txt_footer.SetLabel(f'Last update: {s_timestamp}')
 
-    def __update_txt_info__(self, text):
-        self.txt_info.SetLabel(text)
-
-    def __get_update_from_webserver__(self, event):
-        self.boat.get_data()
-        self.__get_update_from_log__()
-
-    def __get_update_from_log__(self):
-        df = self.boat.get_logged_data()
-        self.boat.map._loc = list(self.boat.get_logged_data().iloc[-1][['lat', 'lon']].values)
+    def __update_txt_info__(self, df):
+        coors_port=[48.663304, -2.061057]
         hrs_24 = df.index[-1] - timedelta(days=1)
         df_24hrs = df[df.index.isin([entry for entry in df.index if entry >= hrs_24])]
         start_pos = list(df_24hrs.iloc[0][['lat', 'lon']].values)
         last_pos = list(df_24hrs.iloc[-1][['lat', 'lon']].values)
         dist_24hrs = round(miles_to_nautical(distance.distance(start_pos, last_pos).miles))
         avg_spd_24hrs = round(dist_24hrs / 24)
-        # dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
-        # spd = df.iloc[-1]['spd']
-        # time2go = round(dtw / spd)
-        self.__update_txt_info__(f'Last 24 hours: \n--------------\ndistance: {dist_24hrs}\navg speed: {avg_spd_24hrs}')
-        self.__update_txt_timestamp__()
+        dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
+        spd = df.iloc[-1]['spd']
+        time2go = round(dtw / spd)
+        text =  f'Last 24 hrs dist.:...........{dist_24hrs}\n'
+        text += f'Last 24 hrs avg spd:......{avg_spd_24hrs}\n'
+        text += f'Last speed:....................{spd}\n'
+        text += f'DTD:...............................{dtw:,} nm\n'
+        text += f'TTD:...............................{timedelta(hours=time2go)} h\n'
+        text += f'ETA:...............................{(datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')}'
+        self.__update_txt_footer__(self.__get_last_update_timestamp__())
+        self.txt_info.SetLabel(text)
+
+    def __update__(self, event):
+        self.boat.get_data()
+        self.__update_txt_info__(self.boat.get_logged_data())
 
 def main(args):
     parser = argparse.ArgumentParser(description='Displays the current boat position, sails, nav, and other data.')
