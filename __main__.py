@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-import boatpopup
+import boatmonitor
 import boats.makeroutefile as makeroutefile
 import boats.viewboat as viewboat
 
@@ -27,7 +27,7 @@ def main(args):
     if args.viewboat:
         viewboat.main(sys.argv[2:])
     if args.popup:
-        boatpopup.main()
+        boatmonitor.main()
 
 
 if __name__ == "__main__":
