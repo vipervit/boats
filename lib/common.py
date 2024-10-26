@@ -1,15 +1,10 @@
 import time
 from datetime import datetime
 from enum import Enum
+import pandas as pd
 import requests
-import keyring
 
-API_KEY = keyring.get_password('sailaway', 'api_key')
-API_USER = keyring.get_password('sailaway', 'api_user')
-
-API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr={}&key={}'.format(API_USER, API_KEY)
-
-DEFAULT_ZOOM = 7
+from boats import F_DESTINATIONS, API_OWN_BOATS
 
 
 class Maps(Enum):
@@ -99,3 +94,8 @@ def miles_to_nautical(miles):
 
 def seconds_to_formatted_output(secs):
     return time.strftime('%H:%M:%S', time.gmtime(secs))
+
+
+def get_destination_coordinates(name):
+    df = pd.read_csv(F_DESTINATIONS)
+    return list(df[df['Name'] == name][['Lat', 'Lon']].values[0])

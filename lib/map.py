@@ -3,11 +3,10 @@ import os
 import webbrowser
 
 import folium
-import pandas as pd
 from folium.plugins import BoatMarker
 
-from boats import DIR_MAPS, DIR_SAILDATA
-from boats.lib.common import DEFAULT_ZOOM, DEFAULT_MAP, Maps
+from boats import DIR_MAPS, DEFAULT_ZOOM
+from boats.lib.common import DEFAULT_MAP, Maps
 
 
 class Map:
@@ -32,7 +31,7 @@ class Map:
         if 'route' in data.keys():
             self._route = data['route']
         if 'sailplan' in data.keys():
-            self._boat_sailplan=data['sailplan']
+            self._boat_sailplan = data['sailplan']
         self._zoom = DEFAULT_ZOOM
         self._folium = None
         self._mfile = os.path.join(DIR_MAPS, '{}.html'.format(self._boat_name))
@@ -119,7 +118,8 @@ class Map:
         if timestamp is None:
             timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
         title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {} sails: {}<b></b></h3>'.format(
-            timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel, self._boat_sailplan)
+            timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel,
+            self._boat_sailplan)
         self._folium.get_root().html.add_child(folium.Element(title_html))
 
         self._folium.save(self.mfile)
