@@ -12,6 +12,7 @@ from boats.lib.map import Map
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
+
 class Boat:
 
     def __init__(self, name):
@@ -114,15 +115,17 @@ class Boat:
         print('Efficiency: {}%'.format(round(self.nav['spd'] / self.wind['tws'], 2) * 100))
 
     def sail_config_snapshot(self):
-        return {'tws': self.wind['tws'],
-                'spd': self.nav['spd'],
-                'twd': self.wind['twd'],
-                'twa': self.wind['twa'],
-                'awa': self.wind['awa'],
-                'heel': self.heel,
-                'lat': self.pos[0],
-                'lon': self.pos[1],
-                'sails': self.sailplan}
+        return {
+            'hdg': self.nav['hdg'],
+            'tws': self.wind['tws'],
+            'spd': self.nav['spd'],
+            'twd': self.wind['twd'],
+            'twa': self.wind['twa'],
+            'awa': self.wind['awa'],
+            'heel': self.heel,
+            'lat': self.pos[0],
+            'lon': self.pos[1],
+            'sails': self.sailplan}
 
     def save_current_sail_data(self):
         data = {}
