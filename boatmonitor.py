@@ -46,6 +46,7 @@ class BoatPopup(wx.Frame):
         self.btn_update = wx.Button(self, 0, 'Update Now')
         self.btn_exit = wx.Button(self, 0, 'Exit')
         self.btn_enter_dest = wx.Button(self, 0, 'OK')
+        self.btn_open_map_dr = wx.Button(self, 0, 'Open DR map')
 
         self.vbox.Add(self.txt_info, 0, wx.ALIGN_LEFT)
         self.vbox.Add(self.txt_enter_dest, 0, wx.ALIGN_LEFT)
@@ -60,6 +61,7 @@ class BoatPopup(wx.Frame):
         self.vbox.Add(self.txt_last_update, 0, wx.ALIGN_LEFT)
         self.vbox.Add(self.txt_next_upd, 0, wx.ALIGN_LEFT)
         self.vbox.Add(self.btn_open_map, -2, wx.ALIGN_CENTER)  # Open map
+        self.vbox.Add(self.btn_open_map_dr, -2, wx.ALIGN_CENTER)  # Open DR map
         self.vbox.Add(self.btn_update, -2, wx.ALIGN_CENTER)  # Update Now
         self.vbox.Add(self.btn_exit, -1, wx.ALIGN_CENTER)  # Exit
 
@@ -68,9 +70,10 @@ class BoatPopup(wx.Frame):
         self.edctl_poll.Bind(wx.EVT_TEXT, self.__set_polling_interval__)
         self.btn_exit.Bind(wx.EVT_BUTTON, self.__close__)
         self.btn_update.Bind(wx.EVT_BUTTON, self.__update__)
-        self.btn_open_map.Bind(wx.EVT_BUTTON, self.__open_map__)
+        self.btn_open_map.Bind(wx.EVT_BUTTON, self.__open_map_known__)
         self.Bind(wx.EVT_TIMER, self.__update_display__, self.heartbeat_timer)
         self.btn_enter_dest.Bind(wx.EVT_BUTTON, self.__set_destination__)
+        self.btn_open_map_dr.Bind(wx.EVT_BUTTON, self.__open_map_dr__)
 
         self.SetSizer(self.vbox)
 
@@ -117,10 +120,21 @@ class BoatPopup(wx.Frame):
     def __timer_start__(self):
         self.poll_timer.Start(self.polling_interval)
 
-    def __open_map__(self, event):
+    def __open_map_known__(self, event):
         if self.boat.map is None:
             self.boat.get_data()
         self.boat.map.show(self.__get_last_update_timestamp__())
+
+    def __get_dead_reckoning_params__(self, event):
+        pass
+
+    @staticmethod
+    def __calculate_position__():
+        pos=(48.67, -2.31)
+        return pos
+
+    def __open_map_dr__(self, event):
+        self.boat.map.show_calculated_position(self.__calculate_position__())
 
     def __update_txt_info__(self):
         df = self.boat.get_logged_data()
@@ -145,7 +159,7 @@ class BoatPopup(wx.Frame):
         self.txt_info.SetLabel(text)
 
     def __update__(self, event):
-        self.boat.get_data()
+        # self.boat.get_data()
         self.__update_txt_info__()
 
     @staticmethod

@@ -3,6 +3,7 @@ from datetime import datetime
 from enum import Enum
 import pandas as pd
 import requests
+from geographiclib.geodesic import Geodesic
 
 from boats import F_DESTINATIONS, API_OWN_BOATS
 
@@ -99,3 +100,14 @@ def seconds_to_formatted_output(secs):
 def get_destination_coordinates(name):
     df = pd.read_csv(F_DESTINATIONS)
     return list(df[df['Name'] == name][['Lat', 'Lon']].values[0])
+
+
+def get_estimated_position(last_pos, hdg, spd, elapsed):
+    '''Last pos - (lat, lon)
+       hdg - degrees
+       spd - knots
+       elapsed - time since last position at speed=spd in hours
+    '''
+    d_est = spd * 1852 * elapsed
+    gd = Geodesic.WGS84.Direct(last_pos[0], last_pos[1], hdg, d_est)
+    return round(gd['lat2'], 2), round(gd['lon2'], 2)

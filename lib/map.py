@@ -102,6 +102,10 @@ class Map:
             self.__prepare_folium__(timestamp)
         webbrowser.open(self.__get_url__())
 
+    def show_calculated_position(self, pos):
+        webbrowser.open(self.__get_url_i_boating__(pos))
+
+
     def __prepare_folium__(self, timestamp):
 
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
@@ -124,9 +128,14 @@ class Map:
 
         self._folium.save(self.mfile)
 
-    def __get_url_i_boating__(self):
+    def __get_url_i_boating__(self, pos=None):
+        global lat, lon
+        if pos is None:
+            lat, lon = self._loc[0], self._loc[1]
+        else:
+            lat, lon = pos[0], pos[1]
         return 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
-               '-navigation.html#{}/{}/{}'.format(self._zoom, self._loc[0], self._loc[1])
+               '-navigation.html#{}/{}/{}'.format(self._zoom, lat, lon)
 
     def __get_url__(self):
         lat = self._loc[0]
