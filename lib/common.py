@@ -111,3 +111,10 @@ def get_estimated_position(last_pos, hdg, spd, elapsed):
     d_est = spd * 1852 * elapsed
     gd = Geodesic.WGS84.Direct(last_pos[0], last_pos[1], hdg, d_est)
     return round(gd['lat2'], 2), round(gd['lon2'], 2)
+
+
+def calc_course(start, dest):
+    az = Geodesic.WGS84.Inverse(start[0], start[1], dest[0], dest[1])['azi1']
+    if az < 0:
+        az += 360
+    return round(az)

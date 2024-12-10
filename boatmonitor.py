@@ -8,7 +8,7 @@ from geopy import distance
 
 from boats.lib.boat import Boat
 from boats.lib.common import miles_to_nautical, seconds_to_formatted_output, get_destination_coordinates, \
-    get_estimated_position
+    get_estimated_position, calc_course
 
 
 class BoatPopup(wx.Frame):
@@ -21,6 +21,7 @@ class BoatPopup(wx.Frame):
         self.inferred = None
 
         self.boat = Boat(boat_name)
+        self.boat.get_data()
         self.counter = 0
 
         self.polling_interval = 600000  # every 10 min
@@ -212,6 +213,7 @@ class BoatPopup(wx.Frame):
         dist_24hrs = round(miles_to_nautical(distance.distance(start_pos, last_pos).miles))
         avg_spd_24hrs = round(dist_24hrs / 24)
         spd = df.iloc[-1]['spd']
+        cog = self.boat.nav['cog']
         text = f'Last 24 hrs dist.: ...........{dist_24hrs}\n'
         text += f'Last 24 hrs avg spd: ......{avg_spd_24hrs}\n'
         text += f'Last speed: ....................{spd}\n'
@@ -219,9 +221,12 @@ class BoatPopup(wx.Frame):
             dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
             time2go = round(dtw / spd)
             txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
+            ctd = calc_course(self.boat.pos, coors_port) # course to destination
             text += f'DTD: ...............................{dtw:,} nm\n'
             text += f'TTD: ...............................{timedelta(hours=time2go)} h\n'
-            text += f'ETA: ...............................{txteta}'
+            text += f'ETA: ...............................{txteta}\n'
+            text += f'CTD: ...............................{ctd}\n'
+            text += f'COG: ...............................{cog}'
         self.txt_info.SetLabel(text)
 
     def __update__(self, event):
