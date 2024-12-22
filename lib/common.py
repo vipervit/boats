@@ -4,6 +4,7 @@ from enum import Enum
 import pandas as pd
 import requests
 from geographiclib.geodesic import Geodesic
+from geopy import distance
 
 from boats import F_DESTINATIONS, API_OWN_BOATS
 
@@ -118,3 +119,16 @@ def calc_course(start, dest):
     if az < 0:
         az += 360
     return round(az)
+
+
+def calc_total_voyage_distance(df_dist):
+    total = 0
+    for i in range(len(df_dist.index) - 1):
+        prev = list(df_dist.iloc[i].values)
+        curr = list(df_dist.iloc[i + 1].values)
+        total += distance.distance(prev, curr).nm
+    return round(total, )
+
+
+def calc_total_voyage_days(ts_start, ts_end):
+    return (ts_end - ts_start).days

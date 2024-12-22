@@ -1,0 +1,30 @@
+#!/opt/anaconda3/bin/python3
+
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
+import pandas as pd
+
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
+
+from boats.lib.boat import Boat
+
+mfile = 'predspd.keras'
+
+df=Boat('Petsamo').get_logged_data()
+df.reset_index(drop=True, inplace=True)
+df['twa']=df['twa'].apply(lambda x: abs(x))
+df=df[df['spd']!=0]
+df.dropna(inplace=True)
+
+
+predictors=df[['tws', 'twd', 'hdg']]
+target=df['spd']
+model = Sequential()
+model.add(Dense(200, activation='relu', input_shape=(len(predictors.columns),)))
+model.add(Dense(1))
+model.compile(optimizer='adam', loss='mean_squared_error')
+model.fit(predictors, target, validation_split=0.1, epochs=100)
+
+model.save(mfile)

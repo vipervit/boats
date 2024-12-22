@@ -8,7 +8,7 @@ from geopy import distance
 
 from boats.lib.boat import Boat
 from boats.lib.common import miles_to_nautical, seconds_to_formatted_output, get_destination_coordinates, \
-    get_estimated_position, calc_course
+    get_estimated_position, calc_course, calc_total_voyage_days, calc_total_voyage_distance
 
 
 class BoatPopup(wx.Frame):
@@ -99,12 +99,13 @@ class BoatPopup(wx.Frame):
 
         # Updates info
 
-        self.txt_next_upd = wx.StaticText(self)
         self.txt_time = wx.StaticText(self)
         self.txt_last_update = wx.StaticText(self)
+        self.txt_next_upd = wx.StaticText(self)
 
-        self.vbox.Add(self.txt_last_update, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.txt_next_upd, 0, wx.ALIGN_LEFT)
+        self.vbox.Add(self.txt_last_update, 0, wx.ALIGN_LEFT)  # last update time
+        self.vbox.Add(self.txt_time, 0, wx.ALIGN_LEFT)  # current time
+        self.vbox.Add(self.txt_next_upd, 0, wx.ALIGN_LEFT)  # next update time
 
         # Buttons
 
@@ -114,7 +115,6 @@ class BoatPopup(wx.Frame):
 
         self.btn_open_map_dr = wx.Button(self, 0, 'Open DR map')
 
-        self.vbox.Add(self.txt_time, 0, wx.ALIGN_LEFT)
         self.vbox.Add(self.btn_open_map, -2, wx.ALIGN_CENTER)  # Open map
         self.vbox.Add(self.btn_open_map_dr, -2, wx.ALIGN_CENTER)  # Open DR map
         self.vbox.Add(self.btn_update, -2, wx.ALIGN_CENTER)  # Update Now
@@ -123,8 +123,8 @@ class BoatPopup(wx.Frame):
         self.btn_exit.Bind(wx.EVT_BUTTON, self.__close__)
         self.btn_update.Bind(wx.EVT_BUTTON, self.__update__)
 
-        self.btn_open_map.Bind(wx.EVT_BUTTON, self.__open_map_known__) # open map with actual known position
-        self.btn_open_map_dr.Bind(wx.EVT_BUTTON, self.__open_map_dr__) # open map with inferred (DR) position
+        self.btn_open_map.Bind(wx.EVT_BUTTON, self.__open_map_known__)  # open map with actual known position
+        self.btn_open_map_dr.Bind(wx.EVT_BUTTON, self.__open_map_dr__)  # open map with inferred (DR) position
         self.Bind(wx.EVT_TIMER, self.__update_display__, self.heartbeat_timer)
 
         self.SetSizer(self.vbox)
@@ -145,7 +145,7 @@ class BoatPopup(wx.Frame):
 
     def __set_destination__(self, event):
         self.dest_coors = get_destination_coordinates(self.__get_destination__())
-        self.txt_dest_coors.SetLabel(self.dest_coors.__str__())
+        self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
         self.__update_txt_info__()
 
     def __get_last_update_timestamp__(self):
@@ -158,8 +158,8 @@ class BoatPopup(wx.Frame):
         next_update = (datetime.now() + timedelta(seconds=self.counter)).strftime('%d-%b %H:%M')
         last_update = self.__get_last_update_timestamp__()
         self.txt_last_update.SetLabel(f'Last update:    {last_update}')
-        self.txt_next_upd.SetLabel(f'Next update:    {next_update} (in {seconds_to_formatted_output(self.counter)})')
         self.txt_time.SetLabel(f'Current time:   {curr_time}')
+        self.txt_next_upd.SetLabel(f'Next update:    {next_update} (in {seconds_to_formatted_output(self.counter)})')
 
     def __set_polling_interval__(self, event):
         self.polling_interval = int(event.GetString()) * 1000
@@ -212,21 +212,38 @@ class BoatPopup(wx.Frame):
         last_pos = list(df_24hrs.iloc[-1][['lat', 'lon']].values)
         dist_24hrs = round(miles_to_nautical(distance.distance(start_pos, last_pos).miles))
         avg_spd_24hrs = round(dist_24hrs / 24)
-        spd = df.iloc[-1]['spd']
+        heel = self.boat.heel
+        spd = self.boat.nav['spd']
+        hdg = self.boat.nav['hdg']
         cog = self.boat.nav['cog']
+        tws = self.boat.wind['tws']
+        twd = abs(self.boat.wind['twd'])
+        s_sails = ', '.join(self.boat.sailplan).upper()
+        total_days = calc_total_voyage_days(df.index[0], df.index[-1])
+        total_distance = calc_total_voyage_distance(df[['lat', 'lon']])
+
         text = f'Last 24 hrs dist.: ...........{dist_24hrs}\n'
         text += f'Last 24 hrs avg spd: ......{avg_spd_24hrs}\n'
-        text += f'Last speed: ....................{spd}\n'
+        text += f'TWS: ...............................{tws}\n'
+        text += f'SPD: ...............................{spd}\n'
+        text += f'HEEL: ..............................{heel}\n'
+        text += f'TWD: ...............................{twd}\n\n'
+        text += f'{s_sails}\n\n'
+        text += f'Days at sea: {total_days}\n'
+        text += f'Distance sailed: {total_distance:,} nm\n\n'
+
         if coors_port is not None:
             dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
             time2go = round(dtw / spd)
             txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
-            ctd = calc_course(self.boat.pos, coors_port) # course to destination
+            ctd = calc_course(self.boat.pos, coors_port)  # course to destination
+            text += f'CTD: ...............................{ctd}\n'
+            text += f'COG: ...............................{cog}\n'
+            text += f'HDG: ...............................{hdg}\n\n'
             text += f'DTD: ...............................{dtw:,} nm\n'
             text += f'TTD: ...............................{timedelta(hours=time2go)} h\n'
             text += f'ETA: ...............................{txteta}\n'
-            text += f'CTD: ...............................{ctd}\n'
-            text += f'COG: ...............................{cog}'
+
         self.txt_info.SetLabel(text)
 
     def __update__(self, event):

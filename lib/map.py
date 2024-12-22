@@ -105,10 +105,10 @@ class Map:
     def show_calculated_position(self, pos):
         webbrowser.open(self.__get_url_i_boating__(pos))
 
-
     def __prepare_folium__(self, timestamp):
 
         self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
+        folium.TileLayer('openseamap').add_to(self._folium)
         folium.PolyLine(self.track, color='red', weight=2.5, opacity=1).add_to(self._folium)
 
         popup = self.__get_url_i_boating__()
