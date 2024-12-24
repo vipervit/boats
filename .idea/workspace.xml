@@ -4,13 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove all racing-related code.">
-      <change afterPath="$PROJECT_DIR$/data/perf/Fiolent_dat.json" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="WIP">
+      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/boatlast-checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/boatmonitor-checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ipynb_checkpoints/viewboat-checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/__main__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/boatlast.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/boatmonitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/data/.ipynb_checkpoints/destinations-checkpoint.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/data/ml/updatemodel" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/data/perf/.ipynb_checkpoints/Petsamo_dat-checkpoint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/lib/.ipynb_checkpoints/boat-checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/lib/.ipynb_checkpoints/common-checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/lib/boat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/lib/common.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/lib/map.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/makeroutefile.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/map/Datum.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/map/Petsamo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/newdest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/notebook/.ipynb_checkpoints/predspeed-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/notebook/predspeed.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/notebook/sail analysis.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/predspd.keras" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/usm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dev/viewboat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/boat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/boatlast.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/boatmonitor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/destinations.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ml/updatemodel" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/.ipynb_checkpoints/boat-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/.ipynb_checkpoints/common-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/makeroutefile.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newdest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/predspeed.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/sail analysis.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/predspd.keras" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/usm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +74,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="0f821ac4bd98891dd689b8622e11385d34b765aa" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,24 +107,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TODO_SCOPE": "All Places",
-    "git-widget-placeholder": "cruise",
-    "last_opened_file_path": "C:/Users/Vitolg/PycharmProjects/boats/upcoming.py",
-    "settings.editor.selected.configurable": "vcs.Git"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;0f821ac4&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vitolg/PycharmProjects/boats/upcoming.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "Python"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;Python&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
@@ -255,6 +298,9 @@
       <list>
         <item itemvalue="Python.viewownfleet" />
         <item itemvalue="Python.seeboat" />
+        <item itemvalue="Python.viewownfleet" />
+        <item itemvalue="Python.seeboat" />
+        <item itemvalue="Python.viewownfleet" />
       </list>
     </recent_temporary>
   </component>
@@ -551,6 +597,26 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
+                  <option value="newgui" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="cruise" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="dr" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
                   <option value="dev" />
                 </option>
               </RecentGroup>
@@ -564,9 +630,15 @@
                   <option value="origin/main" />
                 </option>
               </RecentGroup>
+            </list>
+          </value>
+        </entry>
+        <entry key="Paths">
+          <value>
+            <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
-                  <option value="main" />
+                  <option value="file:$PROJECT_DIR$/boatmonitor.py" />
                 </option>
               </RecentGroup>
             </list>
@@ -589,7 +661,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="newgui" />
                       </list>
                     </value>
                   </entry>
