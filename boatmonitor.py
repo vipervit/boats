@@ -4,6 +4,7 @@ import time
 from datetime import datetime, timedelta
 
 import wx
+from wx import html2
 from geopy import distance
 
 from boats.lib.boat import Boat
@@ -11,199 +12,125 @@ from boats.lib.common import miles_to_nautical, seconds_to_formatted_output, get
     get_estimated_position, calc_course, calc_total_voyage_days, calc_total_voyage_distance
 
 
-class BoatPopup(wx.Frame):
-    polling_interval: int
+class Display(wx.Frame):
 
     def __init__(self, boat_name):
-        super(BoatPopup, self).__init__(parent=None, title=boat_name.upper())
-
-        self.dr_params = []
-        self.inferred = None
+        super(Display, self).__init__(parent=None, title=boat_name.upper())
 
         self.boat = Boat(boat_name)
         self.boat.get_data()
-        self.counter = 0
+        self.poll_counter = 0
+
+        self.dest_coors = None
 
         self.polling_interval = 600000  # every 10 min
-        self.__reset_counter__()
-
-        self.poll_timer = wx.Timer(self)
-        self.__timer_start__()
+        poll_timer = wx.Timer(self)
+        poll_timer.Start(self.polling_interval)
+        self.__reset_polling_counter__()
 
         self.heartbeat_timer = wx.Timer(self)
         self.heartbeat_timer.Start(1000)
 
-        self.dest_coors = None
+        self.Bind(wx.EVT_TIMER, self.__update_times__, self.heartbeat_timer)
+        self.Bind(wx.EVT_TIMER, self.__update_polling_counter__, poll_timer)
 
-        self.vbox = wx.BoxSizer(wx.VERTICAL)
+        sizer = wx.BoxSizer(wx.VERTICAL)
+        sizer.Add(self.__map__(), 1, wx.EXPAND)
+        sizer.Add(self.__polling__())
+        sizer.Add(self.__times__())
+        sizer.Add(self.__destination__())
+        sizer.Add(self.__main_info__())
+        sizer.Add(self.__buttons__(), 0, 5)
 
-        # Status info
 
-        self.txt_info = wx.StaticText(self)
-        self.vbox.Add(self.txt_info, 0, wx.ALIGN_LEFT)
+        self.SetSizer(sizer)
 
-        # Polling
-
-        self.txt_poll = wx.StaticText(self, label='Polling interval:')
-        self.txt_zoom = wx.StaticText(self, label='Zoom level: ')
-        self.edctl_zoom = wx.TextCtrl(self, value=str(self.boat.map.zoom))
-        self.edctl_poll = wx.TextCtrl(self, value=str(int(self.polling_interval / 1000)))
-
-        self.vbox.Add(self.txt_poll, 0, wx.ALIGN_RIGHT)
-        self.vbox.Add(self.edctl_poll, 0, wx.ALIGN_RIGHT)
-        self.vbox.Add(self.txt_zoom, 0, wx.ALIGN_RIGHT)
-        self.vbox.Add(self.edctl_zoom, 0, wx.ALIGN_RIGHT)
-
-        self.edctl_zoom.Bind(wx.EVT_TEXT, self.__set_zoom__)
-        self.edctl_poll.Bind(wx.EVT_TEXT, self.__set_polling_interval__)
-        self.Bind(wx.EVT_TIMER, self.__update__, self.poll_timer)
-
-        # Destination
-
-        self.txt_enter_dest = wx.StaticText(self, label='Enter destination:')
-        self.edctl_destination = wx.TextCtrl(self)
-        self.edctl_dr_lon = wx.TextCtrl(self)
-        self.txt_dest_coors = wx.StaticText(self)
-        self.btn_enter_dest = wx.Button(self, 0, 'OK')
-
-        self.vbox.Add(self.txt_enter_dest, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.edctl_destination, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.btn_enter_dest, 0, wx.ALIGN_LEFT)  # enter destination
-        self.vbox.Add(self.txt_dest_coors, 0, wx.ALIGN_LEFT)
-
-        self.btn_enter_dest.Bind(wx.EVT_BUTTON, self.__set_destination__)
-
-        # DR params
-
-        self.txt_enter_dr = wx.StaticText(self, label='Enter DR parameters\nTime period (hrs):')
-        self.edctl_dr_period = wx.TextCtrl(self)
-        self.txt_enter_last_lat = wx.StaticText(self, label='Last position lat:')
-        self.edctl_dr_last_lat = wx.TextCtrl(self)
-        self.txt_enter_last_lon = wx.StaticText(self, label='Last position lon:')
-        self.edctl_dr_last_lon = wx.TextCtrl(self)
-        self.btn_enter_dr = wx.Button(self, 0, 'OK')
-        self.txt_inferred_display = wx.StaticText(self, label='Inferred position:')
-        self.txt_inferred = wx.StaticText(self)
-
-        self.vbox.Add(self.txt_enter_dr, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.edctl_dr_period, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.txt_enter_last_lat, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.edctl_dr_last_lat, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.txt_enter_last_lon, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.edctl_dr_last_lon, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.btn_enter_dr, 0, wx.ALIGN_LEFT)  # enter DR params
-        self.vbox.Add(self.txt_inferred_display, 0, wx.ALIGN_LEFT)
-        self.vbox.Add(self.txt_inferred, 0, wx.ALIGN_LEFT)
-
-        self.btn_enter_dr.Bind(wx.EVT_BUTTON, self.__calculate_dr__)
-
-        # Updates info
-
-        self.txt_time = wx.StaticText(self)
-        self.txt_last_update = wx.StaticText(self)
-        self.txt_next_upd = wx.StaticText(self)
-
-        self.vbox.Add(self.txt_last_update, 0, wx.ALIGN_LEFT)  # last update time
-        self.vbox.Add(self.txt_time, 0, wx.ALIGN_LEFT)  # current time
-        self.vbox.Add(self.txt_next_upd, 0, wx.ALIGN_LEFT)  # next update time
-
-        # Buttons
-
-        self.btn_open_map = wx.Button(self, 0, 'Open map')
-        self.btn_update = wx.Button(self, 0, 'Update Now')
-        self.btn_exit = wx.Button(self, 0, 'Exit')
-
-        self.btn_open_map_dr = wx.Button(self, 0, 'Open DR map')
-
-        self.vbox.Add(self.btn_open_map, -2, wx.ALIGN_CENTER)  # Open map
-        self.vbox.Add(self.btn_open_map_dr, -2, wx.ALIGN_CENTER)  # Open DR map
-        self.vbox.Add(self.btn_update, -2, wx.ALIGN_CENTER)  # Update Now
-        self.vbox.Add(self.btn_exit, -1, wx.ALIGN_CENTER)  # Exit
-
-        self.btn_exit.Bind(wx.EVT_BUTTON, self.__close__)
-        self.btn_update.Bind(wx.EVT_BUTTON, self.__update__)
-
-        self.btn_open_map.Bind(wx.EVT_BUTTON, self.__open_map_known__)  # open map with actual known position
-        self.btn_open_map_dr.Bind(wx.EVT_BUTTON, self.__open_map_dr__)  # open map with inferred (DR) position
-        self.Bind(wx.EVT_TIMER, self.__update_display__, self.heartbeat_timer)
-
-        self.SetSizer(self.vbox)
+        self.__update__(None)
 
         self.Centre()
         self.Show()
 
-    def __reset_counter__(self):
-        self.counter = int(self.polling_interval / 1000)
+    def __buttons__(self):
+        box = wx.FlexGridSizer(3, 0, 5)
+        btn_update = wx.Button(self, label='Update')
+        btn_close = wx.Button(self, label='Close')
+        box.Add(btn_update)
+        box.Add(btn_close)
+        btn_close.Bind(wx.EVT_BUTTON, self.__close__)
+        btn_update.Bind(wx.EVT_BUTTON, self.__update__)
+        return box
 
-    def __update_counter__(self):
-        self.counter -= 1
-        if self.counter == 0:
-            self.__reset_counter__()
+    def __map__(self):
+        box = wx.BoxSizer(wx.VERTICAL)
+        browser = wx.html2.WebView.New(self)
+        browser.LoadURL('file:///Users/hedge/PycharmProjects/boats/map/Petsamo.html')
+        box.Add(browser, 1, wx.EXPAND)
+        return box
 
-    def __get_destination__(self):
-        return self.edctl_destination.GetLineText(0)
+    def __polling__(self):
+        self.polling_interval = 3600000
+        zoom = 10
+        self.poll_timer = None
+        box = wx.FlexGridSizer(0, 0, 0)
+        txt_poll = wx.StaticText(self, label='Polling interval:')
+        txt_zoom = wx.StaticText(self, label='Zoom level: ')
+        btn_enter = wx.Button(self, label='Enter')
+        edctl_zoom = wx.TextCtrl(self, value=str(zoom))
+        self.edctl_poll = wx.TextCtrl(self, value=str(int(self.polling_interval / 1000)))
+        box.Add(txt_poll, 0, wx.ALIGN_RIGHT)
+        box.Add(self.edctl_poll, 0, wx.ALIGN_RIGHT)
+        box.Add(txt_zoom, 0, wx.ALIGN_RIGHT)
+        box.Add(edctl_zoom, 0, wx.ALIGN_RIGHT)
+        box.Add(btn_enter, 0, wx.ALIGN_RIGHT)
+        btn_enter.Bind(wx.EVT_BUTTON, self.__set_zoom__)
+        btn_enter.Bind(wx.EVT_BUTTON, self.__set_polling_interval__)
+        self.Bind(wx.EVT_TIMER, self.__update__, self.poll_timer)
+        return box
 
-    def __set_destination__(self, event):
-        self.dest_coors = get_destination_coordinates(self.__get_destination__())
-        self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
-        self.__update_txt_info__()
+    def __destination__(self):
+        box = wx.BoxSizer(wx.HORIZONTAL)
+        txt_enter_dest = wx.StaticText(self, label='Destination:')
+        self.edbox_destination = wx.TextCtrl(self)
+        self.txt_dest_coors = wx.StaticText(self)
+        btn_enter_dest = wx.Button(self, 0, 'Enter')
+        box.Add(txt_enter_dest, 0, wx.ALIGN_LEFT)
+        box.Add(self.edbox_destination, 0, wx.ALIGN_LEFT)
+        box.Add(self.txt_dest_coors, 0, wx.ALIGN_LEFT)
+        box.Add(btn_enter_dest, 0, wx.ALIGN_LEFT)  # enter destination
+        btn_enter_dest.Bind(wx.EVT_BUTTON, self.__set_destination__)
+        return box
 
-    def __get_last_update_timestamp__(self):
-        return datetime.fromtimestamp(self.boat.get_logged_data().iloc[-1].name.timestamp()).strftime('%d-%b %H:%M')
+    def __main_info__(self):
+        box = wx.BoxSizer(wx.HORIZONTAL)
+        self.txt_info = wx.StaticText(self)
+        box.Add(self.txt_info)
+        return box
 
-    def __update_display__(self, event):
-        self.__update_txt_info__()
-        self.__update_counter__()
+    def __times__(self):
+        box = wx.BoxSizer(wx.VERTICAL)
+        self.txt_curr_time = wx.StaticText(self)
+        self.txt_last_update = wx.StaticText(self)
+        self.txt_next_upd = wx.StaticText(self)
+        box.Add(self.txt_last_update, 0, wx.ALIGN_LEFT)  # last update time
+        box.Add(self.txt_curr_time, 0, wx.ALIGN_LEFT)  # current time
+        box.Add(self.txt_next_upd, 0, wx.ALIGN_LEFT)  # next update time
+        return box
+
+    def __update_times__(self, event):
+        self.__update_polling_counter__(event)
         curr_time = time.strftime('%d-%b %H:%M')
-        next_update = (datetime.now() + timedelta(seconds=self.counter)).strftime('%d-%b %H:%M')
+        next_update = (datetime.now() + timedelta(seconds=self.poll_counter)).strftime('%d-%b %H:%M')
         last_update = self.__get_last_update_timestamp__()
         self.txt_last_update.SetLabel(f'Last update:    {last_update}')
-        self.txt_time.SetLabel(f'Current time:   {curr_time}')
-        self.txt_next_upd.SetLabel(f'Next update:    {next_update} (in {seconds_to_formatted_output(self.counter)})')
+        self.txt_curr_time.SetLabel(f'Current time:   {curr_time}')
+        self.txt_next_upd.SetLabel(f'Next update:    {next_update} (in {seconds_to_formatted_output(self.poll_counter)})')
 
-    def __set_polling_interval__(self, event):
-        self.polling_interval = int(event.GetString()) * 1000
-        self.__reset_counter__()
-        self.__timer_start__()
+    def __update__(self, event):
+        self.boat.get_data()
+        self.__update_times__(event)
+        self.__update_info__()
 
-    def __set_zoom__(self, event):
-        self.boat.map.zoom = event.GetString()
-
-    def __timer_start__(self):
-        self.poll_timer.Start(self.polling_interval)
-
-    def __open_map_known__(self, event):
-        if self.boat.map is None:
-            self.boat.get_data()
-        self.boat.map.show(self.__get_last_update_timestamp__())
-
-    def __open_map_dr__(self, event):
-        self.boat.map.show_calculated_position(self.inferred)
-
-    def __calculate_dr__(self, event):
-        self.__get_dead_reckoning_params__()
-        self.__infer_position__()
-
-    def __get_dead_reckoning_params__(self):
-        lat = self.edctl_dr_last_lat.GetLineText(0)
-        lon = self.edctl_dr_last_lon.GetLineText(0)
-        period = self.edctl_dr_period.GetLineText(0)
-        self.dr_params.append(float(period))
-        self.dr_params.append((float(lat), float(lon)))
-
-    def __infer_position__(self):
-        period = self.dr_params[0]
-        last_pos = self.dr_params[1]
-        df = self.boat.get_logged_data()
-        delta = timedelta(hours=period)
-        cutoff_idx = [x for x in df.index if x >= df.index[-1] - delta][0]
-        dfdr = df[df.index >= cutoff_idx]
-        mean_spd = dfdr['spd'].mean()
-        mean_hdg = dfdr['hdg'].mean()
-        self.inferred = get_estimated_position(last_pos, mean_hdg, mean_spd, elapsed=period)
-        self.txt_inferred.SetLabel(f'({self.inferred[0]}, {self.inferred[1]})')
-
-    def __update_txt_info__(self):
+    def __update_info__(self):
         df = self.boat.get_logged_data()
         coors_port = self.dest_coors
         hrs_24 = df.index[-1] - timedelta(days=1)
@@ -221,7 +148,6 @@ class BoatPopup(wx.Frame):
         s_sails = ', '.join(self.boat.sailplan).upper()
         total_days = calc_total_voyage_days(df.index[0], df.index[-1])
         total_distance = calc_total_voyage_distance(df[['lat', 'lon']])
-
         text = f'Last 24 hrs dist.: ...........{dist_24hrs}\n'
         text += f'Last 24 hrs avg spd: ......{avg_spd_24hrs}\n'
         text += f'TWS: ...............................{tws}\n'
@@ -231,7 +157,6 @@ class BoatPopup(wx.Frame):
         text += f'{s_sails}\n\n'
         text += f'Days at sea: {total_days}\n'
         text += f'Distance sailed: {total_distance:,} nm\n\n'
-
         if coors_port is not None:
             dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
             time2go = round(dtw / spd)
@@ -243,12 +168,39 @@ class BoatPopup(wx.Frame):
             text += f'DTD: ...............................{dtw:,} nm\n'
             text += f'TTD: ...............................{timedelta(hours=time2go)} h\n'
             text += f'ETA: ...............................{txteta}\n'
-
         self.txt_info.SetLabel(text)
 
-    def __update__(self, event):
-        self.boat.get_data()
-        self.__update_txt_info__()
+    def __set_destination__(self, event):
+        self.dest_coors = get_destination_coordinates(self.__get_destination__())
+        self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
+        self.__main_info__()
+
+    def __get_destination__(self):
+        return self.edbox_destination.GetLineText(0)
+
+    def __set_zoom__(self, event):
+        # self.boat.map.zoom = event.GetString()
+        pass
+
+    def __set_polling_interval__(self, event):
+        self.polling_interval = self.edctl_poll.GetLineText(0)
+
+    @staticmethod
+    def __get_last_update_timestamp__():
+        return datetime.now().strftime('%d-%b %H:%M')
+
+    def __open_map___(self, event):
+        if self.boat.map is None:
+            self.boat.get_data()
+        self.boat.map.show(self.__get_last_update_timestamp__())
+
+    def __reset_polling_counter__(self):
+        self.poll_counter = int(self.polling_interval / 1000)
+
+    def __update_polling_counter__(self, event):
+        self.poll_counter -= 1
+        if self.poll_counter == 0:
+            self.__reset_polling_counter__()
 
     @staticmethod
     def __close__(event):
@@ -261,7 +213,7 @@ def main(args):
     args = parser.parse_args(args)
 
     app = wx.App()
-    BoatPopup(boat_name=args.boat_name)
+    Display(boat_name=args.boat_name)
     app.MainLoop()
 
 
