@@ -18,7 +18,6 @@ class Display(wx.Frame):
         super(Display, self).__init__(parent=None, title=boat_name.upper())
 
         self.boat = Boat(boat_name)
-        self.boat.get_data()
         self.poll_counter = 0
 
         self.dest_coors = None
@@ -42,7 +41,6 @@ class Display(wx.Frame):
         sizer.Add(self.__main_info__())
         sizer.Add(self.__buttons__(), 0, 5)
 
-
         self.SetSizer(sizer)
 
         self.__update__(None)
@@ -63,7 +61,7 @@ class Display(wx.Frame):
     def __map__(self):
         box = wx.BoxSizer(wx.VERTICAL)
         browser = wx.html2.WebView.New(self)
-        browser.LoadURL('file:///Users/hedge/PycharmProjects/boats/map/Petsamo.html')
+        browser.LoadURL(f'file:///{self.boat.map.mfile}')
         box.Add(browser, 1, wx.EXPAND)
         return box
 
@@ -123,15 +121,16 @@ class Display(wx.Frame):
         last_update = self.__get_last_update_timestamp__()
         self.txt_last_update.SetLabel(f'Last update:    {last_update}')
         self.txt_curr_time.SetLabel(f'Current time:   {curr_time}')
-        self.txt_next_upd.SetLabel(f'Next update:    {next_update} (in {seconds_to_formatted_output(self.poll_counter)})')
+        self.txt_next_upd.SetLabel(
+            f'Next update:    {next_update} (in {seconds_to_formatted_output(self.poll_counter)})')
 
     def __update__(self, event):
-        self.boat.get_data()
+        self.boat.nav.__getdata__()
         self.__update_times__(event)
         self.__update_info__()
 
     def __update_info__(self):
-        df = self.boat.get_logged_data()
+        df = self.boat.log.as_df
         coors_port = self.dest_coors
         hrs_24 = df.index[-1] - timedelta(days=1)
         df_24hrs = df[df.index.isin([entry for entry in df.index if entry >= hrs_24])]
@@ -139,13 +138,13 @@ class Display(wx.Frame):
         last_pos = list(df_24hrs.iloc[-1][['lat', 'lon']].values)
         dist_24hrs = round(miles_to_nautical(distance.distance(start_pos, last_pos).miles))
         avg_spd_24hrs = round(dist_24hrs / 24)
-        heel = self.boat.heel
-        spd = self.boat.nav['spd']
-        hdg = self.boat.nav['hdg']
-        cog = self.boat.nav['cog']
-        tws = self.boat.wind['tws']
-        twd = abs(self.boat.wind['twd'])
-        s_sails = ', '.join(self.boat.sailplan).upper()
+        heel = self.boat.nav.heel
+        spd = self.boat.nav.speed['spd']
+        hdg = self.boat.nav.az['hdg']
+        cog = self.boat.nav.az['cog']
+        tws = self.boat.nav.wind['tws']
+        twd = abs(self.boat.nav.wind['twd'])
+        s_sails = ', '.join(self.boat.nav.sailplan).upper()
         total_days = calc_total_voyage_days(df.index[0], df.index[-1])
         total_distance = calc_total_voyage_distance(df[['lat', 'lon']])
         text = f'Last 24 hrs dist.: ...........{dist_24hrs}\n'
@@ -161,7 +160,7 @@ class Display(wx.Frame):
             dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
             time2go = round(dtw / spd)
             txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
-            ctd = calc_course(self.boat.pos, coors_port)  # course to destination
+            ctd = calc_course(self.boat.nav.position, coors_port)  # course to destination
             text += f'CTD: ...............................{ctd}\n'
             text += f'COG: ...............................{cog}\n'
             text += f'HDG: ...............................{hdg}\n\n'
@@ -173,26 +172,23 @@ class Display(wx.Frame):
     def __set_destination__(self, event):
         self.dest_coors = get_destination_coordinates(self.__get_destination__())
         self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
-        self.__main_info__()
 
     def __get_destination__(self):
         return self.edbox_destination.GetLineText(0)
 
     def __set_zoom__(self, event):
-        # self.boat.map.zoom = event.GetString()
-        pass
+        raise NotImplemented
 
     def __set_polling_interval__(self, event):
         self.polling_interval = self.edctl_poll.GetLineText(0)
 
     @staticmethod
     def __get_last_update_timestamp__():
-        return datetime.now().strftime('%d-%b %H:%M')
+        return 'NOT IMPLEMENTED'
 
     def __open_map___(self, event):
         if self.boat.map is None:
-            self.boat.get_data()
-        self.boat.map.show(self.__get_last_update_timestamp__())
+            self.boat.map.show(self.__get_last_update_timestamp__())
 
     def __reset_polling_counter__(self):
         self.poll_counter = int(self.polling_interval / 1000)

@@ -1,26 +1,31 @@
 import time
+import warnings
 from datetime import datetime
-from enum import Enum
+
+import time
+from datetime import datetime
+import json
+
 import pandas as pd
 import requests
 from geographiclib.geodesic import Geodesic
 from geopy import distance
 
-from boats import F_DESTINATIONS, API_OWN_BOATS
-
-
-class Maps(Enum):
-    Windy = 1
-    I_Boating = 2
-    Folium = 3
-    Open_Sea = 4
-
-
-DEFAULT_MAP = Maps.Folium
+from boats import F_DESTINATIONS, API_OWN_BOATS, API_SIMULATED_RESPONSE_FILE
 
 
 def get_all_own_boats_json():
-    return requests.get(API_OWN_BOATS).json()
+    match not __debug__: # the logic is inverted; to run  in debug mode '-O' must be used
+        case True:
+            warnings.warn('Running in debug mode!')
+            with open(API_SIMULATED_RESPONSE_FILE, 'r') as f:
+                return json.loads(f.read())
+        case False:
+            return requests.get(API_OWN_BOATS).json()
+
+
+def make_log_file_name(boatname):
+    return f'{boatname}.log'
 
 
 def timestamp():

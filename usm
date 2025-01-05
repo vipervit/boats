@@ -12,7 +12,7 @@ from boats.lib.boat import Boat
 
 mfile = 'predspd.keras'
 
-df=Boat('Petsamo').get_logged_data()
+df=Boat('Petsamo').log.as_df()
 df.reset_index(drop=True, inplace=True)
 df['twa']=df['twa'].apply(lambda x: abs(x))
 df=df[df['spd']!=0]
