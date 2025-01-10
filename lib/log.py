@@ -34,7 +34,6 @@ class Log:
                 'spd',
                 'twd',
                 'twa',
-                'awa',
                 'heel',
                 'lat',
                 'lon',

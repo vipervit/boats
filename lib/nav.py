@@ -96,7 +96,6 @@ class Nav:
             'spd': self.speed['spd'],
             'twd': self.wind['twd'],
             'twa': self.wind['twa'],
-            'awa': self.wind['awa'],
             'heel': self.heel,
             'lat': self.position[0],
             'lon': self.position[1],

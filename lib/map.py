@@ -73,9 +73,13 @@ class Map:
     def mtype(self, val):
         self._mtype = val
 
+    @property
+    def mfile(self):
+        return self._mfile
+
     def set(self, **kwargs):
         if 'type' in kwargs.keys():
-            self._mtype = kwargs['type']
+            self.mtype = kwargs['type']
         if 'location' in kwargs.keys():
             self._loc = kwargs['location']
         if 'marker' in kwargs.keys():
@@ -88,15 +92,18 @@ class Map:
             self._title = kwargs['title']
         if 'zoom_start' in kwargs.keys():
             self._zoom = kwargs['zoom_start']
+        if self.mtype == Maps.Folium:
+            self.__save_folium_html__()
 
     def show(self, timestamp=None):
-        if self._mtype == Maps.Folium:
-            self.save_folium_html()
         webbrowser.open(self.__get_url__())
 
-    def save_folium_html(self):
+    def __save_folium_html__(self):
         self.__prepare_folium__()
         self._map_folium.save(self._mfile)
+
+    def __delete_folium_html__(self):
+        os.remove(self._mfile)
 
     def __prepare_folium__(self):
         self._map_folium = folium.Map(location=self._loc, zoom_start=self._zoom)
@@ -105,6 +112,9 @@ class Map:
             folium.PolyLine(self._track, color='red', weight=2.5, opacity=1).add_to(self._map_folium)
 
         popup = self.__get_url_i_boating__()
+
+        if self._marker is None:
+            raise ValueError('Boat marker is note set.')
 
         BoatMarker(location=self._marker.location, color='blue',
                    heading=self._marker.heading,
