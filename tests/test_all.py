@@ -1,4 +1,7 @@
 import os
+import time
+
+import pytest
 
 import pytest
 
@@ -58,7 +61,7 @@ class Test_Boat:
     #     boat = Boat(name=TEST_BOAT_NAME, getdata=False)
     #     boat.update_from_log()
     #     boat.map.show()
-
+    #
     # def test_show_map_updated_from_server(self):
     #     boat = Boat(name='Petsamo')
     #     boat.map.show()
@@ -89,7 +92,7 @@ class Test_Nav:
         nav_local.show()
 
     def test_record_schema_matches_required_columns(self, nav_local):
-        assert nav_local.__collect_log_data__().keys() == nav_local.log.required_columns()
+        assert list(nav_local.__collect_log_data__().keys()) == nav_local.log.required_columns()
 
 
 class Test_Log:
@@ -142,31 +145,35 @@ class Test_Map:
 
     @pytest.fixture()
     def mymap(self):
-        return Map(boat_name=TEST_BOAT_NAME)
+        loc = [43.632, -79.387]
+        return Map(boat_name=TEST_BOAT_NAME,
+                   title='TORONTO HARBOUR',
+                   location=loc,
+                   zoom_start=15,
+                   marker=MapMarker(location=loc,
+                                    heading=180,
+                                    wind_heading=260,
+                                    wind_speed=25
+                                    ))
 
     def test_get_url(self, mymap):
         for m, s in zip(Maps, ['windy', 'i-boating', 'file://', 'opensea']):
             mymap.set(type=m)
             assert s in Map.__get_url__(mymap)
 
-    def test_save_folium(self, mymap):
-        loc = [43.632, -79.387]
-        mymap.set(type=Maps.Folium,
-                  title='TORONTO HARBOUR',
-                  location=loc,
-                  zoom_start=15,
-                  marker=MapMarker(location=loc,
-                                   heading=180,
-                                   wind_heading=260,
-                                   wind_speed=25
-                                   ))
-        mymap.save_folium_html()
-        assert os.path.exists(mymap._mfile)
-        os.remove(mymap._mfile)
-        # mymap.show()
-
     def test_cannot_have_marker_if_not_folium(self, mymap):
         maps = [m for m in Maps if m != Maps.Folium]
         for maptype in maps:
             with pytest.raises(ValueError) as e_info:
                 mymap.set(type=maptype, marker=MapMarker())
+
+    def test_save_folium(self, mymap):
+        mymap.__save_folium_html__()
+        assert os.path.exists(mymap._mfile)
+        # mymap.show(); time.sleep(1)
+
+    def test_delete_folium(self, mymap):
+        mymap.__delete_folium_html__()
+        assert not os.path.exists(mymap._mfile)
+
+
