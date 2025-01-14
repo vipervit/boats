@@ -5,37 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Fix workspace.">
-      <change afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/racemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/racemap-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/racemap-checkpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/viewpos-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/viewpos-checkpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__main__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ml/updatemodel" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/ml/updatemodel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test/Testboat_Local.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/test/Testboat_Local.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test/simulated.json" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/test/simulated.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/.ipynb_checkpoints/boat-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/boat-checkpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/.ipynb_checkpoints/common-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/common-checkpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/common.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/nav.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/nav.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loglast.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/loglast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newdest" beforeDir="false" afterPath="$PROJECT_DIR$/boats/newdest" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/predspeed.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/predspeed.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebook/sail analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predspd" beforeDir="false" afterPath="$PROJECT_DIR$/boats/predspd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/predspd.keras" beforeDir="false" afterPath="$PROJECT_DIR$/boats/predspd.keras" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/tests/test_all.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/usm" beforeDir="false" afterPath="$PROJECT_DIR$/boats/usm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/viewboat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +91,7 @@
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.viewboat">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
