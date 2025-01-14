@@ -4,8 +4,8 @@ import time
 from datetime import datetime, timedelta
 
 import wx
+import wx.html2
 from geopy import distance
-from wx import html2
 
 from boats.lib.boat import Boat
 from boats.lib.common import miles_to_nautical, seconds_to_formatted_output, get_destination_coordinates, \

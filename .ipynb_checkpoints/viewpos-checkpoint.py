@@ -1,8 +1,8 @@
 import sys
 import webbrowser
 
-from lib.boat import boat
-from lib.common import URL_IBOATING_CHART, timestamp
+from boats import boat
+from boats import URL_IBOATING_CHART, timestamp
 
 boat_name = sys.argv[1]
 zoom = str(sys.argv[2])

@@ -3,15 +3,15 @@ import time
 
 import pandas as pd
 
-from lib import common
-from lib.common import get_all_own_boats_json
+from boats.lib import common
+from boats.lib.common import get_all_own_boats_json
 
 
 class boat:
     
     def __init__(self, name):
         self.name=name
-        self.datafile=common.os.path.join(common.DIR_SAILDATA, name + '_dat.json')
+        self.datafile= common.os.path.join(common.DIR_SAILDATA, name + '_dat.json')
      
     def getdata(self, response_json=False):
         if not response_json:
