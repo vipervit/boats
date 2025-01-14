@@ -168,8 +168,8 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python.viewboat" />
-      <item itemvalue="Python tests.pytest in tests" />
       <item itemvalue="Shell Script.Build" />
+      <item itemvalue="Python tests.pytest in tests" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
