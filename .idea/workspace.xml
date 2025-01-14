@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove all racing-related code.">
-      <change afterPath="$PROJECT_DIR$/data/perf/Fiolent_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/boat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
-    </list>
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove all racing-related code." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +65,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
-    "git-widget-placeholder": "cruise",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "C:/Users/Vitolg/PycharmProjects/boats/upcoming.py",
     "settings.editor.selected.configurable": "vcs.Git"
   },
@@ -242,13 +235,13 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.racemap" />
       <item itemvalue="Python.__main__" />
       <item itemvalue="Python.makeroutefile" />
       <item itemvalue="Python.racemarks" />
+      <item itemvalue="Python.seeboat" />
       <item itemvalue="Python.upcoming" />
       <item itemvalue="Python.viewboat" />
-      <item itemvalue="Python.racemap" />
-      <item itemvalue="Python.seeboat" />
       <item itemvalue="Python.viewownfleet" />
     </list>
     <recent_temporary>
