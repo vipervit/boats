@@ -20,7 +20,7 @@ def main(args):
     if args.viewboat:
         viewboat.main(sys.argv[2:])
     if args.monitor:
-        boatmonitor.main(args.boat_name)
+        boatmonitor.main(['--boat_name', args.boat_name])
 
 
 if __name__ == "__main__":
