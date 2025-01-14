@@ -4,12 +4,12 @@ import time
 from datetime import datetime, timedelta
 
 import wx
-from wx import html2
 from geopy import distance
+from wx import html2
 
 from boats.lib.boat import Boat
 from boats.lib.common import miles_to_nautical, seconds_to_formatted_output, get_destination_coordinates, \
-    get_estimated_position, calc_course, calc_total_voyage_days, calc_total_voyage_distance
+    calc_course, calc_total_voyage_days, calc_total_voyage_distance
 
 
 class Display(wx.Frame):
@@ -43,7 +43,7 @@ class Display(wx.Frame):
 
         self.SetSizer(sizer)
 
-        self.__update__(None)
+        self.__get__data__()
 
         self.Centre()
         self.Show()
@@ -55,7 +55,7 @@ class Display(wx.Frame):
         box.Add(btn_update)
         box.Add(btn_close)
         btn_close.Bind(wx.EVT_BUTTON, self.__close__)
-        btn_update.Bind(wx.EVT_BUTTON, self.__update__)
+        btn_update.Bind(wx.EVT_BUTTON, self.__update_display__)
         return box
 
     def __map__(self):
@@ -82,7 +82,7 @@ class Display(wx.Frame):
         box.Add(btn_enter, 0, wx.ALIGN_RIGHT)
         btn_enter.Bind(wx.EVT_BUTTON, self.__set_zoom__)
         btn_enter.Bind(wx.EVT_BUTTON, self.__set_polling_interval__)
-        self.Bind(wx.EVT_TIMER, self.__update__, self.poll_timer)
+        self.Bind(wx.EVT_TIMER, self.__update_display__, self.poll_timer)
         return box
 
     def __destination__(self):
@@ -124,13 +124,17 @@ class Display(wx.Frame):
         self.txt_next_upd.SetLabel(
             f'Next update:    {next_update} (in {seconds_to_formatted_output(self.poll_counter)})')
 
-    def __update__(self, event):
-        self.boat.nav.__getdata__()
+    def __get__data__(self):
+        self.boat.update_from_log()
+        # self.boat.nav.__getdata__()
+
+    def __update_display__(self, event):
         self.__update_times__(event)
         self.__update_info__()
 
     def __update_info__(self):
-        df = self.boat.log.as_df
+        self.boat.log.load()
+        df = self.boat.log.df
         coors_port = self.dest_coors
         hrs_24 = df.index[-1] - timedelta(days=1)
         df_24hrs = df[df.index.isin([entry for entry in df.index if entry >= hrs_24])]
@@ -141,7 +145,6 @@ class Display(wx.Frame):
         heel = self.boat.nav.heel
         spd = self.boat.nav.speed['spd']
         hdg = self.boat.nav.az['hdg']
-        cog = self.boat.nav.az['cog']
         tws = self.boat.nav.wind['tws']
         twd = abs(self.boat.nav.wind['twd'])
         s_sails = ', '.join(self.boat.nav.sailplan).upper()
@@ -162,7 +165,6 @@ class Display(wx.Frame):
             txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
             ctd = calc_course(self.boat.nav.position, coors_port)  # course to destination
             text += f'CTD: ...............................{ctd}\n'
-            text += f'COG: ...............................{cog}\n'
             text += f'HDG: ...............................{hdg}\n\n'
             text += f'DTD: ...............................{dtw:,} nm\n'
             text += f'TTD: ...............................{timedelta(hours=time2go)} h\n'
@@ -209,7 +211,7 @@ def main(args):
     args = parser.parse_args(args)
 
     app = wx.App()
-    Display(boat_name=args.boat_name)
+    Display(args.boat_name)
     app.MainLoop()
 
 
