@@ -4,7 +4,7 @@ import pandas as pd
 from argparse import ArgumentParser
 
 from boats import DIR_ROUTE_IN, DIR_ROUTE_OUT
-from lib.common import dd_to_dddm_single
+from boats.lib.common import dd_to_dddm_single
 
 
 def main(args):

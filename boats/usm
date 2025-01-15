@@ -1,9 +1,7 @@
 #!/opt/anaconda3/bin/python3
 
-import keras
 from keras.models import Sequential
 from keras.layers import Dense
-import pandas as pd
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)

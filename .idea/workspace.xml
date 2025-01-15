@@ -4,13 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Remove all racing-related code.">
-      <change afterPath="$PROJECT_DIR$/data/perf/Fiolent_dat.json" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="All fixed after rebase.">
+      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/boats-0.5-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/boats-0.5.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/boat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/racemap-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/racemap-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/viewpos-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/viewpos-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boatlast.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatlast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ml/updatemodel" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/ml/updatemodel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/perf/Petsamo_dat.json" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/perf/Petsamo_dat.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/.ipynb_checkpoints/boat-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/boat-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/.ipynb_checkpoints/common-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/common-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/makeroutefile.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/makeroutefile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/Petsamo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newdest" beforeDir="false" afterPath="$PROJECT_DIR$/boats/newdest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/predspeed.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/predspeed.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebook/sail analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predspd" beforeDir="false" afterPath="$PROJECT_DIR$/boats/predspd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predspd.keras" beforeDir="false" afterPath="$PROJECT_DIR$/boats/predspd.keras" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usm" beforeDir="false" afterPath="$PROJECT_DIR$/boats/usm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/viewboat.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +61,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="23e6d220217a9e0c5f6429e1e461fe84b610e6f9" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +102,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
-    "git-widget-placeholder": "cruise",
+    "git-widget-placeholder": "eca7ce77",
     "last_opened_file_path": "C:/Users/Vitolg/PycharmProjects/boats/upcoming.py",
     "settings.editor.selected.configurable": "vcs.Git"
   },
@@ -89,33 +119,13 @@
       <recent name="$PROJECT_DIR$/.." />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/boats" />
       <recent name="C:\Users\Vitolg\PycharmProjects\boats\nb" />
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.viewownfleet">
-    <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/__main__.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="makeroutefile" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.boatlast">
+    <configuration name="boatlast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -123,53 +133,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/makeroutefile.py" />
-      <option name="PARAMETERS" value="--boat_name Petsamo --file_name MARK_3" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="racemarks" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Users\Vitolg\AppData\Local\Programs\Python\Python311\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/racemarks.py" />
-      <option name="PARAMETERS" value="Stardust" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="seeboat" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/seeboat.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boatlast.py" />
       <option name="PARAMETERS" value="Petsamo" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -178,7 +146,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="upcoming" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+    <configuration name="boatmonitor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -190,8 +158,30 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/upcoming.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boatmonitor.py" />
+      <option name="PARAMETERS" value="--boat_name Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
+      <option name="SDK_NAME" value="/opt/anaconda3" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/__main__.py" />
+      <option name="PARAMETERS" value="--monitor --boat_name Petsamo" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -211,7 +201,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/viewboat.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/viewboat.py" />
       <option name="PARAMETERS" value="--boat_name Petsamo --map Folium --zoom_start 7" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -220,41 +210,51 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="viewownfleet" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="boats" />
+    <configuration name="Build" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="python -m build" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
       <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in /Users/hedge/Dev/boats/boats/tests" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="-O" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
+      <option name="SDK_NAME" value="/opt/anaconda3" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/viewownfleet.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.__main__" />
-      <item itemvalue="Python.makeroutefile" />
-      <item itemvalue="Python.racemarks" />
-      <item itemvalue="Python.upcoming" />
-      <item itemvalue="Python.viewboat" />
       <item itemvalue="Python.racemap" />
-      <item itemvalue="Python.seeboat" />
-      <item itemvalue="Python.viewownfleet" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.viewboat" />
+      <item itemvalue="Python.boatlast" />
+      <item itemvalue="Python.boatmonitor" />
+      <item itemvalue="Python tests.pytest in /Users/hedge/Dev/boats/boats/tests" />
+      <item itemvalue="Shell Script.Build" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.viewownfleet" />
-        <item itemvalue="Python.seeboat" />
+        <item itemvalue="Python.boatlast" />
+        <item itemvalue="Python.boatmonitor" />
       </list>
     </recent_temporary>
   </component>
@@ -540,7 +540,21 @@
       <option name="project" value="LOCAL" />
       <updated>1728572791435</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Fix workspace.">
+      <created>1736829037502</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1736829037502</updated>
+    </task>
+    <task id="LOCAL-00041" summary="All fixed after rebase.">
+      <created>1736968285262</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1736968285262</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -589,7 +603,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -602,9 +616,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Remove petsamo.py, improve output of viewpos.py and racemap.py" />
-    <MESSAGE value="Remove looping from viewpos.py, modify time output in racemap.py" />
     <MESSAGE value="Add upcoming.py" />
     <MESSAGE value="argparse added, file structure changed" />
     <MESSAGE value="Config files committed" />
@@ -628,7 +641,9 @@
     <MESSAGE value="Correct viewboat.py, add data files" />
     <MESSAGE value="Simplify boat.py and map.py" />
     <MESSAGE value="Remove all racing-related code." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove all racing-related code." />
+    <MESSAGE value="Fix workspace." />
+    <MESSAGE value="All fixed after rebase." />
+    <option name="LAST_COMMIT_MESSAGE" value="All fixed after rebase." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
