@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Fix workspace.">
-      <change beforePath="$PROJECT_DIR$/boats/tests/__init__.py" beforeDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="v0.05">
+      <change afterPath="$PROJECT_DIR$/boats/makeroutefile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boatlast.py" beforeDir="false" afterPath="$PROJECT_DIR$/boatlast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/loglast.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatlast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="23e6d220217a9e0c5f6429e1e461fe84b610e6f9" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +75,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Merging main",
     "last_opened_file_path": "C:/Users/Vitolg/PycharmProjects/boats/upcoming.py",
     "settings.editor.selected.configurable": "vcs.Git"
   },
@@ -89,7 +97,49 @@
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.boatlast">
+    <configuration name="boatlast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boatlast.py" />
+      <option name="PARAMETERS" value="Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="boatmonitor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boatmonitor.py" />
+      <option name="PARAMETERS" value="--boat_name Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,7 +198,7 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="pytest in tests" type="tests" factoryName="py.test" nameIsGenerated="true">
+    <configuration name="pytest in /Users/hedge/Dev/boats/boats/tests" type="tests" factoryName="py.test" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="-O" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,11 +216,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.boatlast" />
+      <item itemvalue="Python.boatmonitor" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.viewboat" />
-      <item itemvalue="Python tests.pytest in tests" />
       <item itemvalue="Shell Script.Build" />
+      <item itemvalue="Python tests.pytest in /Users/hedge/Dev/boats/boats/tests" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.boatlast" />
+        <item itemvalue="Python.boatmonitor" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -461,7 +519,14 @@
       <option name="project" value="LOCAL" />
       <updated>1736829037502</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="All fixed after rebase.">
+      <created>1736968285262</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1736968285262</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -510,7 +575,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="dev" />
                       </list>
                     </value>
                   </entry>
@@ -523,9 +588,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Remove looping from viewpos.py, modify time output in racemap.py" />
-    <MESSAGE value="Add upcoming.py" />
     <MESSAGE value="argparse added, file structure changed" />
     <MESSAGE value="Config files committed" />
     <MESSAGE value="Modify __main__.py" />
@@ -549,7 +613,9 @@
     <MESSAGE value="Simplify boat.py and map.py" />
     <MESSAGE value="Remove all racing-related code." />
     <MESSAGE value="Fix workspace." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix workspace." />
+    <MESSAGE value="All fixed after rebase." />
+    <MESSAGE value="v0.05" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.05" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
