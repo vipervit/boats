@@ -10,7 +10,6 @@ from boats.lib.nav import Nav
 
 TEST_BOAT_NAME_LOCAL = 'Testboat_Local'
 TEST_BOAT_NAME_REMOTE = 'Testboat_Remote'
-TEST_BOAT_NO_LOG = 'Foo'
 
 
 class Test_Boat:
@@ -35,15 +34,6 @@ class Test_Boat:
         boat = Boat(name=TEST_BOAT_NAME_REMOTE)
         yield boat
         boat.map.__delete_folium_html__()
-
-    @pytest.fixture
-    def boat_nolog(self):
-        boat = Boat(TEST_BOAT_NO_LOG, getdata=False)
-        boat.nav.datasource = datasource.remote
-        boat.nav.savetolog = True
-        boat.nav.update()
-        yield boat
-        boat.nav.log.__delete_file__()
 
     def test_savetolog_is_false_by_default(self, boat_local):
         assert boat_local.nav.savetolog is False
@@ -75,9 +65,6 @@ class Test_Boat:
         assert ts == 1729579539.025257
         assert boat_local.log.last_record_timestamp_local == '22-Oct 02:45'
 
-    def test_can_create_log(self, boat_nolog):
-        assert boat_nolog.nav.log.__exists__()
-
 
 class Test_Nav:
     @pytest.fixture
@@ -106,14 +93,6 @@ class Test_Nav:
     def test_record_schema_matches_required_columns(self, nav_local):
         assert list(nav_local.__collect_log_data__().keys()) == nav_local.log.required_columns()
 
-    def test_can_make_new_log_if_allowed(self):
-        x = Nav(boat_name='Foo', src=datasource.remote, getdata=False)
-        assert x.log.allow_new is True
-        x.savetolog = True
-        x.update()
-        assert x.log.__exists__()
-        x.log.__delete_file__()
-
 
 class Test_Log:
     @pytest.fixture()
@@ -122,23 +101,20 @@ class Test_Log:
 
     @pytest.fixture()
     def nonexistinglog(self):
-        return Log(boat_name='nonexisting', allownew=True)
+        return Log(boat_name='nonexisting')
 
-    def test_load_returns_false_non_existing_new_is_allowed(self, nonexistinglog):
-        assert nonexistinglog.load() is False
-
-    def test_attempt_read_from_file_non_existing_no_new_allowed(self):
+    def test_read_from_file_non_existing(self, nonexistinglog):
         with pytest.raises(FileNotFoundError) as e_info:
-            log = Log(boat_name='Foo')
-            assert 'Log file not found' in str(e_info.value)
-            assert log._file in str(e_info.value)
-            assert log.load() is False
+            nonexistinglog.__read_from_file__()
+        assert 'Log file does not exist' in str(e_info.value)
+        assert nonexistinglog._file in str(e_info.value)
 
     def test_write_to_file(self, nonexistinglog):
         contents = {'Line1': 'Hello', 'Line2': 'World'}
         nonexistinglog.__write_to_file__(contents)
         assert nonexistinglog.__exists__() == True
-        nonexistinglog.__delete_file__()
+        import os
+        os.remove(nonexistinglog._file)
 
     def test_read_from_file_normal(self, boatlog):
         assert type(boatlog.__read_from_file__()) == dict
