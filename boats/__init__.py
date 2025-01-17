@@ -65,3 +65,5 @@ DEFAULT_ZOOM = 7
 DEFAULT_MAP = Maps.Folium
 
 F_DESTINATIONS = os.path.join(DIR_DATA, 'destinations.csv')
+
+DATETIME_FORMAT = '%d-%b %H:%M'

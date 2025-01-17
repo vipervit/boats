@@ -61,7 +61,10 @@ class Test_Boat:
         assert nav.sailplan == ['Mainsail', 'Genaker']
 
     def test_can_access_log(self, boat_local):
-        assert boat_local.log.last_record_timestamp == '22-Oct 06:45'
+        ts = boat_local.log.last_record_timestamp
+        assert ts == 1729579539.025257
+        assert boat_local.log.last_record_timestamp_local == '22-Oct 02:45'
+
 
 class Test_Nav:
     @pytest.fixture
@@ -135,6 +138,9 @@ class Test_Log:
         assert rec['tws'] == 21.5
         assert rec['spd'] == 5.8
         assert rec['sails'] == ['Mainsail', 'Nr.2']
+
+    def test_last_record_timestamp(self, boatlog):
+        assert boatlog.last_record_timestamp == 1729579539.025257
 
 
 class Test_Map:

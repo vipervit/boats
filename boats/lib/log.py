@@ -1,12 +1,15 @@
-import os
+import datetime
 import json
+import os
 import time
 import warnings
+from datetime import datetime
 from io import StringIO
 
 import pandas as pd
+import pytz
 
-from boats import DIR_LOGS, DIR_TEST_FILES
+from boats import DIR_LOGS, DIR_TEST_FILES, DATETIME_FORMAT
 from boats.lib.common import make_log_file_name
 
 
@@ -15,7 +18,7 @@ class Log:
     def __init__(self, boat_name):
         warnings.simplefilter(action='ignore', category=FutureWarning)
         location = DIR_LOGS
-        if not __debug__: # the logic is inverted; to run  in debug mode '-O' must be used
+        if not __debug__:  # the logic is inverted; to run  in debug mode '-O' must be used
             location = DIR_TEST_FILES
         self._file = os.path.join(location, make_log_file_name(boat_name))
         self._track = None
@@ -64,7 +67,12 @@ class Log:
 
     @property
     def last_record_timestamp(self):
-        return self.last_record.name.strftime('%d-%b %H:%M')
+        return self.last_record.name.timestamp()
+
+    @property
+    def last_record_timestamp_local(self):
+        return datetime.fromtimestamp(self.last_record_timestamp).astimezone(pytz.timezone('US/Eastern')) \
+            .strftime(DATETIME_FORMAT)
 
     def __exists__(self):
         res = os.path.exists(self._file)
