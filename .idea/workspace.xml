@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/data/test/Testboat.log" beforeDir="false" afterPath="$PROJECT_DIR$/data/test/Testboat_Local.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/data/logs/Testboat_Local.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/map/Testboat_Local.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/loglast.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/loglast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/tests/test_all.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +47,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -76,9 +88,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "Rebasing main",
-    "last_opened_file_path": "/Users/hedge/Dev/boats/dist",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "/Users/hedge/Dev/boats/boats/data/logs",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -91,42 +103,19 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/dist" />
-      <recent name="$PROJECT_DIR$/boats/data" />
       <recent name="$PROJECT_DIR$/boats/data/logs" />
-      <recent name="$PROJECT_DIR$/boats/data/test" />
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/.." />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/boats/data/logs/Petsamo.log" />
       <recent name="$PROJECT_DIR$/boats" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/boats/boats" />
-      <recent name="$PROJECT_DIR$/boats/data" />
-      <recent name="$PROJECT_DIR$/boats/data/test" />
+      <recent name="C:\Users\Vitolg\PycharmProjects\boats\nb" />
+      <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.All Tests">
-    <configuration name="boatmon" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PycharmProjects/examples" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/PycharmProjects/examples/boatmon.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.loglast">
     <configuration name="loglast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -136,34 +125,55 @@
         <env name="PYDEVD_USE_CYTHON" value="NO" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/loglast.py" />
+      <option name="PARAMETERS" value="Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
+      <option name="SDK_NAME" value="/opt/anaconda3" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/__main__.py" />
+      <option name="PARAMETERS" value="--monitor --boat_name Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="viewboat" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="boats.loglast" />
-      <option name="PARAMETERS" value="Petsamo" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="true" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main - add destination" type="PythonConfigurationType" factoryName="Python">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="/opt/anaconda3" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
-      <option name="PARAMETERS" value="--destination --add &quot;Le Marie Strait,-54.6964,-64.8614&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/viewboat.py" />
+      <option name="PARAMETERS" value="--boat_name Petsamo --map Folium --zoom_start 7" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -171,95 +181,22 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main - monitor" type="PythonConfigurationType" factoryName="Python">
-      <module name="boats" />
+    <configuration name="Build" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="python -m build" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
       <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="/opt/anaconda3" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="boats" />
-      <option name="PARAMETERS" value="--monitor --boat_name Petsamo" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="true" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs />
       <method v="2" />
     </configuration>
-    <configuration name="main - remove destination" type="PythonConfigurationType" factoryName="Python">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="-O" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="/opt/anaconda3" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
-      <option name="PARAMETERS" value="--destination --remove &quot;CAPE CANAVERAL&quot;" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main - view destinations" type="PythonConfigurationType" factoryName="Python">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="-O" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="/opt/anaconda3" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
-      <option name="PARAMETERS" value="--destination --view" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="main - viewboat" type="PythonConfigurationType" factoryName="Python">
-      <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/opt/anaconda3/bin/python" />
-      <option name="SDK_NAME" value="/opt/anaconda3" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="boats" />
-      <option name="PARAMETERS" value="--viewboat --from_log --boat_name Petsamo --map Open_Sea,Folium" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="true" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="All Tests" type="tests" factoryName="py.test">
+    <configuration name="pytest in tests" type="tests" factoryName="py.test" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="-O" />
       <option name="PARENT_ENVS" value="true" />
@@ -272,24 +209,19 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;boats.tests&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main - viewboat" />
-      <item itemvalue="Python.main - add destination" />
-      <item itemvalue="Python.main - monitor" />
-      <item itemvalue="Python.main - remove destination" />
-      <item itemvalue="Python.main - view destinations" />
-      <item itemvalue="Python.boatmon" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.viewboat" />
       <item itemvalue="Python.loglast" />
-      <item itemvalue="Python tests.All Tests" />
+      <item itemvalue="Python tests.pytest in tests" />
+      <item itemvalue="Shell Script.Build" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.loglast" />
-        <item itemvalue="Python.boatmon" />
         <item itemvalue="Python.loglast" />
       </list>
     </recent_temporary>
@@ -305,6 +237,20 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673107876333</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Modify and import track.py">
+      <created>1673379941855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1673379941855</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add cmd/track">
+      <created>1673380602831</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1673380602831</updated>
     </task>
     <task id="LOCAL-00003" summary="Improve track.py with BoatMarker">
       <created>1673391718804</created>
@@ -572,84 +518,7 @@
       <option name="project" value="LOCAL" />
       <updated>1736829037502</updated>
     </task>
-    <task id="LOCAL-00041" summary="Add date-time format. Modify timestamp properties in class Log. Modify loglast.py. Implement last record timestamp output in the monitor.">
-      <created>1737089451187</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1737089451187</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Add dest.py, corresponding tests, and corresponding __main__ config.">
-      <created>1737264748498</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1737264748498</updated>
-    </task>
-    <task id="LOCAL-00043" summary="wxPython GUI sufficiently working. Modify __main__ - add destinations commands.">
-      <created>1737418206564</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1737418206564</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Fix GUI - add destination display.  Fix add_destination() in __main__.">
-      <created>1737421316885</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1737421316885</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Modify imports.">
-      <created>1737496493632</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1737496493632</updated>
-    </task>
-    <task id="LOCAL-00046" summary="v0.4: Modify map title. Add 'last_update' property to class Nav. Modify timestamp. Fix layout redrawing.">
-      <created>1737572096866</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1737572096866</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Add copy_log.">
-      <created>1737589456742</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1737589456742</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Commit config and data files.">
-      <created>1737605111241</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1737605111241</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Modify workspace.xml">
-      <created>1737605251180</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1737605251180</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Add '--from_log' to __main__.py. Add __set_map_title__. Add 'killdist'. Add --force-reinstall to 'install'. Fix viewboat.py for maps.">
-      <created>1737655395516</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1737655395516</updated>
-    </task>
-    <task id="LOCAL-00051" summary="v0.5">
-      <created>1737666204537</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1737666204538</updated>
-    </task>
-    <option name="localTasksCounter" value="52" />
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -711,9 +580,19 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Remove looping from viewpos.py, modify time output in racemap.py" />
+    <MESSAGE value="Add upcoming.py" />
+    <MESSAGE value="argparse added, file structure changed" />
+    <MESSAGE value="Config files committed" />
+    <MESSAGE value="Modify __main__.py" />
+    <MESSAGE value="configs" />
+    <MESSAGE value="viewboat.py and configs" />
+    <MESSAGE value="makeroutefile.py" />
+    <MESSAGE value="viewboat.py" />
+    <MESSAGE value="routepos.py, df_route.py" />
+    <MESSAGE value="df_route.py, makeroutefile.py" />
     <MESSAGE value="multiple" />
     <MESSAGE value="routepos.py" />
     <MESSAGE value="df_route.py" />
@@ -728,35 +607,12 @@
     <MESSAGE value="Simplify boat.py and map.py" />
     <MESSAGE value="Remove all racing-related code." />
     <MESSAGE value="Fix workspace." />
-    <MESSAGE value="Add date-time format. Modify timestamp properties in class Log. Modify loglast.py. Implement last record timestamp output in the monitor." />
-    <MESSAGE value="Add dest.py, corresponding tests, and corresponding __main__ config." />
-    <MESSAGE value="wxPython GUI sufficiently working. Modify __main__ - add destinations commands." />
-    <MESSAGE value="Fix GUI - add destination display.  Fix add_destination() in __main__." />
-    <MESSAGE value="Modify imports." />
-    <MESSAGE value="v0.4: Modify map title. Add 'last_update' property to class Nav. Modify timestamp. Fix layout redrawing." />
-    <MESSAGE value="Add copy_log." />
-    <MESSAGE value="Commit config and data files." />
-    <MESSAGE value="Modify workspace.xml" />
-    <MESSAGE value="Add '--from_log' to __main__.py. Add __set_map_title__. Add 'killdist'. Add --force-reinstall to 'install'. Fix viewboat.py for maps." />
-    <MESSAGE value="v0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="v0.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix workspace." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/boats/tests/test_all.py</url>
-          <line>73</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/boats/lib/log.py</url>
-          <line>93</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -767,7 +623,14 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="self._data['tws']" />
+        <watch expression="sys.argv[1]" language="Python" />
+        <watch expression="args.noview is None" />
+        <watch expression="f_map" />
+        <watch expression="(lat, lon)" />
+        <watch expression="os.path.join(DIR_MAP, '{}.html'.format(self._boat_name))" />
+        <watch expression="Maps.Folium" />
+        <watch expression="self._zoom" />
+        <watch expression="data['zoom_start']" />
       </configuration>
     </watches-manager>
   </component>

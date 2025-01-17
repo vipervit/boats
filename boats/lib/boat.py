@@ -7,7 +7,6 @@ from boats.lib.nav import Nav
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
-# TODO: Ensure accounting for both 1) no log file existing and/or 2) no html file existing.
 class Boat:
 
     def __init__(self, name, getdata=True):
@@ -29,7 +28,6 @@ class Boat:
         return self.nav.log
 
     def update_from_log(self):
-        self.nav.savetolog = False
         self.__update__(src=datasource.local)
 
     def update_from_server(self, savetolog=False):
@@ -50,18 +48,12 @@ class Boat:
                         location=self.nav.position,
                         track=self.nav.log.track,
                         marker=marker)
-        self.map.set(title=self.__set_map_title__())
-
-    def __set_map_title__(self):
         title = None
-        match self.nav.datasource:
-            case datasource.remote:
-                title = self.nav.last_update.split(' ')
-                title.pop()  # leave timestamp only
-                title = ' '.join(title)
-            case datasource.local:
-                title = f'{self.log.last_record_timestamp_local} (log)'
-        return title
+        if self.nav.datasource == datasource.remote:
+            title = f'{self.name}  {self.map.title}'
+        if self.nav.datasource == datasource.local:
+            title = f'{self.name}  {self.nav.log.last_record_timestamp_local} (log)'
+        self.map.set(title=title)
 
     def __enter__(self):
         return self
