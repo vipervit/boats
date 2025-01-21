@@ -4,17 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="wxPython GUI sufficiently working. Modify __main__ - add destinations commands.">
       <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/boats/data/logs/Testboat_Local.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/test/test_dest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/test/test_dest.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/nav.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/nav.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/tests/test_dest.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/tests/test_dest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +139,7 @@
     </configuration>
     <configuration name="main - add destination" type="PythonConfigurationType" factoryName="Python">
       <module name="boats" />
-      <option name="INTERPRETER_OPTIONS" value="-O" />
+      <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
@@ -150,7 +151,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/__main__.py" />
-      <option name="PARAMETERS" value="--destination --add &quot;CAPE CANAVERAL,10,20&quot;" />
+      <option name="PARAMETERS" value="--destination --add &quot;Le Marie Strait,-54.6964,-64.8614&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -615,7 +616,14 @@
       <option name="project" value="LOCAL" />
       <updated>1737264748498</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="wxPython GUI sufficiently working. Modify __main__ - add destinations commands.">
+      <created>1737418206564</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1737418206564</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -679,7 +687,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="argparse added, file structure changed" />
     <MESSAGE value="Config files committed" />
     <MESSAGE value="Modify __main__.py" />
     <MESSAGE value="configs" />
@@ -704,12 +711,20 @@
     <MESSAGE value="Fix workspace." />
     <MESSAGE value="Add date-time format. Modify timestamp properties in class Log. Modify loglast.py. Implement last record timestamp output in the monitor." />
     <MESSAGE value="Add dest.py, corresponding tests, and corresponding __main__ config." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add dest.py, corresponding tests, and corresponding __main__ config." />
+    <MESSAGE value="wxPython GUI sufficiently working. Modify __main__ - add destinations commands." />
+    <option name="LAST_COMMIT_MESSAGE" value="wxPython GUI sufficiently working. Modify __main__ - add destinations commands." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/boats/lib/dest.py</url>
+          <line>30</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -718,17 +733,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="sys.argv[1]" language="Python" />
-        <watch expression="args.noview is None" />
-        <watch expression="f_map" />
-        <watch expression="(lat, lon)" />
-        <watch expression="os.path.join(DIR_MAP, '{}.html'.format(self._boat_name))" />
-        <watch expression="Maps.Folium" />
-        <watch expression="self._zoom" />
-        <watch expression="data['zoom_start']" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

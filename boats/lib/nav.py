@@ -51,8 +51,6 @@ class Nav:
         self.__check_savetolog_when_local__()
         self.__getdata__()
         if (self.datasource == datasource.remote) and (self.savetolog == True):
-            # raise NotImplementedError
-            # # TODO Implement saving to log (make proper data snapshot)
             self.__make_log_entry__()
 
     def __getdata__(self):

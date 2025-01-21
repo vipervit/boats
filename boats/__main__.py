@@ -7,7 +7,7 @@ from boats.lib.dest import Destinations
 
 
 def add_destination(params):
-    place, coors = params[0], params[1]
+    place, coors = params[0], [params[1], params[2]]
     Destinations().add_new(place, coors)
 
 

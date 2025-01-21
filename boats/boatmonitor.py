@@ -17,12 +17,14 @@ class Display(wx.Frame):
     def __init__(self, boat_name):
         super(Display, self).__init__(parent=None, title=boat_name.upper())
 
-        self.boat = Boat(boat_name, getdata=False)
-        self.__update_nav_data__()
+        self.polling_interval = 600000  # every 10 min
         self.poll_counter = 0
         self.dest_coors = None
+        self.txt_info = None
 
-        self.polling_interval = 600000  # every 10 min
+        self.boat = Boat(boat_name, getdata=False)
+        self.__update_nav_data__()
+
         self.polling_timer = wx.Timer(self)
         self.polling_timer.Start(self.polling_interval)
         self.__reset_polling_counter__()
@@ -33,8 +35,7 @@ class Display(wx.Frame):
         self.heartbeat_timer.Start(1000)
 
         self.Bind(wx.EVT_TIMER, self.__heartbeat_update__, self.heartbeat_timer)
-        self.Bind(wx.EVT_TIMER, self.__update_polling_counter__, self.polling_timer)
-        self.Bind(wx.EVT_TIMER, self.__manual_update__, self.polling_timer)
+        self.Bind(wx.EVT_TIMER, self.__update_all__, self.polling_timer)
 
         self.mapbox = wx.BoxSizer(wx.VERTICAL)
         self.__create_map__()
@@ -58,7 +59,7 @@ class Display(wx.Frame):
         btn_close = wx.Button(self, label='Close')
         box.Add(btn_update)  # Update
         box.Add(btn_close)  # Close
-        btn_update.Bind(wx.EVT_BUTTON, self.__manual_update__)  # Update
+        btn_update.Bind(wx.EVT_BUTTON, self.__update_all__)  # Update
         btn_close.Bind(wx.EVT_BUTTON, self.__close__)  # Close
         return box
 
@@ -71,6 +72,7 @@ class Display(wx.Frame):
         return browser
 
     def __update_map__(self):
+        # TODO Map does not show the correct timestamp when app is launched - shows the previous log entry
         self.mapbox.Clear(delete_windows=True)
         self.__set_zoom__(event=None)
         self.__create_map__()
@@ -118,6 +120,7 @@ class Display(wx.Frame):
         box = wx.BoxSizer(wx.HORIZONTAL)
         self.txt_info = wx.StaticText(self)
         box.Add(self.txt_info)
+        self.__update_nav_info_display__()
         return box
 
     def __times__(self):
@@ -151,7 +154,7 @@ class Display(wx.Frame):
     def __reset_polling_counter__(self):
         self.poll_counter = int(self.polling_interval / 1000)
 
-    def __manual_update__(self, event):
+    def __update_all__(self, event):
         self.__reset_polling_counter__()
         self.__update_nav_data__()
         self.__update_nav_info_display__()
@@ -202,6 +205,7 @@ class Display(wx.Frame):
     def __set_destination__(self, event):
         self.dest_coors = get_destination_coordinates(self.__get_destination__())
         self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
+        self.__update_nav_info_display__()
 
     def __get_destination__(self):
         return self.edbox_destination.GetLineText(0)
