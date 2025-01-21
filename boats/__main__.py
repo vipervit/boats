@@ -1,8 +1,8 @@
 import argparse
 import sys
 
-import boatmonitor
-import boats.viewboat as viewboat
+from boats import boatmonitor
+from boats import viewboat as viewboat
 from boats.lib.dest import Destinations
 
 

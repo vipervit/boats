@@ -5,46 +5,66 @@ import webbrowser
 import folium
 from folium.plugins import BoatMarker
 
-from boats import DIR_MAPS, DEFAULT_ZOOM
-from boats.lib.common import DEFAULT_MAP, Maps
+from boats import DEFAULT_MAP, Maps
+from boats import DIR_MAPS, DEFAULT_ZOOM, URL_OPENSEA, URL_WINDY, URL_IBOATING
+
+DEFAULT_LOCATION = [0.00, 0.00]
+
+
+# TODO: Ensure accounting for both 1) no log file existing and/or 2) no html file existing.
+class MapMarker:
+    def __init__(self, **kwargs):
+        if 'location' in kwargs.keys():
+            self._loc = kwargs['location']
+        if 'heading' in kwargs.keys():
+            self._hdg = kwargs['heading']
+        if 'wind_heading' in kwargs.keys():
+            self._windhdg = kwargs['wind_heading']
+        if 'wind_speed' in kwargs.keys():
+            self._windspd = kwargs['wind_speed']
+        if 'popup' in kwargs.keys():
+            self._p = kwargs['popup']
+
+    @property
+    def location(self):
+        return self._loc
+
+    @property
+    def heading(self):
+        return self._hdg
+
+    @property
+    def wind_heading(self):
+        return self._windhdg
+
+    @property
+    def wind_speed(self):
+        return self._windspd
+
+    @property
+    def popup(self):
+        return self._p
 
 
 class Map:
 
-    def __init__(self, **data):
-
-        self._boat_name = data['boat_name']
-        self._loc = []
-        if 'location' in data.keys():
-            self._loc = data['location']
-        self._track = None
-        self._route = self._boat_name
-        if 'heel' in data.keys():
-            self._boat_heel = data['heel']
-        if 'cog' in data.keys():
-            self._boat_cog = data['cog']
-        self._markerdata = None
-        if 'marker_data' in data.keys():
-            self._markerdata = data['marker_data']
-        if 'track' in data.keys():
-            self._track = data['track']
-        if 'route' in data.keys():
-            self._route = data['route']
-        if 'sailplan' in data.keys():
-            self._boat_sailplan = data['sailplan']
-        self._zoom = DEFAULT_ZOOM
-        self._folium = None
-        self._mfile = os.path.join(DIR_MAPS, '{}.html'.format(self._boat_name))
+    def __init__(self, boat_name, **kwargs):
+        self.boat_name = boat_name
+        self._data = None
+        self._marker = None
+        self._map_folium = None
         self._url = None
+        self._track = None
+        self._title = datetime.datetime.now().strftime('%d-%b %H:%M')
+        self._loc = DEFAULT_LOCATION
+        self._zoom = DEFAULT_ZOOM
         self._mtype = DEFAULT_MAP
+        self._mfile = os.path.join(DIR_MAPS, '{}.html'.format(self.boat_name))
+        self.set(**kwargs)
 
     @property
-    def url(self):
-        return self._url
-
-    @url.setter
-    def url(self, val):
-        self._url = val
+    def title(self):
+        return self._title
 
     @property
     def mtype(self):
@@ -52,106 +72,82 @@ class Map:
 
     @mtype.setter
     def mtype(self, val):
-        if val is not None:
-            self._mtype = val
+        self._mtype = val
 
     @property
     def mfile(self):
         return self._mfile
 
-    @mfile.setter
-    def mfile(self, val):
-        self._mfile = val
-
-    @property
-    def zoom(self):
-        return self._zoom
-
-    @zoom.setter
-    def zoom(self, val):
-        self._zoom = val
-
-    @property
-    def track(self):
-        return self._track
-
-    @track.setter
-    def track(self, val):
-        self._track = val
-
-    @property
-    def route_name(self):
-        return self._route
-
-    @route_name.setter
-    def route_name(self, val):
-        self._route = val
-
-    @property
-    def boat_marker(self):
-        return self._markerdata
-
-    @boat_marker.setter
-    def boat_marker(self, val):
-        self._markerdata = val
+    def set(self, **kwargs):
+        if 'type' in kwargs.keys():
+            self.mtype = kwargs['type']
+        if 'location' in kwargs.keys():
+            self._loc = kwargs['location']
+        if 'marker' in kwargs.keys():
+            if self._mtype != Maps.Folium:
+                raise ValueError('Can only use boat marker with Folium!')
+            self._marker = kwargs['marker']
+        if 'track' in kwargs.keys():
+            self._track = kwargs['track']
+        if 'title' in kwargs.keys():
+            self._title = kwargs['title']
+        if 'zoom_start' in kwargs.keys():
+            self._zoom = kwargs['zoom_start']
         if self.mtype == Maps.Folium:
-            self.__prepare_folium__()
+            self.__save_folium_html__()
 
     def show(self, timestamp=None):
-        if self.mtype == Maps.Folium:
-            self.__prepare_folium__(timestamp)
         webbrowser.open(self.__get_url__())
 
-    def show_calculated_position(self, pos):
-        webbrowser.open(self.__get_url_i_boating__(pos))
+    def __save_folium_html__(self):
+        self.__prepare_folium__()
+        self._map_folium.save(self._mfile)
 
-    def __prepare_folium__(self, timestamp):
+    def __delete_folium_html__(self):
+        os.remove(self._mfile)
 
-        self._folium = folium.Map(location=self._loc, zoom_start=self.zoom)
-        folium.TileLayer('openseamap').add_to(self._folium)
-        folium.PolyLine(self.track, color='red', weight=2.5, opacity=1).add_to(self._folium)
+    def __prepare_folium__(self):
+        self._map_folium = folium.Map(location=self._loc, zoom_start=self._zoom)
+        folium.TileLayer('openseamap').add_to(self._map_folium)
+        if self._track is not None:
+            folium.PolyLine(self._track, color='red', weight=2.5, opacity=1).add_to(self._map_folium)
 
         popup = self.__get_url_i_boating__()
 
-        BoatMarker(self._loc, color='blue',
-                   heading=self._boat_cog,
-                   wind_heading=self._markerdata['twd'],
-                   wind_speed=self._markerdata['tws'],
-                   popup=popup).add_to(self._folium)
+        if self._marker is None:
+            raise ValueError('Boat marker is note set.')
 
-        if timestamp is None:
-            timestamp = datetime.datetime.now().strftime('%d-%b %H:%M')
-        title_html = '<h3 align="center" style="font-size:16px">{} cog {}° sog {} tws {} heel {} sails: {}<b></b></h3>'.format(
-            timestamp, self._boat_cog, self.boat_marker['sog'], self._markerdata['tws'], self._boat_heel,
-            self._boat_sailplan)
-        self._folium.get_root().html.add_child(folium.Element(title_html))
+        BoatMarker(location=self._marker.location, color='blue',
+                   heading=self._marker.heading,
+                   wind_heading=self._marker.wind_heading,
+                   wind_speed=self._marker.wind_speed,
+                   popup=popup).add_to(self._map_folium)
+        title_html = f'<h3 align="center" style="font-size:16px">{self._title}<b></b></h3>'
+        self._map_folium.get_root().html.add_child(folium.Element(title_html))
 
-        self._folium.save(self.mfile)
+    def __get_url_i_boating__(self):
+        return URL_IBOATING.format(self._zoom, self._loc[0], self._loc[1])
 
-    def __get_url_i_boating__(self, pos=None):
-        global lat, lon
-        if pos is None:
-            lat, lon = self._loc[0], self._loc[1]
-        else:
-            lat, lon = pos[0], pos[1]
-        return 'https://fishing-app.gpsnauticalcharts.com/i-boating-fishing-web-app/fishing-marine-charts' \
-               '-navigation.html#{}/{}/{}'.format(self._zoom, lat, lon)
+    def __get_url_folium__(self):
+        return 'file://{}'.format(self._mfile)
+
+    def __get_url_opensea__(self):
+        return URL_OPENSEA.format(self._zoom, self._loc[1], self._loc[0], self._loc[0], self._loc[1], self.boat_name)
+
+    def __get_url_windy__(self):
+        return URL_WINDY.format(self._loc[0], self._loc[1], self._zoom)
 
     def __get_url__(self):
-        lat = self._loc[0]
-        lon = self._loc[1]
-        zoom = self._zoom
-        name = self._boat_name
-        if self.mtype is None:
-            raise ValueError('Map type is not set.')
-        if self.mtype == Maps.Windy:
-            return 'https://www.windy.com/?{},{},{},m:eT5aeSC'.format(lat, lon, zoom)
-        elif self.mtype == Maps.I_Boating:
-            return self.__get_url_i_boating__()
-        elif self.mtype == Maps.Folium:
-            return 'file://{}'.format(self.mfile)
-        elif self.mtype == Maps.Open_Sea:
-            return 'https://map.openseamap.org/?zoom={}&lon={}&lat={}&layers=TFTFFFTFFTFFFFFFTFFFTF&mlat={}' \
-                   '&mlon={}&mtext={}'.format(zoom, lon, lat, lat, lon, name)
-        else:
-            raise ValueError('Invalid map mtype: {}'.format(self.mtype))
+        match self._mtype:
+            case Maps.Folium:
+                return self.__get_url_folium__()
+            case Maps.I_Boating:
+                return self.__get_url_i_boating__()
+            case Maps.Windy:
+                return self.__get_url_windy__()
+            case Maps.Open_Sea:
+                return self.__get_url_opensea__()
+            case None:
+                raise ValueError('Map type is not set.')
+            case _:
+                raise ValueError('Invalid map mtype: {}'.format(self._mtype))
