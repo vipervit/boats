@@ -41,11 +41,6 @@ class Test_Boat:
     def test_nav_default_datasource_set_to_remote(self, boat_remote):
         assert boat_remote.nav.datasource == datasource.remote
 
-    def test_cannot_save_to_log_if_local(self, boat_local):
-        boat_local.nav.savetolog = True
-        with pytest.raises(ValueError):
-            boat_local.update_from_log()
-
     def test_update_local(self, boat_local):
         boat_local.update_from_log()
         rec = boat_local.log.last_record

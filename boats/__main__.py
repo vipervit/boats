@@ -15,6 +15,10 @@ def remove_destination(name):
     Destinations().remove(name)
 
 
+def view_destinations():
+    Destinations().view()
+
+
 def main(args):
     parser = argparse.ArgumentParser()
     parser.add_argument('--viewboat', action='store_true')
@@ -27,6 +31,7 @@ def main(args):
     parser.add_argument('--destination', action='store_true')
     parser.add_argument('--add', type=str)
     parser.add_argument('--remove', type=str)
+    parser.add_argument('--view', action='store_true')
 
     args = parser.parse_args(args)
 
@@ -37,8 +42,12 @@ def main(args):
     if args.destination:
         if args.add is not None:
             add_destination(args.add.split(','))
+            view_destinations()
         if args.remove is not None:
             remove_destination(args.remove)
+            view_destinations()
+        if args.view:
+            view_destinations()
 
 
 if __name__ == "__main__":

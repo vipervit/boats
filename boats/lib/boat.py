@@ -28,6 +28,7 @@ class Boat:
         return self.nav.log
 
     def update_from_log(self):
+        self.nav.savetolog = False
         self.__update__(src=datasource.local)
 
     def update_from_server(self, savetolog=False):
