@@ -27,6 +27,10 @@ class Log:
             self.load()
 
     @property
+    def myfile(self):
+        return self._file
+
+    @property
     def track(self):
         return self._track
 
