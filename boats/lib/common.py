@@ -1,10 +1,7 @@
+import json
 import time
 import warnings
 from datetime import datetime
-
-import time
-from datetime import datetime
-import json
 
 import pandas as pd
 import requests
@@ -29,7 +26,7 @@ def make_log_file_name(boatname):
 
 
 def timestamp():
-    return datetime.now().strftime('%d/%m %H:%M')
+    return datetime.now().strftime('%d-%b-%Y %H:%M')
 
 
 def timeago(time_stamp):

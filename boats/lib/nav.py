@@ -1,5 +1,5 @@
 from boats import datasource, POINTS_OF_SAIL, SAILS
-from boats.lib.common import get_all_own_boats_json, dd_to_ddm
+from boats.lib.common import get_all_own_boats_json, dd_to_ddm, timestamp
 from boats.lib.log import Log
 
 
@@ -13,6 +13,7 @@ class Nav:
         self._data = {}
         self._log = Log(boat_name=self.boatname)
         self.az = None
+        self._last_update_info = []
         if getdata:
             self.update()
 
@@ -40,6 +41,16 @@ class Nav:
     def savetolog(self, val):
         self._savetolog = val
 
+    @property
+    def last_update(self):
+        word = None
+        match self._last_update_info[1]:
+            case datasource.remote:
+                word = 'server'
+            case datasource.local:
+                word = 'log'
+        return f'{self._last_update_info[0]} {word}'
+
     def show(self, full=False):
         print('\n{}\n'.format(self.boatname.upper()))
         if full:
@@ -61,6 +72,7 @@ class Nav:
                 self.__retrieve_boat_data_from_log__()
             case _:
                 raise ValueError(f'Invalid value for data source: {self.datasource}.')
+        self._last_update_info = [timestamp(), self.datasource]
         self.wind = self.__get_wind__()
         self.speed = self.__get_speed__()
         self.az = self.__get_azimuths__()

@@ -49,11 +49,9 @@ class Boat:
                         location=self.nav.position,
                         track=self.nav.log.track,
                         marker=marker)
-        title = None
-        if self.nav.datasource == datasource.remote:
-            title = f'{self.name}  {self.map.title}'
-        if self.nav.datasource == datasource.local:
-            title = f'{self.name}  {self.nav.log.last_record_timestamp_local} (log)'
+        title = self.nav.last_update.split(' ')
+        title.pop()  # leave timestamp only
+        title = ' '.join(title)
         self.map.set(title=title)
 
     def __enter__(self):

@@ -9,70 +9,19 @@
       <change afterPath="$PROJECT_DIR$/boats.egg-info/SOURCES.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/boats.egg-info/dependency_links.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/boats.egg-info/top_level.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/__main__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/boatmonitor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/destinations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/logs/Petsamo.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/ml/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/ml/updatemodel" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/test/Testboat_Local.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/test/simulated.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/data/test/test_dest.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/.ipynb_checkpoints/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/.ipynb_checkpoints/boat-checkpoint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/.ipynb_checkpoints/common-checkpoint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/boat.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/common.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/dest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/map.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/lib/nav.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/loglast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/notebook/predspeed.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/notebook/sail analysis.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/predspd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/predspd.keras" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/tests/test_all.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/tests/test_dest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/usm" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/boats/viewboat.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/boats-0.3-py3-none-any.whl" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/dist/boats-0.3.tar.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boats/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/__main__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/ml/updatemodel" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/test/Testboat_Local.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/test/simulated.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/test/test_dest.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/boat-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/common-checkpoint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/common.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/dest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/log.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/map.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/nav.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/loglast.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/notebook/.ipynb_checkpoints/sail analysis-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/notebook/predspeed.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/predspd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/predspd.keras" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/tests/test_all.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/tests/test_dest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/usm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/viewboat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/boat-checkpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/boat-checkpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/nav.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/nav.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/tests/test_all.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +92,7 @@
     &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hedge/Dev/boats/boats/data/test&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hedge/Dev/boats&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -164,14 +113,35 @@
       <recent name="$PROJECT_DIR$/.." />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/boats/boats" />
       <recent name="$PROJECT_DIR$/boats/data" />
       <recent name="$PROJECT_DIR$/boats/data/test" />
       <recent name="$PROJECT_DIR$/boats/data/logs/Petsamo.log" />
-      <recent name="$PROJECT_DIR$/boats" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest in tests">
+  <component name="RunManager" selected="Python.main - monitor">
+    <configuration name="boatmon" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PycharmProjects/examples" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/PycharmProjects/examples/boatmon.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="loglast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -185,7 +155,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="boats.loglast" />
+      <option name="SCRIPT_NAME" value="loglast" />
       <option name="PARAMETERS" value="Petsamo" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -229,11 +199,11 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
+      <option name="SCRIPT_NAME" value="boats" />
       <option name="PARAMETERS" value="--monitor --boat_name Petsamo" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
+      <option name="MODULE_MODE" value="true" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
@@ -323,12 +293,12 @@
       <option name="INTERPRETER_OPTIONS" value="-O" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats/boats/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/boats/tests/test_dest.py&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/tests/test_dest.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
@@ -345,23 +315,25 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/boats/tests&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/tests&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.loglast" />
       <item itemvalue="Python.main - add destination" />
       <item itemvalue="Python.main - monitor" />
       <item itemvalue="Python.main - remove destination" />
       <item itemvalue="Python.main - view destinations" />
       <item itemvalue="Python.viewboat" />
-      <item itemvalue="Shell Script.Build" />
-      <item itemvalue="Python tests.Python tests in test_dest.py" />
+      <item itemvalue="Python.boatmon" />
+      <item itemvalue="Python.loglast" />
       <item itemvalue="Python tests.pytest in tests" />
+      <item itemvalue="Python tests.Python tests in test_dest.py" />
+      <item itemvalue="Shell Script.Build" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.boatmon" />
         <item itemvalue="Python.loglast" />
         <item itemvalue="Python tests.Python tests in test_dest.py" />
       </list>
@@ -687,7 +659,14 @@
       <option name="project" value="LOCAL" />
       <updated>1737421316885</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Modify imports.">
+      <created>1737496493632</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1737496493632</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -752,7 +731,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Modify __main__.py" />
     <MESSAGE value="configs" />
     <MESSAGE value="viewboat.py and configs" />
     <MESSAGE value="makeroutefile.py" />
@@ -777,19 +755,13 @@
     <MESSAGE value="Add dest.py, corresponding tests, and corresponding __main__ config." />
     <MESSAGE value="wxPython GUI sufficiently working. Modify __main__ - add destinations commands." />
     <MESSAGE value="Fix GUI - add destination display.  Fix add_destination() in __main__." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix GUI - add destination display.  Fix add_destination() in __main__." />
+    <MESSAGE value="Modify imports." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify imports." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/boats/boats/lib/dest.py</url>
-          <line>30</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -798,5 +770,11 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self.zoom" language="Python" />
+        <watch expression="self.boat.map._zoom" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

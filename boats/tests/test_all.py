@@ -7,6 +7,7 @@ from boats.lib.boat import Boat, datasource
 from boats.lib.log import Log
 from boats.lib.map import Map, MapMarker
 from boats.lib.nav import Nav
+from lib.common import timestamp
 
 TEST_BOAT_NAME_LOCAL = 'Testboat_Local'
 TEST_BOAT_NAME_REMOTE = 'Testboat_Remote'
@@ -71,16 +72,19 @@ class Test_Nav:
         return Nav(boat_name=TEST_BOAT_NAME_LOCAL, src=datasource.local)
 
     def test_get_data(self, nav_local, nav_remote):
+        ts = timestamp()
         # local
         assert nav_local.boatname == TEST_BOAT_NAME_LOCAL
         assert nav_local.heel == 35
         assert nav_local.sailplan == ['Mainsail', 'Nr.2']
+        assert nav_local.last_update == f'{ts} log'
         # remote
         assert nav_remote.boatname == TEST_BOAT_NAME_REMOTE
         assert nav_remote.heel == 17
         assert nav_remote.speed['spd'] == 4.6
         assert nav_remote.az['hdg'] == 104
         assert nav_remote.sailplan == ['Mainsail', 'Genaker']
+        assert nav_remote.last_update == f'{ts} server'
 
     def test_show_short(self, nav_local):
         nav_local.show()
