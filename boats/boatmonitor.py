@@ -67,7 +67,6 @@ class Display(wx.Frame):
         return box
 
     def __map__(self):
-        # TODO Map does not show the correct timestamp when app is launched - shows the previous log entry
         mapbox = wx.BoxSizer(wx.VERTICAL)
         browser = wx.html2.WebView.New(self)
         browser.LoadURL(f'file:///{self.boat.map.mfile}')
@@ -158,7 +157,7 @@ class Display(wx.Frame):
 
     def __update_all__(self, event):
         self.__update_nav_data__()
-        self.__reset_polling_counter__()
+        self.__set_polling_interval__()
         self.__redraw_layout__()
         self.__set_zoom__()
         self.__set_destination__(None)
@@ -194,8 +193,12 @@ class Display(wx.Frame):
         text += f'Distance sailed: {total_distance:,} nm\n\n'
         if coors_port is not None:
             dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
-            time2go = round(dtw / spd)  # TODO Prevent division by zero when boat is stopped
-            txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
+            if spd == 0:
+                time2go = 0
+                txteta = 'N/A'
+            else:
+                time2go = round(dtw / spd)
+                txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
             ctd = calc_course(self.boat.nav.position, coors_port)  # course to destination
             text += f'CTD: ...............................{ctd}\n'
             if 'cog' in self.boat.nav.az.keys():

@@ -15,7 +15,8 @@ from boats.lib.common import make_log_file_name
 
 class Log:
 
-    def __init__(self, boat_name):
+    def __init__(self, boat_name, allownew=False):
+        self._allownew = allownew
         warnings.simplefilter(action='ignore', category=FutureWarning)
         location = DIR_LOGS
         if not __debug__:  # the logic is inverted; to run  in debug mode '-O' must be used
@@ -23,8 +24,7 @@ class Log:
         self._file = os.path.join(location, make_log_file_name(boat_name))
         self._track = None
         self._df = None
-        if self.__exists__():
-            self.load()
+        self.load()
 
     @property
     def myfile(self):
@@ -33,6 +33,14 @@ class Log:
     @property
     def track(self):
         return self._track
+
+    @property
+    def allow_new(self):
+        return self._allownew
+
+    @allow_new.setter
+    def allow_new(self, val):
+        self._allownew = val
 
     @staticmethod
     def required_columns():
@@ -50,8 +58,12 @@ class Log:
         if self.__exists__():
             self.__make_df__()
             self.__get_track__()
+            return True
         else:
-            raise FileNotFoundError(f'Log file not found: {self._file}.')
+            if self.allow_new:
+                return False
+            else:
+                raise FileNotFoundError(f'Log file not found: {self._file}! (Note: \'allow_new\' is {self.allow_new}.)')
 
     def add_new(self, newrec):
         data = {}
@@ -106,3 +118,6 @@ class Log:
     def __write_to_file__(self, dic):
         with open(self._file, 'w') as f:
             json.dump(dic, f)
+
+    def __delete_file__(self):
+        os.remove(self._file)

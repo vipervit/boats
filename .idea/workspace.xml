@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Commit config and data files.">
-      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add '--from_log' to __main__.py. Add __set_map_title__. Add 'killdist'. Add --force-reinstall to 'install'. Fix viewboat.py for maps.">
+      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/test/simulated.json" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/test/simulated.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/nav.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/nav.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/tests/test_all.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +45,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -80,9 +87,9 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "dev__good",
-    "last_opened_file_path": "/Users/hedge/Dev/boats/boats/data",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "/Users/hedge/Dev/boats/dist",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   },
   "keyToStringList": {
     "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
@@ -95,21 +102,64 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dist" />
       <recent name="$PROJECT_DIR$/boats/data" />
       <recent name="$PROJECT_DIR$/boats/data/logs" />
       <recent name="$PROJECT_DIR$/boats/data/test" />
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
-      <recent name="$PROJECT_DIR$/lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/boats" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/boats/boats" />
       <recent name="$PROJECT_DIR$/boats/data" />
       <recent name="$PROJECT_DIR$/boats/data/test" />
-      <recent name="$PROJECT_DIR$/boats/data/logs/Petsamo.log" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main - viewboat">
+  <component name="RunManager" selected="Python tests.All Tests">
+    <configuration name="boatmon" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PycharmProjects/examples" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/PycharmProjects/examples/boatmon.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loglast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PYDEVD_USE_CYTHON" value="NO" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="boats.loglast" />
+      <option name="PARAMETERS" value="Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main - add destination" type="PythonConfigurationType" factoryName="Python">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -212,27 +262,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="boats" />
-      <option name="PARAMETERS" value="--viewboat --boat_name Petsamo --map Folium" />
+      <option name="PARAMETERS" value="--viewboat --from_log --boat_name Petsamo --map Open_Sea,Folium" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="true" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Build" type="ShConfigurationType">
-      <option name="SCRIPT_TEXT" value="python -m build" />
-      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="" />
-      <option name="SCRIPT_OPTIONS" value="" />
-      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
-      <option name="INTERPRETER_PATH" value="/bin/zsh" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="EXECUTE_IN_TERMINAL" value="true" />
-      <option name="EXECUTE_SCRIPT_FILE" value="false" />
-      <envs />
       <method v="2" />
     </configuration>
     <configuration name="All Tests" type="tests" factoryName="py.test">
@@ -258,11 +293,13 @@
       <item itemvalue="Python.main - monitor" />
       <item itemvalue="Python.main - remove destination" />
       <item itemvalue="Python.main - view destinations" />
+      <item itemvalue="Python.boatmon" />
+      <item itemvalue="Python.loglast" />
       <item itemvalue="Python tests.All Tests" />
-      <item itemvalue="Shell Script.Build" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.loglast" />
         <item itemvalue="Python.boatmon" />
         <item itemvalue="Python.loglast" />
       </list>
@@ -279,20 +316,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673107876333</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Modify and import track.py">
-      <created>1673379941855</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1673379941855</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Add cmd/track">
-      <created>1673380602831</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1673380602831</updated>
     </task>
     <task id="LOCAL-00003" summary="Improve track.py with BoatMarker">
       <created>1673391718804</created>
@@ -609,7 +632,35 @@
       <option name="project" value="LOCAL" />
       <updated>1737589456742</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Commit config and data files.">
+      <created>1737605111241</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1737605111241</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Modify workspace.xml">
+      <created>1737605251180</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1737605251180</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Add '--from_log' to __main__.py. Add __set_map_title__. Add 'killdist'. Add --force-reinstall to 'install'. Fix viewboat.py for maps.">
+      <created>1737655395516</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1737655395516</updated>
+    </task>
+    <task id="LOCAL-00051" summary="v0.5">
+      <created>1737666204537</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1737666204538</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -674,9 +725,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="viewboat.py" />
-    <MESSAGE value="routepos.py, df_route.py" />
-    <MESSAGE value="df_route.py, makeroutefile.py" />
     <MESSAGE value="multiple" />
     <MESSAGE value="routepos.py" />
     <MESSAGE value="df_route.py" />
@@ -699,12 +747,27 @@
     <MESSAGE value="v0.4: Modify map title. Add 'last_update' property to class Nav. Modify timestamp. Fix layout redrawing." />
     <MESSAGE value="Add copy_log." />
     <MESSAGE value="Commit config and data files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit config and data files." />
+    <MESSAGE value="Modify workspace.xml" />
+    <MESSAGE value="Add '--from_log' to __main__.py. Add __set_map_title__. Add 'killdist'. Add --force-reinstall to 'install'. Fix viewboat.py for maps." />
+    <MESSAGE value="v0.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.5" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/boats/tests/test_all.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/boats/lib/log.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

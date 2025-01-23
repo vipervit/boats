@@ -10,7 +10,7 @@ class Nav:
         self._datasrc = src
         self.boatname = boat_name
         self._data = {}
-        self._log = Log(boat_name=self.boatname)
+        self._log = Log(boat_name=self.boatname, allownew=True)
         self.az = None
         self._last_update_info = []
         if getdata:
