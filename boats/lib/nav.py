@@ -6,7 +6,6 @@ from boats.lib.log import Log
 class Nav:
 
     def __init__(self, boat_name=None, src=datasource.remote, getdata=True):
-        # TODO: add ability to view time of latest update from server
         self._savetolog = False
         self._datasrc = src
         self.boatname = boat_name
@@ -143,8 +142,8 @@ class Nav:
         print('\n')
 
     def __show_course__(self):
-        print('hdg : {}'.format(self.azimuth['hdg']))
-        print('cog : {}'.format(self.azimuth['cog']))
+        print('hdg : {}'.format(self.az['hdg']))
+        print('cog : {}'.format(self.az['cog']))
         print('\n')
 
     def __show_efficiency__(self):
@@ -168,7 +167,6 @@ class Nav:
     def __get_speed__(self):
         d = {'spd': round(self._data['spd'] * 2, 1)}
         if self.datasource == datasource.remote:
-            d.update({'cog': round(self._data['cog'] * 2, 1)})
             d.update({'sog': round(self._data['sog'] * 2, 1)})
         return d
 

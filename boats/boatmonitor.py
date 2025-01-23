@@ -165,7 +165,6 @@ class Display(wx.Frame):
 
     def __update_nav_data__(self):
         self.boat.update_from_server(savetolog=True)
-        self.boat.update_from_log()
 
     def __update_nav_info_display__(self):
         df = self.boat.log.df
@@ -199,6 +198,10 @@ class Display(wx.Frame):
             txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
             ctd = calc_course(self.boat.nav.position, coors_port)  # course to destination
             text += f'CTD: ...............................{ctd}\n'
+            # TODO: COG only exists in data from the server but the monitor displays data from log. Solve!
+            if 'cog' in self.boat.nav.az.keys():
+                cog = self.boat.nav.az['cog']
+                text += f'COG: ...............................{cog}\n'
             text += f'HDG: ...............................{hdg}\n\n'
             text += f'DTD: ...............................{dtw:,} nm\n'
             text += f'TTD: ...............................{timedelta(hours=time2go)} h\n'
