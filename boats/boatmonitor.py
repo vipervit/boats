@@ -17,11 +17,6 @@ class Display(wx.Frame):
     def __init__(self, boat_name):
         super(Display, self).__init__(parent=None, title=boat_name.upper())
 
-        self.boat = Boat(boat_name)
-        self.poll_counter = 0
-
-        self.dest_coors = None
-
         self.polling_interval = 600000  # every 10 min
         self.zoom = 10
         self.poll_counter = 0
@@ -44,17 +39,9 @@ class Display(wx.Frame):
         self.Bind(wx.EVT_TIMER, self.__heartbeat_update__, self.heartbeat_timer)
         self.Bind(wx.EVT_TIMER, self.__update_all__, self.polling_timer)
 
-        sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(self.__map__(), 1, wx.EXPAND)
-        sizer.Add(self.__polling__())
-        sizer.Add(self.__times__())
-        sizer.Add(self.__destination__())
-        sizer.Add(self.__main_info__())
-        sizer.Add(self.__buttons__(), 0, 5)
-
-        self.SetSizer(sizer)
-
-        self.__update__(None)
+        self.sizer = wx.BoxSizer(wx.VERTICAL)
+        self.__redraw_layout__()
+        self.SetSizer(self.sizer)
 
         self.Centre()
         self.Show()
@@ -84,8 +71,8 @@ class Display(wx.Frame):
         mapbox = wx.BoxSizer(wx.VERTICAL)
         browser = wx.html2.WebView.New(self)
         browser.LoadURL(f'file:///{self.boat.map.mfile}')
-        box.Add(browser, 1, wx.EXPAND)
-        return box
+        mapbox.Add(browser, 1, wx.EXPAND)
+        return mapbox
 
     def __polling__(self):
         box = wx.FlexGridSizer(0, 0, 0)
@@ -161,13 +148,26 @@ class Display(wx.Frame):
         self.txt_next_upd.SetLabel(
             f'Next update:    {next_update} (in {seconds_to_formatted_output(self.poll_counter)})')
 
-    def __update__(self, event):
-        self.boat.nav.__getdata__()
-        self.__update_times__(event)
-        self.__update_info__()
+    def __update_polling_counter__(self, event):
+        self.poll_counter -= 1
+        if self.poll_counter == 0:
+            self.__reset_polling_counter__()
 
-    def __update_info__(self):
-        df = self.boat.log.as_df
+    def __reset_polling_counter__(self):
+        self.poll_counter = int(self.polling_interval / 1000)
+
+    def __update_all__(self, event):
+        self.__update_nav_data__()
+        self.__reset_polling_counter__()
+        self.__redraw_layout__()
+        self.__set_zoom__()
+        self.__set_destination__(None)
+
+    def __update_nav_data__(self):
+        self.boat.update_from_server(savetolog=True)
+
+    def __update_nav_info_display__(self):
+        df = self.boat.log.df
         coors_port = self.dest_coors
         hrs_24 = df.index[-1] - timedelta(days=1)
         df_24hrs = df[df.index.isin([entry for entry in df.index if entry >= hrs_24])]
@@ -178,7 +178,6 @@ class Display(wx.Frame):
         heel = self.boat.nav.heel
         spd = self.boat.nav.speed['spd']
         hdg = self.boat.nav.az['hdg']
-        cog = self.boat.nav.az['cog']
         tws = self.boat.nav.wind['tws']
         twd = abs(self.boat.nav.wind['twd'])
         s_sails = ', '.join(self.boat.nav.sailplan).upper()
@@ -209,34 +208,24 @@ class Display(wx.Frame):
         self.txt_info.SetLabel(text)
 
     def __set_destination__(self, event):
-        self.dest_coors = get_destination_coordinates(self.__get_destination__())
-        self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
+        self.__get_destination__()
+        if self.destination is not None and len(self.destination) > 0:
+            self.dest_coors = get_destination_coordinates(self.destination)
+            self.edbox_destination.SetLabel(self.destination)
+            self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
+            self.__update_nav_info_display__()
 
     def __get_destination__(self):
         if len(self.edbox_destination.GetLineText(0)) > 0:
             self.destination = self.edbox_destination.GetLineText(0)
 
-    def __set_zoom__(self, event):
-        raise NotImplemented
-
-    def __set_polling_interval__(self, event):
-        self.polling_interval = self.edctl_poll.GetLineText(0)
-
-    @staticmethod
-    def __get_last_update_timestamp__():
-        return 'NOT IMPLEMENTED'
+    def __get_last_update_timestamp__(self):
+        self.boat.log.load()
+        return self.boat.log.last_record_timestamp_local
 
     def __open_map___(self, event):
         if self.boat.map is None:
             self.boat.map.show(self.__get_last_update_timestamp__())
-
-    def __reset_polling_counter__(self):
-        self.poll_counter = int(self.polling_interval / 1000)
-
-    def __update_polling_counter__(self, event):
-        self.poll_counter -= 1
-        if self.poll_counter == 0:
-            self.__reset_polling_counter__()
 
     @staticmethod
     def __close__(event):
