@@ -4,10 +4,10 @@ import pytest
 
 from boats import Maps
 from boats.lib.boat import Boat, datasource
+from boats.lib.common import timestamp
 from boats.lib.log import Log
 from boats.lib.map import Map, MapMarker
 from boats.lib.nav import Nav
-from lib.common import timestamp
 
 TEST_BOAT_NAME_LOCAL = 'Testboat_Local'
 TEST_BOAT_NAME_REMOTE = 'Testboat_Remote'
