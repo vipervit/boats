@@ -19,24 +19,31 @@ def main(args):
 
     args = parser.parse_args(args)
 
+    maps = []
+
     with Boat(args.boat_name, getdata=False) as o_boat:
         match args.from_log:
             case True:
                 o_boat.update_from_log()
+                print(o_boat.log.last_record_timestamp_local)
             case False:
                 o_boat.update_from_server(savetolog=True)
         o_boat.nav.show(args.full_info)
         if args.zoom_start is not None:
             o_boat.map.zoom = str(args.zoom_start)
         if not args.noview:
-            for maptype in args.map.split(','): # TODO: fix so that no map can be specified
+            if args.map is None:
+                maps.append(Maps.Folium.name)
+            else:
+                for maptype in args.map.split(','):
+                    maps.append(maptype)
+            for maptype in maps:
                 o_boat.map.mtype = Maps[maptype]
                 if o_boat.map.mtype == Maps.Folium:
                     hdg = o_boat.nav.az['hdg']
-                    sog = o_boat.nav.speed['sog']
                     tws = o_boat.nav.wind['tws']
                     twd = o_boat.nav.wind['twd']
-                    o_boat.map.boat_marker = {'hdg': hdg, 'sog': sog, 'twd': twd, 'tws': tws}
+                    o_boat.map.boat_marker = {'hdg': hdg, 'twd': twd, 'tws': tws}
                 o_boat.map.show()
 
 

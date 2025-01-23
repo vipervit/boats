@@ -49,10 +49,18 @@ class Boat:
                         location=self.nav.position,
                         track=self.nav.log.track,
                         marker=marker)
-        title = self.nav.last_update.split(' ')
-        title.pop()  # leave timestamp only
-        title = ' '.join(title)
-        self.map.set(title=title)
+        self.map.set(title=self.__set_map_title__())
+
+    def __set_map_title__(self):
+        title = None
+        match self.nav.datasource:
+            case datasource.remote:
+                title = self.nav.last_update.split(' ')
+                title.pop()  # leave timestamp only
+                title = ' '.join(title)
+            case datasource.local:
+                title = f'{self.log.last_record_timestamp_local} (log)'
+        return title
 
     def __enter__(self):
         return self

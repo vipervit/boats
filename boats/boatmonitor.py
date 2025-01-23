@@ -194,11 +194,10 @@ class Display(wx.Frame):
         text += f'Distance sailed: {total_distance:,} nm\n\n'
         if coors_port is not None:
             dtw = round(miles_to_nautical(distance.distance(coors_port, last_pos).miles))
-            time2go = round(dtw / spd)
+            time2go = round(dtw / spd)  # TODO Prevent division by zero when boat is stopped
             txteta = (datetime.now() + timedelta(hours=time2go)).strftime('%d-%b %H:%M')
             ctd = calc_course(self.boat.nav.position, coors_port)  # course to destination
             text += f'CTD: ...............................{ctd}\n'
-            # TODO: COG only exists in data from the server but the monitor displays data from log. Solve!
             if 'cog' in self.boat.nav.az.keys():
                 cog = self.boat.nav.az['cog']
                 text += f'COG: ...............................{cog}\n'

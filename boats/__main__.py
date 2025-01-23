@@ -43,6 +43,7 @@ def main(args):
     parser.add_argument('--view', action='store_true')
     parser.add_argument('--copy_log', action='store_true')
     parser.add_argument('--todir', type=str)
+    parser.add_argument('--from_log', action='store_true')
 
     args = parser.parse_args(args)
 

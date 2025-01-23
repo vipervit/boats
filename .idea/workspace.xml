@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Commit config and data files." />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Modify workspace.xml">
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/install" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/boats-0.5-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/boats-0.5.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/killdist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/viewboat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/viewboat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +45,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="v0.4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,7 +90,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "dev__good",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/Users/hedge/Dev/boats/boats/data",
     "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   },
@@ -102,7 +119,50 @@
       <recent name="$PROJECT_DIR$/boats/data/logs/Petsamo.log" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main - viewboat">
+  <component name="RunManager" selected="Shell Script.Build">
+    <configuration name="boatmon" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PycharmProjects/examples" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/PycharmProjects/examples/boatmon.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="loglast" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="PYDEVD_USE_CYTHON" value="NO" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="boats.loglast" />
+      <option name="PARAMETERS" value="Petsamo" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main - add destination" type="PythonConfigurationType" factoryName="Python">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,7 +265,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="boats" />
-      <option name="PARAMETERS" value="--viewboat --boat_name Petsamo --map Folium" />
+      <option name="PARAMETERS" value="--viewboat --from_log --boat_name Petsamo --map Open_Sea,Folium" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="true" />
@@ -225,6 +285,40 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="EXECUTE_IN_TERMINAL" value="true" />
       <option name="EXECUTE_SCRIPT_FILE" value="false" />
+      <envs />
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="killdist" run_configuration_type="ShConfigurationType" />
+      </method>
+    </configuration>
+    <configuration name="install" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/boats/install" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2">
+        <option name="RunConfigurationTask" enabled="true" run_configuration_name="Build" run_configuration_type="ShConfigurationType" />
+      </method>
+    </configuration>
+    <configuration name="killdist" type="ShConfigurationType">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/killdist" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/zsh" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
@@ -251,12 +345,18 @@
       <item itemvalue="Python.main - monitor" />
       <item itemvalue="Python.main - remove destination" />
       <item itemvalue="Python.main - view destinations" />
+      <item itemvalue="Python.boatmon" />
+      <item itemvalue="Python.loglast" />
       <item itemvalue="Python tests.All Tests" />
+      <item itemvalue="Shell Script.killdist" />
       <item itemvalue="Shell Script.Build" />
+      <item itemvalue="Shell Script.install" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.loglast" />
         <item itemvalue="Python.boatmon" />
+        <item itemvalue="Python tests.Python tests in test_dest.py" />
         <item itemvalue="Python.loglast" />
       </list>
     </recent_temporary>
@@ -609,7 +709,14 @@
       <option name="project" value="LOCAL" />
       <updated>1737605111241</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Modify workspace.xml">
+      <created>1737605251180</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1737605251180</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -674,7 +781,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="viewboat.py" />
     <MESSAGE value="routepos.py, df_route.py" />
     <MESSAGE value="df_route.py, makeroutefile.py" />
     <MESSAGE value="multiple" />
@@ -699,7 +805,8 @@
     <MESSAGE value="v0.4: Modify map title. Add 'last_update' property to class Nav. Modify timestamp. Fix layout redrawing." />
     <MESSAGE value="Add copy_log." />
     <MESSAGE value="Commit config and data files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit config and data files." />
+    <MESSAGE value="Modify workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modify workspace.xml" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

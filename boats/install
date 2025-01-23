@@ -1,0 +1,3 @@
+conda activate prod
+pip uninstall boats
+pip install dist/*whl --force-reinstall
