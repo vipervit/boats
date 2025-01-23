@@ -1,4 +1,4 @@
 [project]
 name = "boats"
 description = "Sailaway sailboats monitoring"
-version = "0.3"
+version = "0.55"
