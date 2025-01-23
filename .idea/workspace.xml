@@ -277,13 +277,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.boatmon" />
-      <item itemvalue="Python.loglast" />
+      <item itemvalue="Python.main - viewboat" />
       <item itemvalue="Python.main - add destination" />
       <item itemvalue="Python.main - monitor" />
       <item itemvalue="Python.main - remove destination" />
       <item itemvalue="Python.main - view destinations" />
-      <item itemvalue="Python.main - viewboat" />
+      <item itemvalue="Python.boatmon" />
+      <item itemvalue="Python.loglast" />
       <item itemvalue="Python tests.All Tests" />
     </list>
     <recent_temporary>
