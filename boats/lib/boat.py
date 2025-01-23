@@ -7,6 +7,7 @@ from boats.lib.nav import Nav
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 
+# TODO: Ensure accounting for both 1) no log file existing and/or 2) no html file existing.
 class Boat:
 
     def __init__(self, name, getdata=True):
