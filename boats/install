@@ -1,3 +1,4 @@
-conda activate prod
-pip uninstall boats
+conda activate stage
+rm -rf dist boats.egg-info
+python -m build
 pip install dist/*whl --force-reinstall
