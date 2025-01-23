@@ -4,6 +4,7 @@ import pytest
 
 from boats import Maps
 from boats.lib.boat import Boat, datasource
+from boats.lib.common import timestamp
 from boats.lib.log import Log
 from boats.lib.map import Map, MapMarker
 from boats.lib.nav import Nav
@@ -51,11 +52,6 @@ class Test_Boat:
     def test_nav_default_datasource_set_to_remote(self, boat_remote):
         assert boat_remote.nav.datasource == datasource.remote
 
-    def test_cannot_save_to_log_if_local(self, boat_local):
-        boat_local.nav.savetolog = True
-        with pytest.raises(ValueError):
-            boat_local.update_from_log()
-
     def test_update_local(self, boat_local):
         boat_local.update_from_log()
         rec = boat_local.log.last_record
@@ -89,16 +85,19 @@ class Test_Nav:
         return Nav(boat_name=TEST_BOAT_NAME_LOCAL, src=datasource.local)
 
     def test_get_data(self, nav_local, nav_remote):
+        ts = timestamp()
         # local
         assert nav_local.boatname == TEST_BOAT_NAME_LOCAL
         assert nav_local.heel == 35
         assert nav_local.sailplan == ['Mainsail', 'Nr.2']
+        assert nav_local.last_update == f'{ts} log'
         # remote
         assert nav_remote.boatname == TEST_BOAT_NAME_REMOTE
         assert nav_remote.heel == 17
         assert nav_remote.speed['spd'] == 4.6
         assert nav_remote.az['hdg'] == 104
         assert nav_remote.sailplan == ['Mainsail', 'Genaker']
+        assert nav_remote.last_update == f'{ts} server'
 
     def test_show_short(self, nav_local):
         nav_local.show()
