@@ -1,11 +1,12 @@
-import pytest
 import os
+
+import pytest
 
 from boats import Maps
 from boats.lib.boat import Boat, datasource
 from boats.lib.log import Log
-from boats.lib.nav import Nav
 from boats.lib.map import Map, MapMarker
+from boats.lib.nav import Nav
 
 TEST_BOAT_NAME = 'Testboat'
 
@@ -49,7 +50,7 @@ class Test_Boat:
         assert boat.log.last_record_timestamp == '22-Oct 06:45'
 
     def test_no_nav_until_updated(self, boat):
-        assert bool(boat.nav.all) == False # empty
+        assert bool(boat.nav.all) == False  # empty
         with pytest.raises(AttributeError):
             assert boat.nav.show()
 
