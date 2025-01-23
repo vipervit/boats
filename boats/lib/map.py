@@ -11,7 +11,6 @@ from boats import DIR_MAPS, DEFAULT_ZOOM, URL_OPENSEA, URL_WINDY, URL_IBOATING
 DEFAULT_LOCATION = [0.00, 0.00]
 
 
-# TODO: Ensure accounting for both 1) no log file existing and/or 2) no html file existing.
 class MapMarker:
     def __init__(self, **kwargs):
         if 'location' in kwargs.keys():
