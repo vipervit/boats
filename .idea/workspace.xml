@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="Add '--from_log' to __main__.py. Add __set_map_title__. Add 'killdist'. Add --force-reinstall to 'install'. Fix viewboat.py for maps.">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/test/simulated.json" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/test/simulated.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/log.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/nav.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/nav.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/tests/test_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/tests/test_all.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="v0.55" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -288,17 +278,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main - viewboat" />
       <item itemvalue="Python.main - add destination" />
       <item itemvalue="Python.main - monitor" />
       <item itemvalue="Python.main - remove destination" />
       <item itemvalue="Python.main - view destinations" />
+      <item itemvalue="Python.main - viewboat" />
       <item itemvalue="Python.boatmon" />
       <item itemvalue="Python.loglast" />
       <item itemvalue="Python tests.All Tests" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.loglast" />
+        <item itemvalue="Python.boatmon" />
         <item itemvalue="Python.loglast" />
         <item itemvalue="Python.boatmon" />
         <item itemvalue="Python.loglast" />
@@ -756,18 +748,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/boats/tests/test_all.py</url>
-          <line>74</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/boats/lib/log.py</url>
-          <line>93</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">

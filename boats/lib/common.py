@@ -102,7 +102,10 @@ def seconds_to_formatted_output(secs):
 
 def get_destination_coordinates(name):
     df = pd.read_csv(F_DESTINATIONS)
-    return list(df[df['Name'] == name][['Lat', 'Lon']].values[0])
+    try:
+        return df[df['Name'] == name][['Lat', 'Lon']].values[0].tolist()
+    except IndexError:
+        return False
 
 
 def get_estimated_position(last_pos, hdg, spd, elapsed):

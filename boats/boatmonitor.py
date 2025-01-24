@@ -213,10 +213,15 @@ class Display(wx.Frame):
     def __set_destination__(self, event):
         self.__get_destination__()
         if self.destination is not None and len(self.destination) > 0:
-            self.dest_coors = get_destination_coordinates(self.destination)
+            res = get_destination_coordinates(self.destination)
+            if not res:
+                self.dest_coors = 'NOT FOUND!'
+            else:
+                self.dest_coors = res
             self.edbox_destination.SetLabel(self.destination)
             self.txt_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
-            self.__update_nav_info_display__()
+            if type(self.dest_coors) is list:
+                self.__update_nav_info_display__()
 
     def __get_destination__(self):
         if len(self.edbox_destination.GetLineText(0)) > 0:
