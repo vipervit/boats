@@ -17,13 +17,15 @@ class Display(wx.Frame):
     def __init__(self, boat_name):
         super(Display, self).__init__(parent=None, title=boat_name.upper())
 
-        self.polling_interval = 600000  # every 10 min
+        self.polling_timer = None
         self.polling_counter = None
+        self.polling_interval = 600000  # every 10 min
         self.zoom = 10
         self.__set_polling_counter__()
         self.dest_coors = None
         self.txt_info = None
         self.destination = None
+        self.last_update_time = None
 
         self.boat = Boat(boat_name, getdata=False)
         self.__update_nav_data__()
@@ -86,19 +88,17 @@ class Display(wx.Frame):
         box.Add(txt_zoom, 0, wx.ALIGN_RIGHT)
         box.Add(self.edctl_zoom, 0, wx.ALIGN_RIGHT)
         box.Add(btn_enter, 0, wx.ALIGN_RIGHT)
-        btn_enter.Bind(wx.EVT_BUTTON, self.__set_zoom_and_polling_interval)
+        btn_enter.Bind(wx.EVT_BUTTON, self.__reset_zoom_and_polling__)
         return box
+
+    def __reset_zoom_and_polling__(self, event):
+        self.__set_zoom__()
+        self.__reset_polling__()
 
     def __reset_polling__(self):
         self.__set_polling_interval__()
         self.__set_polling_counter__()
         self.__reset_polling_timer__()
-
-    def __set_zoom_and_polling_interval(self, event):
-        self.__set_zoom__()
-        self.__set_polling_interval__()
-        self.__redraw_layout__()
-        self.__set_destination__(None)
 
     def __set_polling_interval__(self):
         self.polling_interval = int(self.edctl_poll.GetLineText(0)) * 1000
@@ -158,8 +158,9 @@ class Display(wx.Frame):
         last_update = self.__get_last_update_timestamp__()
         self.txt_last_update.SetLabel(f'Last update:    {last_update}')
         self.txt_curr_time.SetLabel(f'Current time:   {curr_time}')
-        self.txt_next_upd.SetLabel(
-            f'Next update:    {next_update} (in {seconds_to_formatted_output(self.polling_counter)})')
+        if self.polling_counter > 0:
+            self.txt_next_upd.SetLabel(
+                f'Next update:    {next_update} (in {seconds_to_formatted_output(self.polling_counter)})')
 
     def __update_polling_counter__(self, event):
         self.polling_counter -= 1
@@ -177,6 +178,7 @@ class Display(wx.Frame):
         self.boat.update_from_server(savetolog=True)
 
     def __update_nav_info_display__(self):
+        self.__save_last_update_time__()
         df = self.boat.log.df
         coors_port = self.dest_coors
         hrs_24 = df.index[-1] - timedelta(days=1)
