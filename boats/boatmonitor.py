@@ -9,13 +9,13 @@ from geopy import distance
 
 from boats.lib.boat import Boat
 from boats.lib.common import miles_to_nautical, seconds_to_formatted_output, get_destination_coordinates, \
-    calc_course, calc_total_voyage_days, calc_total_voyage_distance, timestamp
+    calc_course, calc_total_voyage_days, calc_total_voyage_distance, timestamp, get_version_from_pyproject
 
 
 class Display(wx.Frame):
 
-    def __init__(self, boat_name):
-        super(Display, self).__init__(parent=None, title=boat_name.upper())
+    def __init__(self, boat_name, version):
+        super(Display, self).__init__(parent=None, title=f'{boat_name.upper()}  v{version}')
 
         self.polling_timer = None
         self.polling_counter = None
@@ -252,7 +252,7 @@ def main(args):
     args = parser.parse_args(args)
 
     app = wx.App()
-    Display(args.boat_name)
+    Display(boat_name=args.boat_name, version=get_version_from_pyproject())
     app.MainLoop()
 
 

@@ -1,5 +1,6 @@
 import json
 import time
+import tomllib
 import warnings
 from datetime import datetime
 
@@ -8,11 +9,17 @@ import requests
 from geographiclib.geodesic import Geodesic
 from geopy import distance
 
-from boats import F_DESTINATIONS, API_OWN_BOATS, API_SIMULATED_RESPONSE_FILE
+from boats import F_DESTINATIONS, API_OWN_BOATS, API_SIMULATED_RESPONSE_FILE, F_TOML
+
+
+def get_version_from_pyproject(file_path=F_TOML):
+    with open(file_path, "rb") as f:
+        pyproject_data = tomllib.load(f)
+        return pyproject_data.get("project", {}).get("version")
 
 
 def get_all_own_boats_json():
-    match not __debug__: # the logic is inverted; to run  in debug mode '-O' must be used
+    match not __debug__:  # the logic is inverted; to run  in debug mode '-O' must be used
         case True:
             warnings.warn('Running in debug mode!')
             with open(API_SIMULATED_RESPONSE_FILE, 'r') as f:

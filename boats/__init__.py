@@ -4,6 +4,7 @@ from pathlib import Path
 
 import keyring
 
+DIR_PROJ = Path(__file__).parent.parent.resolve()
 DIR_HOME = Path(__file__).parent.resolve()
 DIR_DATA = os.path.join(DIR_HOME, 'data')
 DIR_MAPS = os.path.join(DIR_HOME, 'map')
@@ -15,6 +16,9 @@ DIR_ROUTE_OUT = os.path.join(DIR_ROUTE, 'out')
 DIR_ROUTE_TMP = os.path.join(DIR_ROUTE, 'tmp')
 DIR_PKL = os.path.join(DIR_DATA, 'pkl')
 DIR_TEST_FILES = os.path.join(DIR_DATA, 'test')
+
+F_DESTINATIONS = os.path.join(DIR_DATA, 'destinations.csv')
+F_TOML = os.path.join(DIR_PROJ, 'pyproject.toml')
 
 
 class Maps(Enum):
@@ -56,14 +60,10 @@ POINTS_OF_SAIL = {
 
 API_KEY = keyring.get_password('sailaway', 'api_key')
 API_USER = keyring.get_password('sailaway', 'api_user')
-
 API_OWN_BOATS = 'http://srv.sailaway.world/cgi-bin/sailaway/APIBoatInfo.pl?usrnr={}&key={}'.format(API_USER, API_KEY)
-
 API_SIMULATED_RESPONSE_FILE = os.path.join(DIR_TEST_FILES, 'simulated.json')
 
 DEFAULT_ZOOM = 7
 DEFAULT_MAP = Maps.Folium
-
-F_DESTINATIONS = os.path.join(DIR_DATA, 'destinations.csv')
 
 DATETIME_FORMAT = '%d-%b %H:%M'
