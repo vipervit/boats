@@ -246,6 +246,7 @@ class Display(wx.Frame):
     def __close__(event):
         sys.exit()
 
+
 def main(args):
     parser = argparse.ArgumentParser(description='Displays the current boat position, sails, nav, and other data.')
     parser.add_argument('--boat_name')

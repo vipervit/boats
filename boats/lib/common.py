@@ -13,9 +13,12 @@ from boats import F_DESTINATIONS, API_OWN_BOATS, API_SIMULATED_RESPONSE_FILE, F_
 
 
 def get_version_from_pyproject(file_path=F_TOML):
-    with open(file_path, "rb") as f:
-        pyproject_data = tomllib.load(f)
-        return pyproject_data.get("project", {}).get("version")
+    try:
+        with open(file_path, "rb") as f:
+            pyproject_data = tomllib.load(f)
+            return pyproject_data.get("project", {}).get("version")
+    except FileNotFoundError:
+        return 'x.x'
 
 
 def get_all_own_boats_json():

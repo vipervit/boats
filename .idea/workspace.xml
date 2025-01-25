@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="v0.81&#10;Add version display.">
+    <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/boats.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/boats.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -85,7 +85,6 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "TODO_SCOPE": "All Places",
     "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/Users/hedge/Dev/boats/dist",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   },
@@ -107,8 +106,8 @@
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/boats" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/boats" />
       <recent name="$PROJECT_DIR$/boats/boats" />
       <recent name="$PROJECT_DIR$/boats/data" />
       <recent name="$PROJECT_DIR$/boats/data/test" />
