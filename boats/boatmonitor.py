@@ -94,6 +94,7 @@ class Display(wx.Frame):
     def __reset_zoom_and_polling__(self, event):
         self.__set_zoom__()
         self.__reset_polling__()
+        self.__redraw_layout__()
 
     def __reset_polling__(self):
         self.__set_polling_interval__()
