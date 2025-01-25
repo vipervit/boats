@@ -94,7 +94,9 @@ class Display(wx.Frame):
     def __reset_zoom_and_polling__(self, event):
         self.__set_zoom__()
         self.__reset_polling__()
+        self.__get_destination__()
         self.__redraw_layout__()
+        self.__set_destination__(None)
 
     def __reset_polling__(self):
         self.__set_polling_interval__()
@@ -243,7 +245,6 @@ class Display(wx.Frame):
     @staticmethod
     def __close__(event):
         sys.exit()
-
 
 def main(args):
     parser = argparse.ArgumentParser(description='Displays the current boat position, sails, nav, and other data.')
