@@ -1,0 +1,86 @@
+from datetime import timedelta, datetime
+
+import wx
+from geopy.distance import distance
+
+from boats.lib.common import get_destination_coordinates, calc_course, miles_to_nautical
+from boats.lib.gui.box import Box
+
+
+class DestinationBox(Box, wx.FlexGridSizer):
+    def __init__(self, parent):
+        super(Box, self).__init__(5)
+        super(DestinationBox, self).__init__(parent)
+        self.dest_coors = None
+        self.name = None
+        self.ttd = None
+        self.ctd = None
+        self.eta = None
+        self._data = None
+
+    @property
+    def data(self):
+        return self._data
+
+    @data.setter
+    def data(self, val):
+        self._data = val
+
+    def __set_destination__(self, event):
+        self.edbox_dest_coors.ForegroundColour = 'black'
+        self.__get_destination__()
+        self.dest_coors = get_destination_coordinates(self.name)
+        if self.dest_coors is not False:
+            self.edbox_dest_coors.SetLabel(self.name)
+            self.update()
+        else:
+            self.edbox_dest_coors.ForegroundColour = 'red'
+            self.edbox_dest_coors.SetLabel('NOT FOUND!')
+            self.txt_ctd_val.SetLabel('')
+            self.txt_eta_val.SetLabel('')
+
+    def __get_destination__(self):
+        if len(self.edbox_destination.GetLineText(0)) > 0:
+            self.name = self.edbox_destination.GetLineText(0)
+
+    def update(self):
+        if self.name is not None and len(self.name) > 0:
+            self.__calculate_destination_info__()
+            self.edbox_destination.SetLabel(self.name)
+            self.edbox_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
+            self.txt_ctd_val.SetLabel(str(self.ctd))
+            self.txt_eta_val.SetLabel(self.eta)
+
+    def __calculate_destination_info__(self):
+        spd = self.data['spd']
+        pos = self.data['pos']
+        if self.dest_coors is not None:
+            dtw = round(miles_to_nautical(distance(self.dest_coors, pos).miles))
+            if spd == 0:
+                self.ttd = 0
+                self.eta = 'N/A'
+            else:
+                self.ttd = round(dtw / spd)
+                self.eta = (datetime.now() + timedelta(hours=self.ttd)).strftime('%d-%b %H:%M')
+            self.ctd = calc_course(pos, self.dest_coors)  # course to destination
+
+    def __draw_layout__(self):
+        txt_enter_dest = wx.StaticText(self.parent, label='Destination:')
+        self.edbox_destination = wx.TextCtrl(self.parent)
+        self.edbox_dest_coors = wx.TextCtrl(self.parent)
+        self.edbox_dest_coors.Disable()
+        btn_enter_dest = wx.Button(self.parent, 0, 'Enter')
+        self.txt_ctd_lb = wx.StaticText(self.parent, label='CTD:')
+        self.txt_ctd_val = wx.StaticText(self.parent)
+        self.txt_eta_lb = wx.StaticText(self.parent, label='ETA:')
+        self.txt_eta_val = wx.StaticText(self.parent)
+        self.Add(txt_enter_dest, 0, wx.ALIGN_LEFT)
+        self.AddSpacer(79)
+        self.Add(self.edbox_destination, 0, wx.ALIGN_LEFT)
+        self.Add(self.edbox_dest_coors, 0, wx.ALIGN_LEFT)
+        self.Add(btn_enter_dest, 0, wx.ALIGN_LEFT)  # Enter button
+        self.Add(self.txt_ctd_lb)
+        self.Add(self.txt_ctd_val)
+        self.Add(self.txt_eta_lb)
+        self.Add(self.txt_eta_val)
+        btn_enter_dest.Bind(wx.EVT_BUTTON, self.__set_destination__)

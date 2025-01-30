@@ -4,13 +4,15 @@ import os
 import time
 import warnings
 from datetime import datetime
+from datetime import timedelta
 from io import StringIO
 
 import pandas as pd
 import pytz
+from geopy import distance
 
 from boats import DIR_LOGS, DIR_TEST_FILES, DATETIME_FORMAT
-from boats.lib.common import make_log_file_name
+from boats.lib.common import make_log_file_name, miles_to_nautical, calc_total_voyage_days, calc_total_voyage_distance
 
 
 class Log:
@@ -82,6 +84,10 @@ class Log:
         return self._df.iloc[-1]
 
     @property
+    def last_position(self):
+        return [self.last_record['lat'], self.last_record['lon']]
+
+    @property
     def last_record_timestamp(self):
         return self.last_record.name.timestamp()
 
@@ -89,6 +95,27 @@ class Log:
     def last_record_timestamp_local(self):
         return datetime.fromtimestamp(self.last_record_timestamp).astimezone(pytz.timezone('US/Eastern')) \
             .strftime(DATETIME_FORMAT)
+
+    @property
+    def last_24_hrs_distance(self):
+        df = self.df
+        hrs_24 = df.index[-1] - timedelta(days=1)
+        df_24hrs = df[df.index.isin([entry for entry in df.index if entry >= hrs_24])]
+        start_pos = list(df_24hrs.iloc[0][['lat', 'lon']].values)
+        last_pos = list(df_24hrs.iloc[-1][['lat', 'lon']].values)
+        return round(miles_to_nautical(distance.distance(start_pos, last_pos).miles))
+
+    @property
+    def last_24_hrs_average_speed(self):
+        return round(self.last_24_hrs_distance / 24, 1)
+
+    @property
+    def total_days(self):
+        return calc_total_voyage_days(self.df.index[0], self.df.index[-1])
+
+    @property
+    def total_distance(self):
+        return calc_total_voyage_distance(self.df[['lat', 'lon']])
 
     def __exists__(self):
         res = os.path.exists(self._file)
