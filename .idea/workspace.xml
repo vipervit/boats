@@ -122,7 +122,7 @@
       <recent name="$PROJECT_DIR$/boats/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main - monitor">
+  <component name="RunManager" selected="Python tests.All Tests">
     <configuration name="main - add destination" type="PythonConfigurationType" factoryName="Python">
       <module name="boats" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -258,13 +258,6 @@
       <item itemvalue="Python.main - viewboat" />
       <item itemvalue="Python tests.All Tests" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Python.loglast" />
-        <item itemvalue="Python.boatmon" />
-        <item itemvalue="Python.loglast" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager">
     <option name="remove_strategy" value="true" />
