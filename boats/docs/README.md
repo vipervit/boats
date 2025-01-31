@@ -1,1 +1,0 @@
-[Sail monitor](sailmonitor.png)
