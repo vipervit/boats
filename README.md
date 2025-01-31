@@ -1,0 +1,1 @@
+![Alt text](boats/docs/sailmonitor.png?raw=true "Sail monitor")
