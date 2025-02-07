@@ -22,8 +22,8 @@ class Display(wx.Frame):
 
     def __init__(self, boat_name, version):
         super(Display, self).__init__(parent=None, title=f'{boat_name.upper()}  v{version}')
-
         self.boat = Boat(boat_name, getdata=True, savetolog=True)
+        self.initial_update = True
         self.timer = UTimer(self)
         self.sizer = wx.BoxSizer(wx.VERTICAL)
 
@@ -43,7 +43,7 @@ class Display(wx.Frame):
         self.sizer.Add(self.box_dest, wx.ALIGN_LEFT)
         self.sizer.Add(self.box_buttons, 0, 5)
 
-        self.__update_all__(initial=True)
+        self.__update_all__(event=None)
 
         self.SetSizerAndFit(self.sizer)
         self.sizer.Layout()
@@ -57,8 +57,8 @@ class Display(wx.Frame):
         self.box_times.counter = self.timer.counter
         self.box_times.update()
 
-    def __update_all__(self, initial=False):
-        self.__update_nav_data__(initial)
+    def __update_all__(self, event):
+        self.__update_nav_data__()
         self.box_times.update()
         self.box_map.update()
         self.box_dest.update()
@@ -81,11 +81,12 @@ class Display(wx.Frame):
         data.update({'sails': self.boat.nav.sailplan})
         self.box_navinfo.data = data
 
-    def __update_nav_data__(self, initial):
+    def __update_nav_data__(self):
         if __debug__:
             assert self.boat.savetolog == True
-            if not initial:
+            if self.initial_update is False:
                 self.boat.update_from_server()
+        self.initial_update = False
         self.box_times.last_update = self.boat.log.last_record_timestamp_local
         self.box_dest.data = {'spd': int(self.boat.nav.speed['spd']), 'pos': self.boat.nav.position}
 
