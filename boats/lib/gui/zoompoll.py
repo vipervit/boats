@@ -10,30 +10,10 @@ class ZoomPollBox(Box, wx.FlexGridSizer):
         self.poll_choice_mins = ['00', '10', '20', '40']
         super(Box, self).__init__(3, 2, 0, 20)
         super(ZoomPollBox, self).__init__(parent)
-        self._polling_interval = 600000  # every 10 min
-        self._polling_counter = None
         self.zoom = 10
 
-        self.polling_timer = wx.Timer()
-        self.__reset_poliing_timer__()
-
-    @property
-    def polling_interval(self):
-        return self._polling_interval
-
-    @polling_interval.setter
-    def polling_interval(self, val):
-        self._polling_interval = val
-
-    @property
-    def polling_counter(self):
-        return self._polling_counter
-
-    @polling_counter.setter
-    def polling_counter(self, val):
-        self._polling_counter = val
-
     def __draw_layout__(self):
+        # TODO Fix: zoom level drops to default when update occurs
         self.Add(self.__polling__())
         self.Add(self.__zooming__(), wx.EXPAND)
 
@@ -72,17 +52,4 @@ class ZoomPollBox(Box, wx.FlexGridSizer):
         if (hrs == self.poll_choice_hrs[0]) and (mins == self.poll_choice_mins[0]):
             self.combo_poll_mins.SetValue(self.poll_choice_mins[1])
             mins = self.combo_poll_mins.GetValue()
-        self.polling_interval = 1000 * (int(hrs) * 3600 + int(mins) * 60)
-        self.__reset_polling_counter__()
-
-    def heartbeat(self, timestamp):
-        self.polling_counter -= 1
-        if self.polling_counter == 0:
-            self.__reset_polling_counter__()
-
-    def __reset_polling_counter__(self):
-        self.polling_counter = self.polling_interval / 1000
-
-    def __reset_poliing_timer__(self):
-        self.__reset_polling_counter__()
-        self.polling_timer.Start(self.polling_interval)
+        self.parent.timer.period = int(hrs) * 3600 + int(mins) * 60

@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/boats/data/test/Foo.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/box.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/buttons.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/dest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/lastdist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/mapbox.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/times.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/lib/gui/zoompoll.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/boats/map/Foo.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/data/test/Petsamo.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/lib/utimer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__main__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/log.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/gui/buttons.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/buttons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/gui/dest.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/dest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/gui/times.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/times.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/gui/zoompoll.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/zoompoll.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/nav.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/nav.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/map/Foo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Foo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
@@ -47,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prod" />
+        <entry key="$PROJECT_DIR$" value="7f77db57536d075a68b4a26abb1cf971f3b31409" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -93,8 +95,8 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hedge/Dev/boats/dist&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev0.84&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hedge/Dev/boats/boats/data/test&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -108,10 +110,10 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/boats/data/test" />
       <recent name="$PROJECT_DIR$/dist" />
       <recent name="$PROJECT_DIR$/boats/data" />
       <recent name="$PROJECT_DIR$/boats/data/logs" />
-      <recent name="$PROJECT_DIR$/boats/data/test" />
       <recent name="C:\Users\Vitolg\PycharmProjects\boats" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -250,6 +252,48 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_all.Test_Nav" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_all.Test_Nav&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_all.Test_Nav.test_get_data" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_all.Test_Nav.test_get_data&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in /Users/hedge/Dev/boats/boats/tests/test_common.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="boats" />
+      <option name="INTERPRETER_OPTIONS" value="-s" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/boats/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/tests/test_common.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.main - add destination" />
       <item itemvalue="Python.main - monitor" />
@@ -257,12 +301,15 @@
       <item itemvalue="Python.main - view destinations" />
       <item itemvalue="Python.main - viewboat" />
       <item itemvalue="Python tests.All Tests" />
+      <item itemvalue="Python tests.Python tests for test_all.Test_Nav" />
+      <item itemvalue="Python tests.Python tests for test_all.Test_Nav.test_get_data" />
+      <item itemvalue="Python tests.Python tests in /Users/hedge/Dev/boats/boats/tests/test_common.py" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.loglast" />
-        <item itemvalue="Python.boatmon" />
-        <item itemvalue="Python.loglast" />
+        <item itemvalue="Python tests.Python tests for test_all.Test_Nav.test_get_data" />
+        <item itemvalue="Python tests.Python tests for test_all.Test_Nav" />
+        <item itemvalue="Python tests.Python tests in /Users/hedge/Dev/boats/boats/tests/test_common.py" />
       </list>
     </recent_temporary>
   </component>
@@ -670,7 +717,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="main" />
+                        <option value="prod" />
                       </list>
                     </value>
                   </entry>

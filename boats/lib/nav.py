@@ -1,54 +1,28 @@
 from boats import datasource, POINTS_OF_SAIL, SAILS
 from boats.lib.common import get_all_own_boats_json, dd_to_ddm, timestamp
-from boats.lib.log import Log
 
 
 class Nav:
 
-    def __init__(self, boat_name=None, src=datasource.remote, getdata=True):
+    def __init__(self, parent, source=datasource.remote):
+        self.boat = parent
+        self.boatname = self.boat.name
         self._savetolog = False
-        self._datasrc = src
-        self.boatname = boat_name
         self._data = {}
-        self._log = Log(boat_name=self.boatname, allownew=True)
+        self._datasource = source
         self.az = None
-        self._last_update_info = []
-        if getdata:
-            self.update()
 
     @property
-    def all(self):
+    def data(self):
         return self._data
 
     @property
-    def log(self):
-        return self._log
-
-    @property
     def datasource(self):
-        return self._datasrc
+        return self._datasource
 
     @datasource.setter
     def datasource(self, val):
-        self._datasrc = val
-
-    @property
-    def savetolog(self):
-        return self._savetolog
-
-    @savetolog.setter
-    def savetolog(self, val):
-        self._savetolog = val
-
-    @property
-    def last_update(self):
-        word = None
-        match self._last_update_info[1]:
-            case datasource.remote:
-                word = 'server'
-            case datasource.local:
-                word = 'log'
-        return f'{self._last_update_info[0]} {word}'
+        self._datasource = val
 
     def show(self, full=False):
         print('\n{}\n'.format(self.boatname.upper()))
@@ -57,21 +31,14 @@ class Nav:
         else:
             self.__show_short__()
 
-    def update(self):
-        self.__check_savetolog_when_local__()
-        self.__getdata__()
-        if (self.datasource == datasource.remote) and (self.savetolog == True):
-            self.__make_log_entry__()
-
-    def __getdata__(self):
+    def get_data(self):
         match self.datasource:
             case datasource.remote:
-                self.__retrieve_online_boat_data__()
+                self.__retrieve_data_online__()
             case datasource.local:
-                self.__retrieve_boat_data_from_log__()
+                self.__retrieve_data_log__()
             case _:
                 raise ValueError(f'Invalid value for data source: {self.datasource}.')
-        self._last_update_info = [timestamp(), self.datasource]
         self.wind = self.__get_wind__()
         self.speed = self.__get_speed__()
         self.az = self.__get_azimuths__()
@@ -80,25 +47,22 @@ class Nav:
         self.sailplan = self.__get_sailplan__()
         self.heel = self.__get_heel__()
 
-    def __retrieve_boat_data_from_log__(self):
-        self._data = self.log.last_record
+    def __retrieve_data_log__(self):
+        self._data = self.boat.log.last_record
+        self.boat.last_update = self.boat.log.last_record_timestamp_local
+        self.datasource = datasource.local
 
-    def __retrieve_online_boat_data__(self):
+    def __retrieve_data_online__(self):
         response_json = get_all_own_boats_json()
         if self.boatname not in str(response_json):
             raise ValueError(f'Boat does not exist in Sailaway: \'{self.boatname}\'!')
         for data in response_json:
             if data['boatname'] == self.boatname:
                 self._data = data
+        self.datasource = datasource.remote
+        self.boat.last_update = timestamp()
 
-    def __check_savetolog_when_local__(self):
-        if (self.datasource == datasource.local) and (self.savetolog == True):
-            raise ValueError('Can only save in log if updated from remote.')
-
-    def __make_log_entry__(self):
-        self.log.add_new(self.__collect_log_data__())
-
-    def __collect_log_data__(self):
+    def collect_data_for_saving_in_log__(self):
         return {
             'hdg': self.az['hdg'],
             'tws': self.wind['tws'],

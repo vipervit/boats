@@ -1,5 +1,5 @@
 import time
-from datetime import timedelta, datetime
+from datetime import datetime
 
 import wx
 
@@ -23,6 +23,7 @@ class Times(Box, wx.FlexGridSizer):
     @last_update.setter
     def last_update(self, val):
         self._last_update = val
+        self.update()
 
     @property
     def counter(self):
@@ -31,7 +32,6 @@ class Times(Box, wx.FlexGridSizer):
     @counter.setter
     def counter(self, val):
         self._counter = val
-        self.update()
 
     def __draw_layout__(self):
         self.txt_curr_time_lb = wx.StaticText(self.parent, label='Current time:')
@@ -49,7 +49,10 @@ class Times(Box, wx.FlexGridSizer):
 
     def update(self):
         curr_time = time.strftime(DATETIME_FORMAT)
-        next_update = (datetime.now() + timedelta(seconds=self.counter)).strftime(DATETIME_FORMAT)
+        last_update_ts = self.parent.boat.log.last_record_timestamp
+        next_update = last_update_ts + self.parent.timer.period
+        next_update_ts = datetime.fromtimestamp(next_update).strftime(DATETIME_FORMAT)
         self.txt_curr_time_val.SetLabel(curr_time)
         self.txt_last_update_val.SetLabel(self.last_update)
-        self.txt_next_update_val.SetLabel(f'{next_update} (in {seconds_to_formatted_output(self.counter)})')
+        # TODO Next update 'in' to be counted from actual time
+        self.txt_next_update_val.SetLabel(f'{next_update_ts} (in {seconds_to_formatted_output(self.counter)})')

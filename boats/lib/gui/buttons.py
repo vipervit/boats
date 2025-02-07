@@ -5,6 +5,10 @@ import wx
 from boats.lib.gui.box import Box
 
 
+def killapp(event):
+    sys.exit()
+
+
 class ButtonsBox(Box, wx.FlexGridSizer):
     def __init__(self, parent):
         super(Box, self).__init__(2, 0, 5)
@@ -14,4 +18,4 @@ class ButtonsBox(Box, wx.FlexGridSizer):
         self.Add(btn_update)
         self.Add(btn_close)
         btn_update.Bind(wx.EVT_BUTTON, self.parent.__update_all__)  # Update
-        btn_close.Bind(wx.EVT_BUTTON, sys.exit)  # Close
+        btn_close.Bind(wx.EVT_BUTTON, killapp)  # Close

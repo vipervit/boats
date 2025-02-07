@@ -4,6 +4,8 @@ from pathlib import Path
 
 import keyring
 
+# TODO Fix: all tests are broken
+
 DIR_PROJ = Path(__file__).parent.parent.resolve()
 DIR_HOME = Path(__file__).parent.resolve()
 DIR_DATA = os.path.join(DIR_HOME, 'data')
@@ -65,7 +67,16 @@ API_SIMULATED_RESPONSE_FILE = os.path.join(DIR_TEST_FILES, 'simulated.json')
 
 DEFAULT_ZOOM = 7
 DEFAULT_MAP = Maps.Folium
+DEFAULT_UPDATE_INTERVAL = 600  # 10 min
 
 DATETIME_FORMAT = '%d-%b %H:%M'
 
 ALINGMENT_OFFEST = 12
+
+
+class Thresholds:
+    course = 1
+    heel = 30
+    tws = 30
+    spd = 1  # min
+    eta = 30  # days
