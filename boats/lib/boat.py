@@ -1,6 +1,6 @@
 import warnings
 
-from boats import datasource
+from boats import datasource, DEFAULT_ZOOM
 from boats.lib.log import Log
 from boats.lib.map import Map, MapMarker
 from boats.lib.nav import Nav
@@ -18,6 +18,7 @@ class Boat:
         self._log = Log(self.name)
         self._map = None
         self._last_update = None
+        self.map_zoom = DEFAULT_ZOOM
         if getdata:
             self.update_from_server()
 
@@ -70,7 +71,8 @@ class Boat:
         self._map = Map(boat_name=self.name,
                         location=self.nav.position,
                         track=self.log.track,
-                        marker=marker)
+                        marker=marker,
+                        zoom_start=self.map_zoom)
         match self.nav.datasource:
             case datasource.remote:
                 saveindicator = ''

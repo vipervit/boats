@@ -21,13 +21,13 @@ def main(args):
 
     maps = []
 
-    with Boat(args.boat_name, getdata=False) as o_boat:
+    with Boat(args.boat_name, getdata=False, savetolog=True) as o_boat:
         match args.from_log:
             case True:
                 o_boat.update_from_log()
                 print(o_boat.log.last_record_timestamp_local)
             case False:
-                o_boat.update_from_server(savetolog=True)
+                o_boat.update_from_server()
         o_boat.nav.show(args.full_info)
         if args.zoom_start is not None:
             o_boat.map.zoom = str(args.zoom_start)

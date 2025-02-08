@@ -44,28 +44,32 @@ class NavInfoBox(Box, wx.FlexGridSizer):
         self.Add(self.txt_sails_val, 0, wx.ALIGN_LEFT)
 
     def update(self):
+        diff = None
         tws = self.data['tws']
         heel = self.data['heel']
         cog = self.data['cog']
         ctd = self.data['ctd']
         spd = self.data['spd']
 
-        self.txt_cog_val.ForegroundColour = 'black'
-        self.txt_heel_val.ForegroundColour = 'black'
-        self.txt_tws_val.ForegroundColour = 'black'
-        self.txt_spd_val.ForegroundColour = 'black'
+        self.txt_cog_val.ForegroundColour = 'white'
+        self.txt_heel_val.ForegroundColour = 'white'
+        self.txt_tws_val.ForegroundColour = 'white'
+        self.txt_spd_val.ForegroundColour = 'white'
 
         if tws > Thresholds.tws:
             self.txt_tws_val.ForegroundColour = 'red'
         if heel > Thresholds.heel:
             self.txt_heel_val.ForegroundColour = 'red'
-        if ctd is not None and abs(cog - ctd) > Thresholds.course:
+        if ctd is not None and cog != ctd:
+            diff = abs(cog - ctd)
             self.txt_cog_val.ForegroundColour = 'red'
         if spd < Thresholds.spd:
             self.txt_spd_val.ForegroundColour = 'red'
         self.txt_spd_val.SetLabel(str(spd))
-
         self.txt_tws_val.SetLabel(str(tws))
         self.txt_heel_val.SetLabel(str(heel))
-        self.txt_cog_val.SetLabel(str(cog))
+        cog_str = str(cog)
+        if diff is not None:
+            cog_str += f' ({str(diff)})'
+        self.txt_cog_val.SetLabel(cog_str)
         self.txt_sails_val.SetLabel(', '.join(self.data['sails']).upper())

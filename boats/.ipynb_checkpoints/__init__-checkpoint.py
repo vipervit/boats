@@ -75,6 +75,7 @@ ALINGMENT_OFFEST = 12
 
 
 class Thresholds:
+    course = 1
     heel = 30
     tws = 30
     spd = 1  # min

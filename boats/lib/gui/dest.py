@@ -42,6 +42,7 @@ class DestinationBox(Box, wx.FlexGridSizer):
             self.edbox_dest_coors.SetLabel('NOT FOUND!')
             self.txt_ctd_val.SetLabel('')
             self.txt_eta_val.SetLabel('')
+        self.parent.__update_navinfo__()
 
     def __get_destination__(self):
         if len(self.edbox_destination.GetLineText(0)) > 0:

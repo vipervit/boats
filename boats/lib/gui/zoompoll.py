@@ -1,5 +1,6 @@
 import wx
 
+from boats import DEFAULT_ZOOM
 from boats.lib.gui.box import Box
 
 
@@ -8,12 +9,11 @@ class ZoomPollBox(Box, wx.FlexGridSizer):
     def __init__(self, parent):
         self.poll_choice_hrs = ['00', '01', '02', '03', '04']
         self.poll_choice_mins = ['00', '10', '20', '40']
+        self.zoom = DEFAULT_ZOOM
         super(Box, self).__init__(3, 2, 0, 20)
         super(ZoomPollBox, self).__init__(parent)
-        self.zoom = 10
 
     def __draw_layout__(self):
-        # TODO Fix: zoom level drops to default when update occurs
         self.Add(self.__polling__())
         self.Add(self.__zooming__(), wx.EXPAND)
 
@@ -36,6 +36,7 @@ class ZoomPollBox(Box, wx.FlexGridSizer):
         box = wx.BoxSizer(wx.HORIZONTAL)
         txt_zoom = wx.StaticText(self.parent, label='Zoom level:')
         self.combo_zoom = wx.ComboBox(self.parent, choices=zoom_choice, style=wx.CB_READONLY)
+        self.combo_zoom.SetValue(str(self.zoom))
         box.Add(txt_zoom, 0, wx.EXPAND)
         box.Add(self.combo_zoom)
         self.combo_zoom.Bind(wx.EVT_COMBOBOX, self.__set_zoom__)

@@ -82,6 +82,7 @@ class Display(wx.Frame):
         self.box_navinfo.data = data
 
     def __update_nav_data__(self):
+        self.boat.map_zoom = self.box_poll_zoom.zoom
         if __debug__:
             assert self.boat.savetolog == True
             if self.initial_update is False:

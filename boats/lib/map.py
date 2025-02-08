@@ -77,6 +77,14 @@ class Map:
     def mfile(self):
         return self._mfile
 
+    @property
+    def zoom(self):
+        return self._zoom
+
+    @zoom.setter
+    def zoom(self, val):
+        self._zoom = val
+
     def set(self, **kwargs):
         if 'type' in kwargs.keys():
             self.mtype = kwargs['type']

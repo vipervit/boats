@@ -11,7 +11,6 @@ class MapBox(Box, wx.BoxSizer):
         super(Box, self).__init__()
         super(MapBox, self).__init__(parent)
 
-
     def __create_map__(self):
         browser = wx.html2.WebView.New(self.parent)
         browser.LoadURL(f'file:///{self._f}')

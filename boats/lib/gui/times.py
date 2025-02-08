@@ -48,11 +48,12 @@ class Times(Box, wx.FlexGridSizer):
         self.Add(self.txt_next_update_val, 0, wx.ALIGN_LEFT)
 
     def update(self):
-        curr_time = time.strftime(DATETIME_FORMAT)
+        curr_time = time.time()
+        curr_time_s = datetime.fromtimestamp(curr_time).strftime(DATETIME_FORMAT)
         last_update_ts = self.parent.boat.log.last_record_timestamp
         next_update = last_update_ts + self.parent.timer.period
         next_update_ts = datetime.fromtimestamp(next_update).strftime(DATETIME_FORMAT)
-        self.txt_curr_time_val.SetLabel(curr_time)
+        next_in_secs = (datetime.fromtimestamp(next_update) - datetime.fromtimestamp(curr_time)).seconds
+        self.txt_curr_time_val.SetLabel(curr_time_s)
         self.txt_last_update_val.SetLabel(self.last_update)
-        # TODO Next update 'in' to be counted from actual time
-        self.txt_next_update_val.SetLabel(f'{next_update_ts} (in {seconds_to_formatted_output(self.counter)})')
+        self.txt_next_update_val.SetLabel(f'{next_update_ts} (in {seconds_to_formatted_output(next_in_secs)})')
