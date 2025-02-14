@@ -51,10 +51,10 @@ class NavInfoBox(Box, wx.FlexGridSizer):
         ctd = self.data['ctd']
         spd = self.data['spd']
 
-        self.txt_cog_val.ForegroundColour = 'white'
-        self.txt_heel_val.ForegroundColour = 'white'
-        self.txt_tws_val.ForegroundColour = 'white'
-        self.txt_spd_val.ForegroundColour = 'white'
+        self.txt_cog_val.ForegroundColour = wx.NullColour
+        self.txt_heel_val.ForegroundColour = wx.NullColour
+        self.txt_tws_val.ForegroundColour = wx.NullColour
+        self.txt_spd_val.ForegroundColour = wx.NullColour
 
         if tws > Thresholds.tws:
             self.txt_tws_val.ForegroundColour = 'red'

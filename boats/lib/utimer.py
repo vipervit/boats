@@ -29,12 +29,12 @@ class UTimer(wx.Timer):
     def Notify(self):
         self.owner.__heartbeat__()
         self._counter -= 1
-        if self._counter == 0:
+        if self._counter <= 0:
             self.Action()
             self.__reset_counter__()
 
     def Action(self):
-        self.owner.__update_all__()
+        self.owner.__update_all__(None)
 
     def __reset_counter__(self):
         self._counter = self.period

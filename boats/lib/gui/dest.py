@@ -31,7 +31,7 @@ class DestinationBox(Box, wx.FlexGridSizer):
         return self._ctd
 
     def __set_destination__(self, event):
-        self.edbox_dest_coors.ForegroundColour = 'black'
+        self.edbox_dest_coors.ForegroundColour = 'green'
         self.__get_destination__()
         self.dest_coors = get_destination_coordinates(self.name)
         if self.dest_coors is not False:
@@ -71,6 +71,7 @@ class DestinationBox(Box, wx.FlexGridSizer):
             self._ctd = calc_course(pos, self.dest_coors)  # course to destination
 
     def __draw_layout__(self):
+        # TODO Add DTD
         txt_enter_dest = wx.StaticText(self.parent, label='Destination:')
         self.edbox_destination = wx.TextCtrl(self.parent)
         self.edbox_dest_coors = wx.TextCtrl(self.parent)
