@@ -32,7 +32,13 @@ def make_log_file_name(boatname):
     return f'{boatname}.log'
 
 
+def curr_time():
+    """Returns epoch timestamp"""
+    return time.time()
+
+
 def timestamp():
+    """Return current date and time as a formatted string."""
     return datetime.now().strftime('%d-%b-%Y %H:%M')
 
 

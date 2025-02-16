@@ -1,13 +1,13 @@
 import wx
 
-from boats import ALINGMENT_OFFEST, Thresholds
+from boats import ALINGMENT_OFFSET, Thresholds
 from boats.lib.gui.box import Box
 
 
 class NavInfoBox(Box, wx.FlexGridSizer):
 
     def __init__(self, parent):
-        super(Box, self).__init__(5, 2, 0, 100 + ALINGMENT_OFFEST)
+        super(Box, self).__init__(5, 2, 0, 100 + ALINGMENT_OFFSET)
         super(NavInfoBox, self).__init__(parent)
         self.boat = parent.boat
         self._data = None

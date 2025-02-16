@@ -10,7 +10,7 @@ class UTimer(wx.Timer):
         self.owner = owner
         self._counter = None
         self._period = DEFAULT_UPDATE_INTERVAL
-        self.__reset_counter__()
+        self.reset_counter()
         super().Start(1000)
 
     @property
@@ -20,7 +20,7 @@ class UTimer(wx.Timer):
     @period.setter
     def period(self, val):
         self._period = int(val)
-        self.__reset_counter__()
+        self.reset_counter()
 
     @property
     def counter(self):
@@ -31,10 +31,10 @@ class UTimer(wx.Timer):
         self._counter -= 1
         if self._counter <= 0:
             self.Action()
-            self.__reset_counter__()
 
     def Action(self):
         self.owner.__update_all__(None)
+        self.reset_counter()
 
-    def __reset_counter__(self):
+    def reset_counter(self):
         self._counter = self.period

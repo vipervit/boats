@@ -5,7 +5,7 @@ import wx
 import wx.html2
 
 from boats.lib.boat import Boat
-from boats.lib.common import get_version_from_pyproject
+from boats.lib.common import get_version_from_pyproject, curr_time
 from boats.lib.gui.buttons import ButtonsBox
 from boats.lib.gui.dest import DestinationBox
 from boats.lib.gui.lastdist import LastDist
@@ -22,6 +22,7 @@ class Display(wx.Frame):
 
     def __init__(self, boat_name, version):
         super(Display, self).__init__(parent=None, title=f'{boat_name.upper()}  v{version}')
+        self.ts_last_update, self.ts_next_update = None, None
         self.boat = Boat(boat_name, getdata=True, savetolog=True)
         self.initial_update = True
         self.timer = UTimer(self)
@@ -40,7 +41,7 @@ class Display(wx.Frame):
         self.sizer.Add(self.box_times)
         self.sizer.Add(self.box_last_dist)
         self.sizer.Add(self.box_navinfo, wx.ALIGN_LEFT)
-        self.sizer.Add(self.box_dest, wx.ALIGN_LEFT)
+        self.sizer.Add(self.box_dest, 0, wx.ALIGN_LEFT)
         self.sizer.Add(self.box_buttons, 0, 5)
 
         self.__update_all__(event=None)
@@ -54,14 +55,29 @@ class Display(wx.Frame):
         self.Show()
 
     def __heartbeat__(self):
+        if self.__time_is_up__():
+            self.__update_all__(event=None)
+        else:
+            self.__update_times__()
+
+    def __time_is_up__(self):
+        ts_curr = curr_time()
+        if ts_curr > self.ts_next_update:
+            return True
+        else:
+            return False
+
+    def __update_times__(self):
         self.box_times.counter = self.timer.counter
+        self.ts_last_update = self.__get_last_update_timestamp__()
+        self.ts_next_update = self.ts_last_update + self.timer.period
         self.box_times.update()
 
     def __update_all__(self, event):
         self.__update_nav_data__()
-        self.box_times.update()
-        self.box_map.update()
-        self.box_dest.update()
+        self.__update_times__()
+        self.__update_map__()
+        self.__update_destination__()
         self.__update_totals__()
         self.__update_navinfo__()
 
@@ -81,6 +97,12 @@ class Display(wx.Frame):
         data.update({'sails': self.boat.nav.sailplan})
         self.box_navinfo.data = data
 
+    def __update_map__(self):
+        self.box_map.update()
+
+    def __update_destination__(self):
+        self.box_dest.update()
+
     def __update_nav_data__(self):
         self.boat.map_zoom = self.box_poll_zoom.zoom
         if __debug__:
@@ -88,8 +110,10 @@ class Display(wx.Frame):
             if self.initial_update is False:
                 self.boat.update_from_server()
         self.initial_update = False
-        self.box_times.last_update = self.boat.log.last_record_timestamp_local
         self.box_dest.data = {'spd': int(self.boat.nav.speed['spd']), 'pos': self.boat.nav.position}
+
+    def __get_last_update_timestamp__(self):
+        return self.boat.log.last_record_timestamp
 
 
 def main(args):

@@ -1,12 +1,12 @@
 import wx
 
-from boats import ALINGMENT_OFFEST
+from boats import ALINGMENT_OFFSET
 from boats.lib.gui.box import Box
 
 
 class LastDist(Box, wx.FlexGridSizer):
     def __init__(self, parent):
-        super(Box, self).__init__(2, 2, 20 + ALINGMENT_OFFEST)
+        super(Box, self).__init__(2, 2, 20 + ALINGMENT_OFFSET)
         super(LastDist, self).__init__(parent)
         self._last_dist = None
         self._total_dist = None

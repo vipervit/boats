@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/common.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/lib/gui/dest.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/dest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/gui/lastdist.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/lastdist.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/lib/gui/times.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/times.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/lib/utimer.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/utimer.py" afterDir="false" />
@@ -314,13 +317,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673107876333</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Modify paths, add save_current_sail_data() to viewpos.py">
-      <created>1673987889323</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1673987889323</updated>
     </task>
     <task id="LOCAL-00010" summary="Remove petsamo.py, improve output of viewpos.py and racemap.py">
       <created>1673992730921</created>
@@ -658,8 +654,26 @@
       <option name="project" value="LOCAL" />
       <updated>1738990558150</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="Correct times update. Correct navinfo colours.">
+      <created>1739575040286</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1739575040286</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="RECENT_FILTERS">
@@ -723,7 +737,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Feb 21" />
     <MESSAGE value="Feb 25" />
     <MESSAGE value="Mar 14" />
     <MESSAGE value="Correct viewboat.py, add data files" />
@@ -748,7 +761,8 @@
     <MESSAGE value="v0.81&#10;Add version display." />
     <MESSAGE value="0.84c&#10;Correct __update_nav_data__" />
     <MESSAGE value="Add colour indicators for COG, TWS, SPD. Correct keeping zoom upon update." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add colour indicators for COG, TWS, SPD. Correct keeping zoom upon update." />
+    <MESSAGE value="Correct times update. Correct navinfo colours." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct times update. Correct navinfo colours." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
