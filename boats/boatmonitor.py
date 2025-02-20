@@ -21,7 +21,7 @@ class Display(wx.Frame):
     #
 
     def __init__(self, boat_name, version):
-        super(Display, self).__init__(parent=None, title=f'{boat_name.upper()}  v{version}')
+        super(Display, self).__init__(parent=None, title=f'BOATS  v{version}')
         self.ts_last_update, self.ts_next_update = None, None
         self.boat = Boat(boat_name, getdata=True, savetolog=True)
         self.initial_update = True

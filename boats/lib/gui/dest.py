@@ -56,7 +56,7 @@ class DestinationBox(Box, wx.FlexGridSizer):
             self.edbox_destination.SetLabel(self.name)
             self.edbox_dest_coors.SetLabel(self.dest_coors.__str__().replace('[', '').replace(']', ''))
             self.txt_ctd_val.SetLabel(str(self._ctd))
-            self.txt_dtd_val.SetLabel(str(self._dtd))
+            self.txt_dtd_val.SetLabel(str(f'{self._dtd:,}'))
             # TODO Red colour if ETA exceeds threshold
             self.txt_eta_val.SetLabel(self._eta)
 
@@ -74,7 +74,6 @@ class DestinationBox(Box, wx.FlexGridSizer):
             self._ctd = calc_course(pos, self.dest_coors)  # course to destination
 
     def __draw_layout__(self):
-        # TODO Add DTD
         txt_enter_dest = wx.StaticText(self.parent, label='Destination:')
         self.edbox_destination = wx.TextCtrl(self.parent)
         self.edbox_dest_coors = wx.TextCtrl(self.parent)

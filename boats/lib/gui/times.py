@@ -7,8 +7,6 @@ from boats.lib.common import seconds_to_formatted_output, curr_time
 from boats.lib.gui.box import Box
 
 
-# TODO Fix for confusion when the comp comes out from sleeping
-
 class Times(Box, wx.FlexGridSizer):
 
     def __init__(self, parent):

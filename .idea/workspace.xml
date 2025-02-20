@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c870e985-95ef-4c71-ac97-b030c418d4de" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/map-checkpoint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/common.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/lib/gui/dest.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/dest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/gui/lastdist.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/lastdist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/navinfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/lib/gui/times.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/gui/times.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/boats/lib/utimer.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/utimer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
@@ -317,13 +313,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673107876333</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Remove petsamo.py, improve output of viewpos.py and racemap.py">
-      <created>1673992730921</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1673992730921</updated>
     </task>
     <task id="LOCAL-00011" summary="Remove looping from viewpos.py, modify time output in racemap.py">
       <created>1673997009655</created>
@@ -661,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1739575040286</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="v0.86&#10;Fix timing. Destination: Add DTD and fix alingment. Correct 'ALIGNMENT_OFFSET'(name)">
+      <created>1739682409545</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1739682409546</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -737,7 +733,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Feb 25" />
     <MESSAGE value="Mar 14" />
     <MESSAGE value="Correct viewboat.py, add data files" />
     <MESSAGE value="Simplify boat.py and map.py" />
@@ -762,7 +757,8 @@
     <MESSAGE value="0.84c&#10;Correct __update_nav_data__" />
     <MESSAGE value="Add colour indicators for COG, TWS, SPD. Correct keeping zoom upon update." />
     <MESSAGE value="Correct times update. Correct navinfo colours." />
-    <option name="LAST_COMMIT_MESSAGE" value="Correct times update. Correct navinfo colours." />
+    <MESSAGE value="v0.86&#10;Fix timing. Destination: Add DTD and fix alingment. Correct 'ALIGNMENT_OFFSET'(name)" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.86&#10;Fix timing. Destination: Add DTD and fix alingment. Correct 'ALIGNMENT_OFFSET'(name)" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
