@@ -64,6 +64,7 @@ class Boat:
 
     def __set_map__(self):
         ts, saveindicator = None, None
+        wpt = self.nav.wpt
         marker = MapMarker(location=self.nav.position,
                            heading=self.nav.az['hdg'],
                            wind_heading=self.nav.wind['twd'],
@@ -73,6 +74,8 @@ class Boat:
                         track=self.log.track,
                         marker=marker,
                         zoom_start=self.map_zoom)
+        if wpt is not None:
+            self._map.course_line = [self.nav.position, wpt]
         match self.nav.datasource:
             case datasource.remote:
                 saveindicator = ''

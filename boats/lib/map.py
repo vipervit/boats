@@ -48,6 +48,7 @@ class MapMarker:
 class Map:
 
     def __init__(self, boat_name, **kwargs):
+        self._courseline = None
         self.boat_name = boat_name
         self._data = None
         self._marker = None
@@ -85,6 +86,14 @@ class Map:
     def zoom(self, val):
         self._zoom = val
 
+    @property
+    def course_line(self):
+        return self._courseline
+
+    @course_line.setter
+    def course_line(self, val):
+        self._courseline = val
+
     def set(self, **kwargs):
         if 'type' in kwargs.keys():
             self.mtype = kwargs['type']
@@ -100,6 +109,8 @@ class Map:
             self._title = kwargs['title']
         if 'zoom_start' in kwargs.keys():
             self._zoom = kwargs['zoom_start']
+        if 'course_line' in kwargs.keys():
+            self._courseline = kwargs['course_line']
         if self.mtype == Maps.Folium:
             self.__save_folium_html__()
 
@@ -118,6 +129,8 @@ class Map:
         folium.TileLayer('openseamap').add_to(self._map_folium)
         if self._track is not None:
             folium.PolyLine(self._track, color='red', weight=2.5, opacity=1).add_to(self._map_folium)
+        if self._courseline is not None:
+            folium.PolyLine(locations=self._courseline, color='blue', weight=0.5, opacity=0.5).add_to(self._map_folium)
 
         popup = self.__get_url_i_boating__()
 

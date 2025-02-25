@@ -11,6 +11,7 @@ class Nav:
         self._data = {}
         self._datasource = source
         self.az = None
+        self._wpt = None  # coordinates of next waypoint; can be final destination
 
     @property
     def data(self):
@@ -23,6 +24,14 @@ class Nav:
     @datasource.setter
     def datasource(self, val):
         self._datasource = val
+
+    @property
+    def wpt(self):
+        return self._wpt
+
+    @wpt.setter
+    def wpt(self, val):
+        self._wpt = val
 
     def show(self, full=False):
         print('\n{}\n'.format(self.boatname.upper()))

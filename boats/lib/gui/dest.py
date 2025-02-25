@@ -36,6 +36,7 @@ class DestinationBox(Box, wx.FlexGridSizer):
         self.edbox_dest_coors.ForegroundColour = 'green'
         self.__get_destination__()
         self.dest_coors = get_destination_coordinates(self.name)
+        self.parent.boat.nav.wpt = self.dest_coors
         if self.dest_coors is not False:
             self.edbox_dest_coors.SetLabel(self.name)
             self.update()
