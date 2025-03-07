@@ -1,5 +1,6 @@
 import datetime
 import os
+import sys
 import webbrowser
 
 import folium
@@ -126,7 +127,8 @@ class Map:
 
     def __prepare_folium__(self):
         self._map_folium = folium.Map(location=self._loc, zoom_start=self._zoom)
-        folium.TileLayer('openseamap').add_to(self._map_folium)
+        if sys.platform == 'darwin':  # temporary workaround for Windows
+            folium.TileLayer('openseamap').add_to(self._map_folium)
         if self._track is not None:
             folium.PolyLine(self._track, color='red', weight=2.5, opacity=1).add_to(self._map_folium)
         if self._courseline is not None:
