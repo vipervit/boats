@@ -62,6 +62,9 @@ class Boat:
             self.log.load()
         self.__set_map__()
 
+    def refresh_map(self):
+        self.__set_map__()
+
     def __set_map__(self):
         ts, saveindicator = None, None
         wpt = self.nav.wpt

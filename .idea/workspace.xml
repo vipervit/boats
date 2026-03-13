@@ -12,10 +12,27 @@
       <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-02-07,_4_01_p_m__[Changes]/shelved.patch" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025-02-07__4_01_p_m___Changes_.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats.egg-info/top_level.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/boats/lib/.ipynb_checkpoints/map-checkpoint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/lib/gui/dashboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/lib/gui/theme.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/notebook/.ipynb_checkpoints/predspeed-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/boats/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/boats-0.912-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/boats-0.912.tar.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/boatmonitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/boatmonitor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/data/destinations.csv" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/destinations.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" beforeDir="false" afterPath="$PROJECT_DIR$/boats/data/logs/Petsamo.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/boat.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/boat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/dest.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/dest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/lib/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/boats/lib/map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boats/map/Petsamo.html" beforeDir="false" afterPath="$PROJECT_DIR$/boats/map/Petsamo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/notebook/predspeed.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/predspeed.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/boats/notebook/sail analysis.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,8 +84,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2K0O8Y03FRlTKARAi1VLoOtYco1" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -83,14 +103,20 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.main - monitor.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;ai.playground.ignore.import.keys.banner.in.settings&quot;: &quot;true&quot;,
     &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hedge/Dev/boats/boats/data/test&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;last_opened_file_path&quot;: &quot;/Users/hedge/Dev/boats&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
@@ -131,6 +157,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
       <option name="PARAMETERS" value="--destination --add &quot;Le Marie Strait,-54.6964,-64.8614&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -153,6 +180,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="boats" />
       <option name="PARAMETERS" value="--monitor --boat_name Petsamo" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -175,6 +203,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
       <option name="PARAMETERS" value="--destination --remove &quot;CAPE CANAVERAL&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -197,6 +226,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boats/boats/__main__.py" />
       <option name="PARAMETERS" value="--destination --view" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -219,6 +249,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="boats" />
       <option name="PARAMETERS" value="--viewboat --from_log --boat_name Petsamo --map Open_Sea,Folium" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -238,6 +269,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
@@ -254,6 +286,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_all.Test_Nav&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -268,6 +301,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_all.Test_Nav.test_get_data&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
@@ -282,6 +316,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;$PROJECT_DIR$/boats/tests/test_common.py&quot;" />
       <option name="_new_targetType" value="&quot;PATH&quot;" />
@@ -308,6 +343,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.30387.173" />
+        <option value="bundled-python-sdk-4762d8aabb82-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.30387.173" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="ShelveChangesManager">
     <option name="remove_strategy" value="true" />
   </component>
@@ -319,13 +362,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1673107876333</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Config files committed">
-      <created>1675101376867</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1675101376867</updated>
+      <workItem from="1771343313199" duration="704000" />
+      <workItem from="1773193725225" duration="342000" />
+      <workItem from="1773194120362" duration="894000" />
+      <workItem from="1773239918173" duration="125000" />
     </task>
     <task id="LOCAL-00015" summary="Config files committed">
       <created>1675119357617</created>
@@ -663,8 +703,18 @@
       <option name="project" value="LOCAL" />
       <updated>1740483042918</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Add workaorund for OpenSea Map on Windows.">
+      <created>1741383465252</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1741383465252</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.History.Properties">
     <option name="COLUMN_ID_ORDER">
@@ -739,7 +789,6 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Simplify boat.py and map.py" />
     <MESSAGE value="Remove all racing-related code." />
     <MESSAGE value="Fix workspace." />
     <MESSAGE value="Add date-time format. Modify timestamp properties in class Log. Modify loglast.py. Implement last record timestamp output in the monitor." />
@@ -764,7 +813,8 @@
     <MESSAGE value="v0.86&#10;Fix timing. Destination: Add DTD and fix alingment. Correct 'ALIGNMENT_OFFSET'(name)" />
     <MESSAGE value="v0.9&#10;Modify monitor title. Modify DTD format - add thousands separator. Remove completed TODO's." />
     <MESSAGE value="Add course line to destination." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add course line to destination." />
+    <MESSAGE value="Add workaorund for OpenSea Map on Windows." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add workaorund for OpenSea Map on Windows." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -783,5 +833,8 @@
         <watch expression="self._data['tws']" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/boats$main___monitor.coverage" NAME="main - monitor Coverage Results" MODIFIED="1773239943519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

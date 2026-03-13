@@ -22,6 +22,9 @@ class Destinations:
     def df(self):
         return self._df
 
+    def names(self):
+        return self._df['Name'].dropna().drop_duplicates().tolist()
+
     def view(self):
         print(self._df)
 
